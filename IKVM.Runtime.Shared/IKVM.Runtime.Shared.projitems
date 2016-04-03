@@ -24,7 +24,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)compiler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CoreClasses.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DotNetTypeWrapper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Dummy.OpenJDK.Core.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DynamicClassLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DynamicMethodUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DynamicTypeWrapper.cs" />
