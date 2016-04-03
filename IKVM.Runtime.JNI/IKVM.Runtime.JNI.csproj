@@ -45,7 +45,7 @@
   <Import Project="..\IKVM.GlobalAssemblyInfo\IKVM.GlobalAssemblyInfo.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>"$(SolutionDir)ikvmstub\bin\$(ConfigurationName)\ikvmstub.exe " -bootstrap IKVM.Runtime.dll "-r:$(SolutionDir)IKVM.Runtime.Core.Dummy\bin\$(ConfigurationName)\IKVM.OpenJDK.Core.dll"</PreBuildEvent>
+    <PreBuildEvent>"$(SolutionDir)ikvmstub\bin\$(ConfigurationName)\ikvmstub.exe " -bootstrap "$(SolutionDir)IKVM.Runtime.FirstPass\bin\$(ConfigurationName)\IKVM.Runtime.dll" "-r:$(SolutionDir)IKVM.Runtime.Core.Dummy\bin\$(ConfigurationName)\IKVM.OpenJDK.Core.dll"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
