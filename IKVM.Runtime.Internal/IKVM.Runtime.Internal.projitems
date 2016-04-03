@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>bdb9a8bd-a04e-4159-9f09-4461e4c13385</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>IKVM.Runtime.Internal</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Assertions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)atomic.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BigEndianBinaryReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Boxer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ByteCode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ByteCodeHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClassFile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CodeEmitter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)common.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)compiler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DynamicClassLoader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DynamicMethodUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DynamicTypeWrapper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExceptionHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)fdlibm\e_hypot.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)fdlibm\e_pow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)fdlibm\e_rem_pio2.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)fdlibm\fdlibm_h.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)fdlibm\k_rem_pio2.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)fdlibm\k_tan.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)fdlibm\s_cbrt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)fdlibm\s_expm1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)fdlibm\s_floor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)fdlibm\s_log1p.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)fdlibm\s_scalbn.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)fdlibm\s_tan.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)intrinsics.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)JsrInliner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LambdaMetafactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LocalVars.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MethodHandleUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)openjdk\java.io.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)openjdk\java.lang.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)openjdk\java.lang.invoke.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)openjdk\java.lang.reflect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)openjdk\java.net.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)openjdk\java.net.SocketInputStream.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)openjdk\java.nio.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)openjdk\java.security.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)openjdk\java.util.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)openjdk\java.util.prefs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)openjdk\misc.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)openjdk\NativeInvokerBytecodeGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)openjdk\sun.management.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)openjdk\sun.misc.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)openjdk\sun.nio.ch.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)openjdk\sun.reflect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)openjdk\sun.security.krb5.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)openjdk\sun.util.locale.provider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PassiveWeakDictionary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RuntimeHelperTypes.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Serialization.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)verifier.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)vfs.cs" />
+  </ItemGroup>
+</Project>
