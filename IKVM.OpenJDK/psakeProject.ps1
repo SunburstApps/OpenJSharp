@@ -50,9 +50,9 @@ Task DownloadOpenJDK -RequiredVariables IntDir {
 }
 
 Task VerifyLicenses -RequiredVariables IntDir, ProjectDir, SolutionDir, Configuration -Depends GenerateSourceList, DownloadOpenJDK {
-    pushd $IntDir
-    & "$($SolutionDir)\IKVM.SourceLicenseAnalyzer\bin\$($Configuration)\IKVM.SourceLicenseAnalyzer.exe"
-	popd
+    pushd $ProjectDir
+    & "$($SolutionDir)\IKVM.SourceLicenseAnalyzer\bin\$($Configuration)\IKVM.SourceLicenseAnalyzer.exe" "$($IntDir)\allsources.gen.lst"
+    popd
 }
 
 Task GenerateSourceList -RequiredVariables IntDir, ProjectDir {
