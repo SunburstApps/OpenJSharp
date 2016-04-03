@@ -99,8 +99,8 @@ namespace SourceLicenseAnalyzer
 			aliases.Add("identifying information: \"Portions Copyrighted [year] * [name of copyright owner]\"", "dummy");
 			aliases.Add("* \"Portions Copyright [year] [name of copyright owner]\" *", "dummy");
 
-            string path = "allsources.gen.lst";
-            if (args.Length >= 1) path = args[0];
+			string path = "allsources.gen.lst";
+			if (args.Length >= 1) path = args[0];
 
 			using (StreamReader rdr = new StreamReader(path))
 			{
