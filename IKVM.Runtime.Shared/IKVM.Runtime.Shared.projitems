@@ -12,9 +12,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)AssemblyClassLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)attributes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ClassLoaderWrapper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CoreClasses.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DotNetTypeWrapper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)JavaException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MemberWrapper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)profiler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ReflectUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)tracer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Types.cs" />
