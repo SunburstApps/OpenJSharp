@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>IKVM.Runtime.Core</RootNamespace>
-    <AssemblyName>IKVM.Runtime.Core</AssemblyName>
+    <AssemblyName>IKVM.OpenJDK.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
