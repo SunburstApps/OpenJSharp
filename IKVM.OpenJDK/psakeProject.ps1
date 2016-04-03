@@ -23,10 +23,13 @@ function Get-WebFile {
 Properties {
     $IntDir = $null
     $OutDir = $null
+	$ProjectDir = $null
+	$SolutionDir = $null
+	$Configuration = $null
 }
 
 Task default -Depends build
-Task build -Depends DownloadOpenJDK
+Task build -Depends DownloadOpenJDK, VerifyLicenses
 
 Task DownloadOpenJDK -RequiredVariables IntDir {
     if (-not [System.IO.File]::Exists("$($IntDir)\openjdk-8u45.zip")) {
@@ -46,6 +49,19 @@ Task DownloadOpenJDK -RequiredVariables IntDir {
 	}
 }
 
+Task VerifyLicenses -RequiredVariables IntDir, ProjectDir, SolutionDir, Configuration -Depends GenerateSourceList, DownloadOpenJDK {
+    pushd $IntDir
+    & "$($SolutionDir)\IKVM.SourceLicenseAnalyzer\bin\$($Configuration)\IKVM.SourceLicenseAnalyzer.exe"
+	popd
+}
+
+Task GenerateSourceList -RequiredVariables IntDir, ProjectDir {
+    $list_file = [System.IO.File]::ReadAllText("$($ProjectDir)\allsources.lst")
+	$replaced = $list_file.Replace("@OPENJDK@", "$($IntDir)\openjdk-8u45-b14")
+	[System.IO.File]::WriteAllText("$($IntDir)\allsources.gen.lst", $replaced)
+}
+
 Task clean -RequiredVariables IntDir, OutDir {
     # Don't delete openjdk-8u45.zip or its expanded contents, due to the size of the download and the time required to unpack it.
+	Remove-File -Force "$($IntDir)\allsources.gen.lst"
 }

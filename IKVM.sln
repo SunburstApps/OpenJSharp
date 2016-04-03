@@ -27,6 +27,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKVM.Runtime.JNI", "IKVM.Ru
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IKVM.OpenJDK", "IKVM.OpenJDK\IKVM.OpenJDK.vcxproj", "{EA77C80F-0D5D-4B8B-8CA9-18872662F76F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A737A85C-05F3-46D5-97BE-A74A428EA0F2} = {A737A85C-05F3-46D5-97BE-A74A428EA0F2}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKVM.SourceLicenseAnalyzer", "IKVM.SourceLicenseAnalyzer\IKVM.SourceLicenseAnalyzer.csproj", "{A737A85C-05F3-46D5-97BE-A74A428EA0F2}"
 EndProject
