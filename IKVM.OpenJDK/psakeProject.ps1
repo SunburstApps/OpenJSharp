@@ -37,8 +37,10 @@ Task DownloadOpenJDK -RequiredVariables IntDir {
 
 	Perform "Unpacking download" {
 	    # This file contains a top-level directory inside it, don't create another one
-		Unblock-File "$($IntDir)\openjdk-8u45.zip"
-		& 7z x "..\openjdk-8u45.zip"
+		Unblock-File "$($IntDir)\openjdk-8u45.zip" -ErrorAction SilentlyContinue
+		pushd $IntDir
+		& "7z.exe" x "openjdk-8u45.zip"
+		popd
 	}
 }
 
