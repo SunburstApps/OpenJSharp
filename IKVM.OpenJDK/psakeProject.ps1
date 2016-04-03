@@ -45,6 +45,5 @@ Task DownloadOpenJDK -RequiredVariables IntDir {
 }
 
 Task clean -RequiredVariables IntDir, OutDir {
-    # Don't delete openjdk-8u45.zip, due to the size of the download.
-    Remove-Item -Recurse -Force "$($IntDir)\openjdk-8u45"
+    # Don't delete openjdk-8u45.zip or its expanded contents, due to the size of the download and the time required to unpack it.
 }
