@@ -147,6 +147,8 @@ namespace SourceLicenseAnalyzer
 
 		static void ProcessFile(string filePath)
 		{
+			if (Path.GetFileNameWithoutExtension(filePath) == "AssemblyInfo") return;
+
 			bool gpl = false;
 			bool classpathException = false;
 			if (!File.Exists(filePath) && File.Exists(filePath + ".in"))
