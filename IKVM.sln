@@ -10,11 +10,14 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "IKVM.Runtime.Shared", "IKVM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKVM.Runtime.Core.Dummy", "IKVM.Runtime.Core.Dummy\IKVM.Runtime.Core.Dummy.csproj", "{987CEB98-4165-4472-809C-4511BBD3ABE3}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "IKVM.Runtime.StubGenerator", "IKVM.Runtime.StubGenerator\IKVM.Runtime.StubGenerator.shproj", "{7C8279EE-BBA6-4C95-83CA-AC081C11C090}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		IKVM.Runtime.Shared\IKVM.Runtime.Shared.projitems*{fe6d55fe-fc5a-4fdc-b5ef-8413da2a1ac9}*SharedItemsImports = 13
 		IKVM.GlobalAssemblyInfo\IKVM.GlobalAssemblyInfo.projitems*{987ceb98-4165-4472-809c-4511bbd3abe3}*SharedItemsImports = 4
 		IKVM.GlobalAssemblyInfo\IKVM.GlobalAssemblyInfo.projitems*{92544727-caf7-48c6-a9e8-63a9ac3b2400}*SharedItemsImports = 4
+		IKVM.Runtime.StubGenerator\IKVM.Runtime.StubGenerator.projitems*{7c8279ee-bba6-4c95-83ca-ac081c11c090}*SharedItemsImports = 13
 		IKVM.GlobalAssemblyInfo\IKVM.GlobalAssemblyInfo.projitems*{0e654eea-8918-419e-af7d-f3c4242844ff}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

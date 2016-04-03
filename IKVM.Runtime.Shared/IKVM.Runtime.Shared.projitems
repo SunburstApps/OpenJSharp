@@ -71,9 +71,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ReflectUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RuntimeHelperTypes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)stubgen\ClassFileWriter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)stubgen\SerialVersionUID.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)stubgen\StubGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)tracer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Types.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TypeWrapper.cs" />
