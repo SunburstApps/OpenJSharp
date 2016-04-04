@@ -21,12 +21,12 @@
 #  jeroen@frijters.net
 #  
 
--assemblyattributes:commonAttributes.class
+-assemblyattributes:ikvm/commonAttributes.class
 {
     -out:IKVM.OpenJDK.Core.dll
     -baseaddress:0x56000000
-    -remap:map.xml
-    -assemblyattributes:coreAttributes.class
+    -remap:resources/map.xml
+    -assemblyattributes:ikvm/coreAttributes.class
     -exclude:exclude.lst
     -resource:META-INF/MANIFEST.MF=MANIFEST.MF
     -resource:java/lang/uniName.dat=@OPENJDK@/build/linux-x86_64-normal-server-release/jdk/classes/java/lang/uniName.dat
@@ -698,7 +698,7 @@
 {
     -out:IKVM.OpenJDK.SwingAWT.dll
     -baseaddress:0x59750000
-    -remap:swingawt.xml
+    -remap:resources/swingawt.xml
     -resource:META-INF/services/sun.java2d.pipe.RenderingEngine=resources/META-INF/services/sun.java2d.pipe.RenderingEngine
     -resource:META-INF/services/sun.java2d.cmm.CMMServiceProvider=@OPENJDK@/jdk/src/share/classes/sun/java2d/cmm/lcms/META-INF/services/sun.java2d.cmm.CMMServiceProvider
     -recurse:resources.zip/com/sun/java/swing/*
@@ -843,7 +843,7 @@
 {
     -out:IKVM.OpenJDK.Security.dll
     -baseaddress:0x5B310000
-    -remap:security.xml
+    -remap:resources/security.xml
     ikvm/sun/security/jgss/wrapper/*.class
     @OPENJDK@/build/linux-x86_64-normal-server-release/jdk/gensrc/sun/security/util/*.class
     @OPENJDK@/jdk/src/share/classes/com/sun/crypto/provider/*.class
