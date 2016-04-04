@@ -29,7 +29,7 @@ Properties {
 }
 
 Task default -Depends build
-Task build -Depends DownloadOpenJDK, VerifyLicenses, GenerateStubJars
+Task build -Depends DownloadOpenJDK, VerifyLicenses, GenerateStubJars, GeneratePropertyConstants
 
 Task DownloadOpenJDK -RequiredVariables IntDir {
     if (-not [System.IO.File]::Exists("$($IntDir)\openjdk-8u45.zip")) {
@@ -47,6 +47,18 @@ Task DownloadOpenJDK -RequiredVariables IntDir {
             popd
     	}
 	}
+}
+
+Task GeneratePropertyConstants {
+    $version_code = [System.IO.File]::ReadAllLines("$($SolutionDir)\IKVM.GlobalAssemblyInfo\GlobalAssemblyInfo.cs")
+    $ikvm_version = [regex]::Match($version_code, "AssemblyVersion\(`"[0-9.]+`"\)")
+	$ikvm_version = [regex]::Match($ikvm_version, "([0-9.]+)").Value
+
+    $infile = [System.IO.File]::ReadAllText("$($ProjectDir)\ikvm\java\lang\PropertyConstants.java.in")
+    $replaced = $infile.Replace("@AWTASSEMBLY@", "")
+    $replaced = $replaced.Replace("@VERSION@", $ikvm_version)
+    $replaced = $replaced.Replace("@OPENJDK_VERSION@", "1.8.0_45-b14")
+    [System.IO.File]::WriteAllText("$($ProjectDir)\ikvm\java\lang\PropertyConstants.java", $replaced)
 }
 
 Task GenerateStubJars -RequiredVariables OutDir, Configuration {
