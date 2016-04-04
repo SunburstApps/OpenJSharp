@@ -75,6 +75,6 @@ Task GenerateSourceList -RequiredVariables IntDir, ProjectDir {
 
 Task clean -RequiredVariables IntDir, OutDir {
     # Don't delete openjdk-8u45.zip or its expanded contents, due to the size of the download and the time required to unpack it.
-	Remove-File -Force "$($IntDir)\allsources.gen.lst"
+	Remove-Item -Force "$($IntDir)\allsources.gen.lst"
 	Remove-Item -Force "$($IntDir)\*.jar"
 }
