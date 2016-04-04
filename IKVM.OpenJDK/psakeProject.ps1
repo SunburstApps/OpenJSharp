@@ -84,16 +84,57 @@ Task DownloadOpenJDK -RequiredVariables IntDir {
 }
 
 Task CreateCoreDLLs -RequiredVariables IntDir, OutDir, ProjectDir, SolutionDir, Configuration -Depends CreateIkvmcResponseFile, CreateIkvmcManifestFile, CreateNashornVersionFile, CreateRmiStubs, Compile {
-	Copy-Item -Force "$($SolutionDir)\IKVM.Runtime.FirstPass\bin\$($Configuration)\IKVM.Runtime.dll" BuildOutput\IKVM.Runtime.dll
-	Copy-Item -Force "$($SolutionDir)\IKVM.Awt.WindowsForms.FirstPass\bin\$($Configuration)\IKVM.Awt.WindowsForms.dll" BuildOutput\IKVM.Awt.WindowsForms.dll
+	$outputs = @(
+		"IKVM.OpenJDK.Beans.dll",
+		"IKVM.OpenJDK.Charsets.dll",
+		"IKVM.OpenJDK.Cldrdata.dll",
+		"IKVM.OpenJDK.Corba.dll",
+		"IKVM.OpenJDK.Core.dll",
+		"IKVM.OpenJDK.Jdbc.dll",
+		"IKVM.OpenJDK.Localedata.dll",
+		"IKVM.OpenJDK.Management.dll",
+		"IKVM.OpenJDK.Media.dll",
+		"IKVM.OpenJDK.Misc.dll",
+		"IKVM.OpenJDK.Naming.dll",
+		"IKVM.OpenJDK.Nashorn.dll",
+		"IKVM.OpenJDK.Remoting.dll",
+		"IKVM.OpenJDK.Security.dll",
+		"IKVM.OpenJDK.SwingAWT.dll",
+		"IKVM.OpenJDK.Text.dll",
+		"IKVM.OpenJDK.Util.dll",
+		"IKVM.OpenJDK.XML.API.dll",
+		"IKVM.OpenJDK.XML.Bind.dll",
+		"IKVM.OpenJDK.XML.Crypto.dll",
+		"IKVM.OpenJDK.XML.Parse.dll",
+		"IKVM.OpenJDK.XML.Transform.dll",
+		"IKVM.OpenJDK.XML.WebServices.dll",
+		"IKVM.OpenJDK.XML.XPath.dll"
+	)
+	$needs_rebuild = $false
 
-	$ikvmc = "$($SolutionDir)\ikvmc\bin\$($Configuration)\ikvmc.exe"
-	& $ikvmc -version:1.8 -compressresources -opt:fields -strictfinalfieldsemantics -removeassertions -target:library -sharedclassloader `
-	  -r:mscorlib.dll -r:System.dll -r:System.Core.dll -r:System.Xml.dll -r:BuildOutput\IKVM.Runtime.dll -nowarn:110 -w4 -noparameterreflection `
-	  "@$($IntDir)\response.gen.txt"
+	foreach ($dll in $outputs) {
+		if (-not [System.IO.File]::Exists("$($ProjectDir)\BuildOutput\$($dll)")) {
+			Write-Warning "Could not find $($dll), triggering rebuild"
+			$needs_rebuild = $true
+		}
+	}
 
-	$ikvmstub = "$($SolutionDir)\ikvmstub\bin\$($Configuration)\ikvmstub.exe"
-	& $ikvmstub "-out:$($OutDir)\IKVM.OpenJDK.Core.dll" -namespace:ikvm.io -namespace:ikvm.lang -namespace:ikvm.runtime
+	if ($needs_rebuild) {
+		Copy-Item -Force "$($SolutionDir)\IKVM.Runtime.FirstPass\bin\$($Configuration)\IKVM.Runtime.dll" BuildOutput\IKVM.Runtime.dll
+		Copy-Item -Force "$($SolutionDir)\IKVM.Awt.WindowsForms.FirstPass\bin\$($Configuration)\IKVM.Awt.WindowsForms.dll" BuildOutput\IKVM.Awt.WindowsForms.dll
+
+		$ikvmc = "$($SolutionDir)\ikvmc\bin\$($Configuration)\ikvmc.exe"
+		& $ikvmc -version:1.8 -compressresources -opt:fields -strictfinalfieldsemantics -removeassertions -target:library -sharedclassloader `
+		  -r:mscorlib.dll -r:System.dll -r:System.Core.dll -r:System.Xml.dll -r:BuildOutput\IKVM.Runtime.dll -nowarn:110 -w4 -noparameterreflection `
+		  "@$($IntDir)\response.gen.txt"
+
+		$ikvmstub = "$($SolutionDir)\ikvmstub\bin\$($Configuration)\ikvmstub.exe"
+		& $ikvmstub "-out:$($OutDir)\IKVM.OpenJDK.Core.dll" -namespace:ikvm.io -namespace:ikvm.lang -namespace:ikvm.runtime
+
+		foreach ($dll in $outputs) {
+			Move-Item $dll "BuildOutput\$($dll)" -Force -ErrorAction SilentlyContinue
+		}
+	}
 }
 
 Task CreateIkvmcResponseFile -RequiredVariables IntDir {
