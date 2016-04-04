@@ -150,8 +150,8 @@ Task CreateRmiStubs -RequiredVariables IntDir, OutDir, ProjectDir -Depends Compi
 		"-nowarn",
 		"-bootclasspath",
 		[string]::Join(';', $classpath),
-		"-d",
-		"$($ProjectDir)\rmistubs"
+		"-classpath", "ikvm;classpath",
+		"-d", "rmistubs"
 	)
 
     & rmic @args "-v1.1" sun.rmi.registry.RegistryImpl
