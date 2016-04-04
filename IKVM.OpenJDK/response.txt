@@ -808,8 +808,8 @@
     -recurse:BuildOutput/resources.zip/com/sun/java/util/jar/pack/intrinsic.properties
     -recurse:BuildOutput/resources.zip/sun/launcher/resources/*
     -resource:META-INF/services/java.nio.file.spi.FileSystemProvider=@OPENJDK@/jdk/src/share/demo/nio/zipfs/src/META-INF/services/java.nio.file.spi.FileSystemProvider
-    ikvm/ikvm/com/sun/java/util/jar/pack/*.class
-    ikvm/ikvm/java/util/zip/*.class
+    ikvm/com/sun/java/util/jar/pack/*.class
+    ikvm/java/util/zip/*.class
     @OPENJDK@/build/linux-x86_64-normal-server-release/jdk/gensrc/sun/util/logging/resources/*.class
     @OPENJDK@/build/linux-x86_64-normal-server-release/jdk/gensrc/sun/util/resources/*.class
     @OPENJDK@/build/linux-x86_64-normal-server-release/jdk/gensrc/sun/util/resources/en/*.class
@@ -919,8 +919,8 @@
     -baseaddress:0x5BB50000
     ikvm/java/lang/management/*.class
     ikvm/sun/management/*.class
-    ikvm/rmistubs/org/omg/stub/javax/management/remote/rmi/*.class
-    ikvm/rmistubs/javax/management/remote/rmi/*.class
+    rmistubs/org/omg/stub/javax/management/remote/rmi/*.class
+    rmistubs/javax/management/remote/rmi/*.class
     @OPENJDK@/build/linux-x86_64-normal-server-release/jdk/gensrc/sun/management/resources/*.class
     @OPENJDK@/jdk/src/share/classes/com/sun/jmx/defaults/*.class
     @OPENJDK@/jdk/src/share/classes/com/sun/jmx/interceptor/*.class
@@ -1079,10 +1079,10 @@
     -resource:META-INF/services/javax.sound.sampled.spi.MixerProvider=@OPENJDK@/jdk/src/share/classes/com/sun/media/sound/services/javax.sound.sampled.spi.MixerProvider
     -recurse:BuildOutput/resources.zip/com/sun/imageio/plugins/common/iio-plugin.properties
     -r:System.Drawing.dll
-    com/sun/imageio/plugins/jpeg/*.class
-    icedtea/rt/com/sun/media/sound/*.class
-    sun/print/*.class
-    sun/awt/windows/*.class
+    ikvm/com/sun/imageio/plugins/jpeg/*.class
+    ikvm/icedtea/rt/com/sun/media/sound/*.class
+    ikvm/sun/print/*.class
+    ikvm/sun/awt/windows/*.class
     @OPENJDK@/build/linux-x86_64-normal-server-release/jdk/gensrc/sun/print/resources/*.class
     @OPENJDK@/jdk/src/share/classes/com/sun/imageio/plugins/bmp/*.class
     @OPENJDK@/jdk/src/share/classes/com/sun/imageio/plugins/common/*.class
