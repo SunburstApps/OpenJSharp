@@ -29,7 +29,7 @@ Properties {
 }
 
 Task default -Depends build
-Task build -Depends DownloadOpenJDK, VerifyLicenses
+Task build -Depends DownloadOpenJDK, VerifyLicenses, GenerateStubJars
 
 Task DownloadOpenJDK -RequiredVariables IntDir {
     if (-not [System.IO.File]::Exists("$($IntDir)\openjdk-8u45.zip")) {
@@ -49,6 +49,18 @@ Task DownloadOpenJDK -RequiredVariables IntDir {
 	}
 }
 
+Task GenerateStubJars -RequiredVariables OutDir, Configuration {
+    pushd $IntDir
+    $ikvmstub = "$($SolutionDir)\ikvmstub\bin\$($Configuration)\ikvmstub.exe"
+	& $ikvmstub -bootstrap mscorlib
+	& $ikvmstub -bootstrap System
+	& $ikvmstub -bootstrap System.Core
+	& $ikvmstub -bootstrap System.Data
+	& $ikvmstub -bootstrap System.Drawing
+	& $ikvmstub -bootstrap System.Xml
+	popd
+}
+
 Task VerifyLicenses -RequiredVariables IntDir, ProjectDir, SolutionDir, Configuration -Depends GenerateSourceList, DownloadOpenJDK {
     pushd $ProjectDir
     & "$($SolutionDir)\IKVM.SourceLicenseAnalyzer\bin\$($Configuration)\IKVM.SourceLicenseAnalyzer.exe" "$($IntDir)\allsources.gen.lst"
@@ -64,4 +76,5 @@ Task GenerateSourceList -RequiredVariables IntDir, ProjectDir {
 Task clean -RequiredVariables IntDir, OutDir {
     # Don't delete openjdk-8u45.zip or its expanded contents, due to the size of the download and the time required to unpack it.
 	Remove-File -Force "$($IntDir)\allsources.gen.lst"
+	Remove-Item -Force "$($IntDir)\*.jar"
 }
