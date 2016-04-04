@@ -106,7 +106,7 @@ Task CreateIkvmcManifestFile -RequiredVariables IntDir {
     $mf = [System.IO.File]::ReadAllText("resources\MANIFEST.MF.in")
 	$mf = $mf.Replace("@IMPLEMENTATION_VERSION@", "1.8.0")
 	$mf = $mf.Replace("@SPECIFICATION_VERSION@", "1.8")
-	[System.IO.File]::WriteAllText("$($IntDir)\MANIFEST.MF", $mf)
+	[System.IO.File]::WriteAllText("resources\MANIFEST.MF", $mf)
 }
 
 Task CreateNashornVersionFile -RequiredVariables ProjectDir {
