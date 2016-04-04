@@ -29,7 +29,7 @@ Properties {
 }
 
 Task default -Depends build
-Task build -Depends DownloadOpenJDK, VerifyLicenses, GenerateStubJars, GeneratePropertyConstants
+Task build -Depends DownloadOpenJDK, VerifyLicenses, GenerateStubJars, Compile
 
 Task DownloadOpenJDK -RequiredVariables IntDir {
     if (-not [System.IO.File]::Exists("$($IntDir)\openjdk-8u45.zip")) {
@@ -47,6 +47,13 @@ Task DownloadOpenJDK -RequiredVariables IntDir {
             popd
     	}
 	}
+}
+
+Task Compile -RequiredVariables IntDir, OutDir -Depends DownloadOpenJDK, GeneratePropertyConstants, GenerateSourceList, GenerateStubJars {
+    New-Item -ItemType Directory "$($IntDir)\classfiles" -ErrorAction SilentlyContinue | Out-Null
+    & javac.exe -d "$($IntDir)\classfiles" -J-Xmx1536M -g -nowarn -implicit:none -parameters -cp dummy `
+	-bootclasspath "$($IntDir)\mscorlib.jar;$($IntDir)\System.jar;$($IntDir)\System.Core.jar;$($IntDir)\System.Data.jar;$($IntDir)\System.Drawing.jar;$($IntDir)\System.xml.jar;$($IntDir)\IKVM.Runtime.jar" `
+	"@$($IntDir)\allsources.gen.lst"
 }
 
 Task GeneratePropertyConstants {
@@ -89,4 +96,6 @@ Task clean -RequiredVariables IntDir, OutDir {
     # Don't delete openjdk-8u45.zip or its expanded contents, due to the size of the download and the time required to unpack it.
 	Remove-Item -Force "$($IntDir)\allsources.gen.lst"
 	Remove-Item -Force "$($IntDir)\*.jar"
+
+	Remove-Item -Recurse -Force "$($IntDir)\classfiles"
 }
