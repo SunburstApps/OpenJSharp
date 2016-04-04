@@ -32,6 +32,13 @@ Task default -Depends build
 Task build -Depends DownloadOpenJDK, GenerateStubJars, Compile, CreateRmiStubs, MakeZipFiles
 
 Task MakeZipFiles -RequiredVariables IntDir, OutDir -Depends DownloadOpenJDK {
+    New-Item -ItemType Directory "$($ProjectDir)\BuildOutput" -ErrorAction SilentlyContinue | Out-Null
+
+	$vfs = "$($ProjectDir)\BuildOutput\vfs.zip"
+	$res = "$($ProjectDir)\BuildOutput\resources.zip"
+	if ([System.IO.File]::Exists($vfs)) { Remove-Item $vfs -Force }
+	if ([System.IO.File]::Exists($res)) { Remove-Item $res -Force }
+
     $files = @(
 	    "lib/calendars.properties",
 		"lib/logging.properties",
@@ -48,12 +55,16 @@ Task MakeZipFiles -RequiredVariables IntDir, OutDir -Depends DownloadOpenJDK {
 	)
 
     pushd "Downloaded\openjdk-8u45-b14\build\linux-x86_64-normal-server-release\jdk"
-	& "7z.exe" a "$($OutDir)\vfs.zip" @files
+	& "7z.exe" a $vfs @files
 	popd
 
 	pushd "Downloaded\openjdk-8u45-b14\jdk\src\windows"
-	& "7z.exe" a "$($OutDir)\vfs.zip" lib/flavormap.properties lib/content-types.properties
+	& "7z.exe" a $vfs lib/flavormap.properties lib/content-types.properties
 	popd
+
+    pushd "Downloaded\openjdk-8u45-b14\build\linux-x86_64-normal-server-release\jdk\classes"
+	& "7z.exe" a $res com\sun\corba\se\impl\orbutil\resources\*.properties com\sun\rowset\*.properties javax\swing\text\html\parser\html32.bdtd `
+	  sun\rmi\registry\resources\*.properties sun\text\resources\*IteratorData sun\text\resources\th\*IteratorData_th sun\text\resources\th\thai_dict
 }
 
 Task DownloadOpenJDK -RequiredVariables IntDir {
