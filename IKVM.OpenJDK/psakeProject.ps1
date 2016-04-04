@@ -29,7 +29,7 @@ Properties {
 }
 
 Task default -Depends build
-Task build -Depends DownloadOpenJDK, GenerateStubJars, Compile, CreateRmiStubs, MakeZipFiles
+Task build -Depends MakeZipFiles, CreateCoreDLLs
 
 Task MakeZipFiles -RequiredVariables IntDir, OutDir -Depends DownloadOpenJDK {
     New-Item -ItemType Directory "$($ProjectDir)\BuildOutput" -ErrorAction SilentlyContinue | Out-Null
@@ -85,11 +85,41 @@ Task DownloadOpenJDK -RequiredVariables IntDir {
 	}
 }
 
+Task CreateCoreDLLs -RequiredVariables IntDir, OutDir, ProjectDir, SolutionDir, Configuration -Depends CreateIkvmcResponseFile, CreateIkvmcManifestFile, CreateNashornVersionFile, Compile {
+    $ikvmc = "$($SolutionDir)\ikvmc\bin\$($Configuration)\ikvmc.exe"
+	& $ikvmc -version:1.8 -compressresources -opt:fields -strictfinalfieldsemantics -removeassertions -target:library -sharedclassloader
+	  -r:mscorlib.dll -r:System.dll -r:System.Core.dll -r:System.Xml.dll -r:IKVM.Runtime.dll -nowarn:110 -w4 -noparameterreflection `
+	  "@$($IntDir)\response.gen.txt"
+
+	$ikvmstub = "$($SolutionDir)\ikvmstub\bin\$($Configuration)\ikvmstub.exe"
+	& $ikvmstub "-out:$($OutDir)\IKVM.OpenJDK.Core.dll" -namespace:ikvm.io -namespace:ikvm.lang -namespace:ikvm.runtime
+}
+
+Task CreateIkvmcResponseFile -RequiredVariables IntDir {
+    $rsp = [System.IO.File]::ReadAllText("response.txt")
+	$rsp = $rsp.Replace("@OPENJDK@", "Downloaded/openjdk-8u45-b14")
+	[System.IO.File]::WriteAllText("$($IntDir)\response.gen.txt", $rsp)
+}
+
+Task CreateIkvmcManifestFile -RequiredVariables IntDir {
+    $mf = [System.IO.File]::ReadAllText("resources\MANIFEST.MF.in")
+	$mf = $mf.Replace("@IMPLEMENTATION_VERSION@", "1.8.0")
+	$mf = $mf.Replace("@SPECIFICATION_VERSION@", "1.8")
+	[System.IO.File]::WriteAllText("$($IntDir)\MANIFEST.MF", $mf)
+}
+
+Task CreateNashornVersionFile -RequiredVariables ProjectDir {
+    $vf = [System.IO.File]::ReadAllText("resources\nashorn\version.properties.in")
+	$vf = $vf.Replace("@FULL_VERSION@", "1.8.0_45-b14")
+	$vf = $vf.Replace("@SPECIFICATION_VERSION@", "1.8")
+	[System.IO.File]::WriteAllText("resources\nashorn\version.properties", $vf)
+}
+
 Task Compile -RequiredVariables IntDir, OutDir -Depends DownloadOpenJDK, GeneratePropertyConstants, GenerateSourceList, GenerateStubJars {
     New-Item -ItemType Directory "$($IntDir)\classfiles" -ErrorAction SilentlyContinue | Out-Null
 
     if (-not [System.IO.File]::Exists("$($IntDir)\classfiles.done")) {
-        & javac.exe -d "$($IntDir)\classfiles" -J-Xmx1536M -g -nowarn -implicit:none -parameters -cp dummy `
+        & javac.exe -J-Xmx1536M -g -nowarn -implicit:none -parameters -cp dummy `
         -bootclasspath "$($IntDir)\mscorlib.jar;$($IntDir)\System.jar;$($IntDir)\System.Core.jar;$($IntDir)\System.Data.jar;$($IntDir)\System.Drawing.jar;$($IntDir)\System.xml.jar;$($IntDir)\IKVM.Runtime.jar;$($IntDir)\IKVM.Runtime.jar" `
         "@$($IntDir)\allsources.gen.lst"
 		Set-Content "$($IntDir)\classfiles.done" -Value "Remove this file to force a rebuild of the OpenJDK Java sources."
