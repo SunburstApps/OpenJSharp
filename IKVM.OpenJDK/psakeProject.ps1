@@ -29,9 +29,9 @@ Properties {
 }
 
 Task default -Depends build
-Task build -Depends DownloadOpenJDK, GenerateStubJars, Compile, CreateRmiStubs, MakeVFS
+Task build -Depends DownloadOpenJDK, GenerateStubJars, Compile, CreateRmiStubs, MakeZipFiles
 
-Task MakeVFS -RequiredVariables IntDir, OutDir -Depends DownloadOpenJDK {
+Task MakeZipFiles -RequiredVariables IntDir, OutDir -Depends DownloadOpenJDK {
     $files = @(
 	    "lib/calendars.properties",
 		"lib/logging.properties",
