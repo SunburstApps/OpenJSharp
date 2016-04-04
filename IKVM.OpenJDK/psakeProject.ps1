@@ -29,7 +29,7 @@ Properties {
 }
 
 Task default -Depends build
-Task build -Depends DownloadOpenJDK, GenerateStubJars, Compile
+Task build -Depends DownloadOpenJDK, GenerateStubJars, Compile, CreateRmiStubs
 
 Task DownloadOpenJDK -RequiredVariables IntDir {
     if (-not [System.IO.File]::Exists("Downloaded\openjdk-8u45.zip")) {
@@ -58,6 +58,52 @@ Task Compile -RequiredVariables IntDir, OutDir -Depends DownloadOpenJDK, Generat
         "@$($IntDir)\allsources.gen.lst"
 		Set-Content "$($IntDir)\classfiles.done" -Value "Remove this file to force a rebuild of the OpenJDK Java sources."
     }
+}
+
+Task CreateRmiStubs -RequiredVariables IntDir, OutDir -Depends Compile {
+    New-Item -ItemType Directory "$($IntDir)\rmistubs" -ErrorAction SilentlyContinue | Out-Null
+
+	$QuoteString = [scriptblock]{
+        param([string]$x)
+        return "`"$($x)`""
+	}
+
+	$classpath = @(
+	    "$($IntDir)\mscorlib.jar",
+		"$($IntDir)\System.Xml.jar",
+		"Downloaded\openjdk-8u45-b14\jdk\src\share\classes",
+		"Downloaded\openjdk-8u45-b14\corba\src\share\classes",
+		"Downloaded\openjdk-8u45-b14\build\linux-x86_64-normal-server-release\jdk\gensrc"
+	)
+
+	$args = @(
+	    "-J-client",
+		"-J-Xmx896m",
+		"-J-Xms128m",
+		"-nowarn",
+		"-bootclasspath",
+		[string]::Join(';', $classpath),
+		"-classpath",
+		"$($IntDir)\classfiles",
+		"-d",
+		"$($IntDir)\rmistubs"
+	)
+
+    & rmic @args "-v1.1" sun.rmi.registry.RegistryImpl
+    & rmic @args "-v1.1" sun.rmi.transport.DGCImpl
+    & rmic @args "-v1.2" sun.rmi.server.Activation`$ActivationSystemImpl
+    & rmic @args "-v1.2" java.rmi.activation.ActivationGroup
+    & rmic @args "-v1.2" com.sun.jndi.rmi.registry.ReferenceWrapper
+    & rmic @args "-v1.2" javax.management.remote.rmi.RMIConnectionImpl
+    & rmic @args "-v1.2" -iiop javax.management.remote.rmi.RMIConnectionImpl
+    & rmic @args "-v1.2" -iiop -standardPackage javax.management.remote.rmi.RMIConnectionImpl
+    & rmic @args "-v1.2" javax.management.remote.rmi.RMIServerImpl
+    & rmic @args "-v1.2" -iiop javax.management.remote.rmi.RMIServerImpl
+    & rmic @args "-v1.2" -iiop -standardPackage javax.management.remote.rmi.RMIServerImpl
+    & rmic @args -iiop javax.management.remote.rmi.RMIConnection
+    & rmic @args -iiop -standardPackage javax.management.remote.rmi.RMIConnection
+    & rmic @args -iiop javax.management.remote.rmi.RMIServer
+    & rmic @args -iiop -standardPackage javax.management.remote.rmi.RMIServer
 }
 
 Task GeneratePropertyConstants {
@@ -103,4 +149,5 @@ Task clean -RequiredVariables IntDir, OutDir {
 	Remove-Item -Force "$($IntDir)\*.jar"
 
 	Remove-Item -Recurse -Force "$($IntDir)\classfiles"
+	Remove-Item -Recurse -Force "$($IntDir)\rmistubs"
 }
