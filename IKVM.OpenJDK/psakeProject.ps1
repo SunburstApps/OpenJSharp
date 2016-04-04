@@ -29,7 +29,32 @@ Properties {
 }
 
 Task default -Depends build
-Task build -Depends DownloadOpenJDK, GenerateStubJars, Compile, CreateRmiStubs
+Task build -Depends DownloadOpenJDK, GenerateStubJars, Compile, CreateRmiStubs, MakeVFS
+
+Task MakeVFS -RequiredVariables IntDir, OutDir -Depends DownloadOpenJDK {
+    $files = @(
+	    "lib/calendars.properties",
+		"lib/logging.properties",
+		"lib/management/management.properties",
+		"lib/net.properties",
+		"lib/psfontj2d.properties",
+		"lib/sound.properties",
+		"lib/cmm/*",
+		"lib/tzdb.dat",
+		"lib/currency.data",
+		"lib/security/java.policy",
+		"lib/security/java.security",
+		"lib/security/US_export_policy.jar"
+	)
+
+    pushd "Downloaded\openjdk-8u45-b14\build\linux-x86_64-normal-server-release\jdk"
+	& "7z.exe" a "$($OutDir)\vfs.zip" @files
+	popd
+
+	pushd "Downloaded\openjdk-8u45-b14\jdk\src\windows"
+	& "7z.exe" a "$($OutDir)\vfs.zip" lib/flavormap.properties lib/content-types.properties
+	popd
+}
 
 Task DownloadOpenJDK -RequiredVariables IntDir {
     if (-not [System.IO.File]::Exists("Downloaded\openjdk-8u45.zip")) {
@@ -167,6 +192,7 @@ Task clean -RequiredVariables IntDir, OutDir {
     # Don't delete openjdk-8u45.zip or its expanded contents, due to the size of the download and the time required to unpack it.
 	Remove-Item -Force "$($IntDir)\allsources.gen.lst"
 	Remove-Item -Force "$($IntDir)\*.jar"
+	Remove-Item -Force "$($OutDir)\vfs.zip"
 
 	Remove-Item -Recurse -Force "$($IntDir)\classfiles"
 	Remove-Item -Recurse -Force "$($IntDir)\rmistubs"
