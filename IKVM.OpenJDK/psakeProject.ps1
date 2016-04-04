@@ -32,13 +32,13 @@ Task default -Depends build
 Task build -Depends DownloadOpenJDK, GenerateStubJars, Compile
 
 Task DownloadOpenJDK -RequiredVariables IntDir {
-    if (-not [System.IO.File]::Exists("$($IntDir)\openjdk-8u45.zip")) {
+    if (-not [System.IO.File]::Exists("Downloaded\openjdk-8u45.zip")) {
         Perform "Downloading OpenJDK-8u45-b14" {
             Get-WebFile -URI 'http://www.frijters.net/openjdk-8u45-b14-stripped.zip' -Path "$($IntDir)\openjdk-8u45.zip"
 	    }
 	}
 
-	if (-not [System.IO.Directory]::Exists("$($IntDir)\openjdk-8u45-b14")) {
+	if (-not [System.IO.Directory]::Exists("Downloaded\openjdk-8u45-b14")) {
         Perform "Unpacking download" {
             # This file contains a top-level directory inside it, don't create another one
             Unblock-File "$($IntDir)\openjdk-8u45.zip" -ErrorAction SilentlyContinue
@@ -93,7 +93,7 @@ Task VerifyLicenses -RequiredVariables IntDir, ProjectDir, SolutionDir, Configur
 
 Task GenerateSourceList -RequiredVariables IntDir, ProjectDir {
     $list_file = [System.IO.File]::ReadAllText("$($ProjectDir)\allsources.lst")
-	$replaced = $list_file.Replace("@OPENJDK@", "$($IntDir)\openjdk-8u45-b14")
+	$replaced = $list_file.Replace("@OPENJDK@", "`"$($ProjectDir)\Downloaded\openjdk-8u45-b14`"")
 	[System.IO.File]::WriteAllText("$($IntDir)\allsources.gen.lst", $replaced)
 }
 
