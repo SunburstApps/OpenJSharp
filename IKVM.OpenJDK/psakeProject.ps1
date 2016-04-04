@@ -29,7 +29,7 @@ Properties {
 }
 
 Task default -Depends build
-Task build -Depends DownloadOpenJDK, VerifyLicenses, GenerateStubJars, Compile
+Task build -Depends DownloadOpenJDK, GenerateStubJars, Compile
 
 Task DownloadOpenJDK -RequiredVariables IntDir {
     if (-not [System.IO.File]::Exists("$($IntDir)\openjdk-8u45.zip")) {
