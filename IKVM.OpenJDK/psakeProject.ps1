@@ -90,7 +90,7 @@ Task VerifyLicenses -RequiredVariables IntDir, ProjectDir, SolutionDir, Configur
 
 Task GenerateSourceList -RequiredVariables IntDir, ProjectDir {
     $list_file = [System.IO.File]::ReadAllText("$($ProjectDir)\allsources.lst")
-	$replaced = $list_file.Replace("@OPENJDK@", "`"$($ProjectDir)\Downloaded\openjdk-8u45-b14`"")
+	$replaced = $list_file.Replace("@OPENJDK@", "Downloaded\openjdk-8u45-b14")
 	[System.IO.File]::WriteAllText("$($IntDir)\allsources.gen.lst", $replaced)
 }
 
