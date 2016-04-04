@@ -62,51 +62,7 @@ Task MakeZipFiles -RequiredVariables IntDir, OutDir -Depends DownloadOpenJDK {
 	& "7z.exe" a $vfs lib/flavormap.properties lib/content-types.properties | Out-Null
 	popd
 
-    pushd "Downloaded\openjdk-8u45-b14\build\linux-x86_64-normal-server-release\jdk\classes"
-	& "7z.exe" a $res com\sun\corba\se\impl\orbutil\resources\*.properties com\sun\rowset\*.properties javax\swing\text\html\parser\html32.bdtd `
-	  sun\rmi\registry\resources\*.properties sun\text\resources\*IteratorData sun\text\resources\th\*IteratorData_th sun\text\resources\th\thai_dict | Out-Null
-	popd
-
-	pushd "Downloaded\openjdk-8u45-b14\corba\src\share\classes"
-	$files = ((Get-ChildItem -Recurse -Include *.properties) | % { $_.FullName })
-	& "7z.exe" a $res @files
-	popd
-
-	pushd "Downloaded\openjdk-8u45-b14\jdk\src\share\classes"
-	$files = ((Get-ChildItem -Recurse -Include *.gif) | % { $_.FullName })
-	& "7z.exe" a $res @files
-	$files = ((Get-ChildItem -Recurse -Include *.png) | % { $_.FullName })
-	& "7z.exe" a $res @files
-	$files = ((Get-ChildItem -Recurse -Include *.wav) | % { $_.FullName })
-	& "7z.exe" a $res @files
-	$files = ((Get-ChildItem -Recurse -Include *.properties) | % { $_.FullName })
-	& "7z.exe" a $res @files
-	& "7z.exe" a $res com\sun\org\apache\xml\internal\security\resource\config.*
-	$files = ((Get-ChildItem -Recurse -Include * com\sun\swing\internal\plaf) | ? { -not $_.PSIsContainer } | % { $_.FullName })
-	& "7z.exe" a $res @files
-	& "7z.exe" a $res javax\swing\text\html\default.css javax\swing\text\rtf\charsets\*.txt
-	$files = ((Get-ChildItem -Recurse -Include *.icu sun\text\resources) | % { $_.FullName })
-	& "7z.exe" a $res @files
-	popd
-
-	pushd "Downloaded\openjdk-8u45-b14\jaxp\src"
-	$files = ((Get-ChildItem -Recurse -Include *.properties) | % { $_.FullName })
-	& "7z.exe" a $res @files
-	$files = ((Get-ChildItem -Recurse -Include *.res) | % { $_.FullName })
-	& "7z.exe" a $res @files
-	popd
-
-	pushd "Downloaded\openjdk-8u45-b14\jaxws\src\share\jaf_classes"
-	$files = ((Get-ChildItem -Recurse -Include *.properties) | % { $_.FullName })
-	& "7z.exe" a $res @files
-	popd
-
-	pushd "Downloaded\openjdk-8u45-b14\jaxws\src\share\jaxws_classes"
-	$files = ((Get-ChildItem -Recurse -Include *.properties) | % { $_.FullName })
-	& "7z.exe" a $res @files
-	$files = ((Get-ChildItem -Recurse -Include *.xml) | % { $_.FullName })
-	& "7z.exe" a $res @files
-	popd
+	& nant "-D:outfile=$($res)" "-D:OpenJDK.dir=$($ProjectDir)\Downloaded\openjdk-8u45-b14" "-buildfile:resources\BuildResources.xml"
 }
 
 Task DownloadOpenJDK -RequiredVariables IntDir {
