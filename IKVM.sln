@@ -40,26 +40,33 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ikvmc", "ikvmc\ikvmc.csproj
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "IKVM.Runtime.Compiler", "IKVM.Runtime.Compiler\IKVM.Runtime.Compiler.shproj", "{592EDFE5-1466-4270-9FC8-B72F46DF30C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKVM.Awt.WindowsForms.FirstPass", "IKVM.Awt.WindowsForms.FirstPass\IKVM.Awt.WindowsForms.FirstPass.csproj", "{E31F4ACE-EC01-4E0D-83C1-9741D9475A2F}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "IKVM.Awt.WindowsForms.Common", "IKVM.Awt.WindowsForms.Common\IKVM.Awt.WindowsForms.Common.shproj", "{904C3549-0312-469C-B3C3-5235B2107560}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		IKVM.Runtime.Shared\IKVM.Runtime.Shared.projitems*{fe6d55fe-fc5a-4fdc-b5ef-8413da2a1ac9}*SharedItemsImports = 13
+		IKVM.Awt.WindowsForms.Common\IKVM.Awt.WindowsForms.Common.projitems*{e31f4ace-ec01-4e0d-83c1-9741d9475a2f}*SharedItemsImports = 4
+		IKVM.GlobalAssemblyInfo\IKVM.GlobalAssemblyInfo.projitems*{e31f4ace-ec01-4e0d-83c1-9741d9475a2f}*SharedItemsImports = 4
 		IKVM.GlobalAssemblyInfo\IKVM.GlobalAssemblyInfo.projitems*{987ceb98-4165-4472-809c-4511bbd3abe3}*SharedItemsImports = 4
-		IKVM.GlobalAssemblyInfo\IKVM.GlobalAssemblyInfo.projitems*{175fa962-89c3-4746-833a-4d0a70d30b5b}*SharedItemsImports = 4
+		IKVM.Awt.WindowsForms.Common\IKVM.Awt.WindowsForms.Common.projitems*{904c3549-0312-469c-b3c3-5235b2107560}*SharedItemsImports = 13
+		IKVM.AssemblyResolver\IKVM.AssemblyResolver.projitems*{175fa962-89c3-4746-833a-4d0a70d30b5b}*SharedItemsImports = 4
 		IKVM.Runtime.StubGenerator\IKVM.Runtime.StubGenerator.projitems*{175fa962-89c3-4746-833a-4d0a70d30b5b}*SharedItemsImports = 4
 		IKVM.Runtime.Shared\IKVM.Runtime.Shared.projitems*{175fa962-89c3-4746-833a-4d0a70d30b5b}*SharedItemsImports = 4
-		IKVM.AssemblyResolver\IKVM.AssemblyResolver.projitems*{175fa962-89c3-4746-833a-4d0a70d30b5b}*SharedItemsImports = 4
-		IKVM.GlobalAssemblyInfo\IKVM.GlobalAssemblyInfo.projitems*{ad2d950e-b342-4f88-bf07-e608c5db6248}*SharedItemsImports = 4
+		IKVM.GlobalAssemblyInfo\IKVM.GlobalAssemblyInfo.projitems*{175fa962-89c3-4746-833a-4d0a70d30b5b}*SharedItemsImports = 4
 		IKVM.Runtime.Internal\IKVM.Runtime.Internal.projitems*{ad2d950e-b342-4f88-bf07-e608c5db6248}*SharedItemsImports = 4
 		IKVM.Runtime.Compiler\IKVM.Runtime.Compiler.projitems*{ad2d950e-b342-4f88-bf07-e608c5db6248}*SharedItemsImports = 4
 		IKVM.Runtime.Shared\IKVM.Runtime.Shared.projitems*{ad2d950e-b342-4f88-bf07-e608c5db6248}*SharedItemsImports = 4
+		IKVM.GlobalAssemblyInfo\IKVM.GlobalAssemblyInfo.projitems*{ad2d950e-b342-4f88-bf07-e608c5db6248}*SharedItemsImports = 4
 		IKVM.Runtime.Compiler\IKVM.Runtime.Compiler.projitems*{592edfe5-1466-4270-9fc8-b72f46df30c3}*SharedItemsImports = 13
 		IKVM.GlobalAssemblyInfo\IKVM.GlobalAssemblyInfo.projitems*{a737a85c-05f3-46d5-97be-a74a428ea0f2}*SharedItemsImports = 4
 		IKVM.GlobalAssemblyInfo\IKVM.GlobalAssemblyInfo.projitems*{92544727-caf7-48c6-a9e8-63a9ac3b2400}*SharedItemsImports = 4
 		IKVM.GlobalAssemblyInfo\IKVM.GlobalAssemblyInfo.projitems*{0793a12c-e06f-481c-8bdb-a77df9bcb948}*SharedItemsImports = 4
-		IKVM.GlobalAssemblyInfo\IKVM.GlobalAssemblyInfo.projitems*{7d40cf38-78b1-4e5b-9034-5005930f5028}*SharedItemsImports = 4
+		IKVM.AssemblyResolver\IKVM.AssemblyResolver.projitems*{7d40cf38-78b1-4e5b-9034-5005930f5028}*SharedItemsImports = 4
 		IKVM.Runtime.Compiler\IKVM.Runtime.Compiler.projitems*{7d40cf38-78b1-4e5b-9034-5005930f5028}*SharedItemsImports = 4
 		IKVM.Runtime.Shared\IKVM.Runtime.Shared.projitems*{7d40cf38-78b1-4e5b-9034-5005930f5028}*SharedItemsImports = 4
-		IKVM.AssemblyResolver\IKVM.AssemblyResolver.projitems*{7d40cf38-78b1-4e5b-9034-5005930f5028}*SharedItemsImports = 4
+		IKVM.GlobalAssemblyInfo\IKVM.GlobalAssemblyInfo.projitems*{7d40cf38-78b1-4e5b-9034-5005930f5028}*SharedItemsImports = 4
 		IKVM.Runtime.Internal\IKVM.Runtime.Internal.projitems*{bdb9a8bd-a04e-4159-9f09-4461e4c13385}*SharedItemsImports = 13
 		IKVM.AssemblyResolver\IKVM.AssemblyResolver.projitems*{7b527e9b-fdb2-4c9e-9a53-ef134fdfebca}*SharedItemsImports = 13
 		IKVM.Runtime.StubGenerator\IKVM.Runtime.StubGenerator.projitems*{7c8279ee-bba6-4c95-83ca-ac081c11c090}*SharedItemsImports = 13
@@ -168,6 +175,18 @@ Global
 		{7D40CF38-78B1-4E5B-9034-5005930F5028}.Release|x64.Build.0 = Release|Any CPU
 		{7D40CF38-78B1-4E5B-9034-5005930F5028}.Release|x86.ActiveCfg = Release|Any CPU
 		{7D40CF38-78B1-4E5B-9034-5005930F5028}.Release|x86.Build.0 = Release|Any CPU
+		{E31F4ACE-EC01-4E0D-83C1-9741D9475A2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E31F4ACE-EC01-4E0D-83C1-9741D9475A2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E31F4ACE-EC01-4E0D-83C1-9741D9475A2F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E31F4ACE-EC01-4E0D-83C1-9741D9475A2F}.Debug|x64.Build.0 = Debug|Any CPU
+		{E31F4ACE-EC01-4E0D-83C1-9741D9475A2F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E31F4ACE-EC01-4E0D-83C1-9741D9475A2F}.Debug|x86.Build.0 = Debug|Any CPU
+		{E31F4ACE-EC01-4E0D-83C1-9741D9475A2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E31F4ACE-EC01-4E0D-83C1-9741D9475A2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E31F4ACE-EC01-4E0D-83C1-9741D9475A2F}.Release|x64.ActiveCfg = Release|Any CPU
+		{E31F4ACE-EC01-4E0D-83C1-9741D9475A2F}.Release|x64.Build.0 = Release|Any CPU
+		{E31F4ACE-EC01-4E0D-83C1-9741D9475A2F}.Release|x86.ActiveCfg = Release|Any CPU
+		{E31F4ACE-EC01-4E0D-83C1-9741D9475A2F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
