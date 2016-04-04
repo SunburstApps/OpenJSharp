@@ -65,6 +65,7 @@ Task MakeZipFiles -RequiredVariables IntDir, OutDir -Depends DownloadOpenJDK {
     pushd "Downloaded\openjdk-8u45-b14\build\linux-x86_64-normal-server-release\jdk\classes"
 	& "7z.exe" a $res com\sun\corba\se\impl\orbutil\resources\*.properties com\sun\rowset\*.properties javax\swing\text\html\parser\html32.bdtd `
 	  sun\rmi\registry\resources\*.properties sun\text\resources\*IteratorData sun\text\resources\th\*IteratorData_th sun\text\resources\th\thai_dict
+	popd
 }
 
 Task DownloadOpenJDK -RequiredVariables IntDir {
@@ -85,7 +86,7 @@ Task DownloadOpenJDK -RequiredVariables IntDir {
 	}
 }
 
-Task CreateCoreDLLs -RequiredVariables IntDir, OutDir, ProjectDir, SolutionDir, Configuration -Depends CreateIkvmcResponseFile, CreateIkvmcManifestFile, CreateNashornVersionFile, Compile {
+Task CreateCoreDLLs -RequiredVariables IntDir, OutDir, ProjectDir, SolutionDir, Configuration -Depends CreateIkvmcResponseFile, CreateIkvmcManifestFile, CreateNashornVersionFile, CreateRmiStubs, Compile {
     $ikvmc = "$($SolutionDir)\ikvmc\bin\$($Configuration)\ikvmc.exe"
 	& $ikvmc -version:1.8 -compressresources -opt:fields -strictfinalfieldsemantics -removeassertions -target:library -sharedclassloader
 	  -r:mscorlib.dll -r:System.dll -r:System.Core.dll -r:System.Xml.dll -r:IKVM.Runtime.dll -nowarn:110 -w4 -noparameterreflection `
@@ -126,7 +127,7 @@ Task Compile -RequiredVariables IntDir, OutDir -Depends DownloadOpenJDK, Generat
     }
 }
 
-Task CreateRmiStubs -RequiredVariables IntDir, OutDir -Depends Compile {
+Task CreateRmiStubs -RequiredVariables IntDir, OutDir, ProjectDir -Depends Compile {
     New-Item -ItemType Directory "$($IntDir)\rmistubs" -ErrorAction SilentlyContinue | Out-Null
 
 	$QuoteString = [scriptblock]{
@@ -149,10 +150,8 @@ Task CreateRmiStubs -RequiredVariables IntDir, OutDir -Depends Compile {
 		"-nowarn",
 		"-bootclasspath",
 		[string]::Join(';', $classpath),
-		"-classpath",
-		"$($IntDir)\classfiles",
 		"-d",
-		"$($IntDir)\rmistubs"
+		"$($ProjectDir)\rmistubs"
 	)
 
     & rmic @args "-v1.1" sun.rmi.registry.RegistryImpl
