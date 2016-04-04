@@ -128,7 +128,7 @@ Task Compile -RequiredVariables IntDir, OutDir -Depends DownloadOpenJDK, Generat
 }
 
 Task CreateRmiStubs -RequiredVariables IntDir, OutDir, ProjectDir -Depends Compile {
-    New-Item -ItemType Directory "$($IntDir)\rmistubs" -ErrorAction SilentlyContinue | Out-Null
+    New-Item -ItemType Directory "$($ProjectDir)\rmistubs" -ErrorAction SilentlyContinue | Out-Null
 
 	$QuoteString = [scriptblock]{
         param([string]$x)
