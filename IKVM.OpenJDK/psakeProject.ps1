@@ -51,9 +51,13 @@ Task DownloadOpenJDK -RequiredVariables IntDir {
 
 Task Compile -RequiredVariables IntDir, OutDir -Depends DownloadOpenJDK, GeneratePropertyConstants, GenerateSourceList, GenerateStubJars {
     New-Item -ItemType Directory "$($IntDir)\classfiles" -ErrorAction SilentlyContinue | Out-Null
-    & javac.exe -d "$($IntDir)\classfiles" -J-Xmx1536M -g -nowarn -implicit:none -parameters -cp dummy `
-	-bootclasspath "$($IntDir)\mscorlib.jar;$($IntDir)\System.jar;$($IntDir)\System.Core.jar;$($IntDir)\System.Data.jar;$($IntDir)\System.Drawing.jar;$($IntDir)\System.xml.jar;$($IntDir)\IKVM.Runtime.jar;$($IntDir)\IKVM.Runtime.jar" `
-	"@$($IntDir)\allsources.gen.lst"
+
+    if (-not [System.IO.File]::Exists("$($IntDir)\classfiles.done")) {
+        & javac.exe -d "$($IntDir)\classfiles" -J-Xmx1536M -g -nowarn -implicit:none -parameters -cp dummy `
+        -bootclasspath "$($IntDir)\mscorlib.jar;$($IntDir)\System.jar;$($IntDir)\System.Core.jar;$($IntDir)\System.Data.jar;$($IntDir)\System.Drawing.jar;$($IntDir)\System.xml.jar;$($IntDir)\IKVM.Runtime.jar;$($IntDir)\IKVM.Runtime.jar" `
+        "@$($IntDir)\allsources.gen.lst"
+		Set-Content "$($IntDir)\classfiles.done" -Value "Remove this file to force a rebuild of the OpenJDK Java sources."
+    }
 }
 
 Task GeneratePropertyConstants {
