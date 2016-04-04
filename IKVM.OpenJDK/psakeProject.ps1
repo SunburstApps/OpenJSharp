@@ -84,9 +84,10 @@ Task DownloadOpenJDK -RequiredVariables IntDir {
 }
 
 Task CreateCoreDLLs -RequiredVariables IntDir, OutDir, ProjectDir, SolutionDir, Configuration -Depends CreateIkvmcResponseFile, CreateIkvmcManifestFile, CreateNashornVersionFile, CreateRmiStubs, Compile {
-    $ikvmc = "$($SolutionDir)\ikvmc\bin\$($Configuration)\ikvmc.exe"
+	Copy-Item -Force "$($SolutionDir)\IKVM.Runtime.FirstPass\bin\$($Configuration)\IKVM.Runtime.dll" BuildOutput\IKVM.Runtime.dll
+	$ikvmc = "$($SolutionDir)\ikvmc\bin\$($Configuration)\ikvmc.exe"
 	& $ikvmc -version:1.8 -compressresources -opt:fields -strictfinalfieldsemantics -removeassertions -target:library -sharedclassloader `
-	  -r:mscorlib.dll -r:System.dll -r:System.Core.dll -r:System.Xml.dll -r:IKVM.Runtime.dll -nowarn:110 -w4 -noparameterreflection `
+	  -r:mscorlib.dll -r:System.dll -r:System.Core.dll -r:System.Xml.dll -r:BuildOutput\IKVM.Runtime.dll -nowarn:110 -w4 -noparameterreflection `
 	  "@$($IntDir)\response.gen.txt"
 
 	$ikvmstub = "$($SolutionDir)\ikvmstub\bin\$($Configuration)\ikvmstub.exe"
