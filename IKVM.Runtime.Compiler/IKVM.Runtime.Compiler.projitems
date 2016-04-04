@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>592edfe5-1466-4270-9fc8-b72f46df30c3</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>IKVM.Runtime.Compiler</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)atomic.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BigEndianBinaryReader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Boxer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ByteCode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ClassFile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CodeEmitter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)compiler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DynamicClassLoader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DynamicTypeWrapper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)intrinsics.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)JsrInliner.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LambdaMetafactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LocalVars.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MethodHandleUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RuntimeHelperTypes.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Serialization.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)verifier.cs" />
+  </ItemGroup>
+</Project>

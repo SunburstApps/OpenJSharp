@@ -10,18 +10,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Assertions.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)atomic.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)BigEndianBinaryReader.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Boxer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ByteCode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ByteCodeHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ClassFile.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)CodeEmitter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)common.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)compiler.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DynamicClassLoader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DynamicMethodUtils.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)DynamicTypeWrapper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExceptionHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)fdlibm\e_hypot.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)fdlibm\e_pow.cs" />
@@ -35,11 +26,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)fdlibm\s_log1p.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)fdlibm\s_scalbn.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)fdlibm\s_tan.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)intrinsics.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)JsrInliner.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)LambdaMetafactory.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)LocalVars.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MethodHandleUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)openjdk\java.io.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)openjdk\java.lang.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)openjdk\java.lang.invoke.cs" />
@@ -59,9 +45,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)openjdk\sun.security.krb5.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)openjdk\sun.util.locale.provider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PassiveWeakDictionary.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)RuntimeHelperTypes.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Serialization.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)verifier.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)vfs.cs" />
   </ItemGroup>
 </Project>

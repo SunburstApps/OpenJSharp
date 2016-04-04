@@ -4,35 +4,39 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AD2D950E-B342-4F88-BF07-E608C5DB6248}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{7D40CF38-78B1-4E5B-9034-5005930F5028}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IKVM.Runtime.FirstPass</RootNamespace>
-    <AssemblyName>IKVM.Runtime</AssemblyName>
+    <RootNamespace>ikvmc</RootNamespace>
+    <AssemblyName>ikvmc</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;FIRST_PASS;NET_4_0;CLASSGC;EMITTERS</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;NET_4_0;STATIC_COMPILER;EMITTERS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <BaseAddress>1426063360</BaseAddress>
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
-    <RegisterForComInterop>false</RegisterForComInterop>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;NET_4_0;STATIC_COMPILER;EMITTERS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -44,17 +48,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AotTypeWrapper.cs" />
+    <Compile Include="Compiler.cs" />
+    <Compile Include="CompilerClassLoader.cs" />
+    <Compile Include="FakeTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proxy.cs" />
+    <Compile Include="remapper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IKVM.Runtime.Core.Dummy\IKVM.Runtime.Core.Dummy.csproj">
-      <Project>{987ceb98-4165-4472-809c-4511bbd3abe3}</Project>
-      <Name>IKVM.Runtime.Core.Dummy</Name>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IKVM.Reflection\IKVM.Reflection.csproj">
+      <Project>{92544727-caf7-48c6-a9e8-63a9ac3b2400}</Project>
+      <Name>IKVM.Reflection</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="..\IKVM.GlobalAssemblyInfo\IKVM.GlobalAssemblyInfo.projitems" Label="Shared" />
+  <Import Project="..\IKVM.AssemblyResolver\IKVM.AssemblyResolver.projitems" Label="Shared" />
   <Import Project="..\IKVM.Runtime.Shared\IKVM.Runtime.Shared.projitems" Label="Shared" />
-  <Import Project="..\IKVM.Runtime.Internal\IKVM.Runtime.Internal.projitems" Label="Shared" />
   <Import Project="..\IKVM.Runtime.Compiler\IKVM.Runtime.Compiler.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
