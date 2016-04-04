@@ -55,7 +55,7 @@ Task GeneratePropertyConstants {
 	$ikvm_version = [regex]::Match($ikvm_version, "([0-9.]+)").Value
 
     $infile = [System.IO.File]::ReadAllText("$($ProjectDir)\ikvm\java\lang\PropertyConstants.java.in")
-    $replaced = $infile.Replace("@AWTASSEMBLY@", "")
+    $replaced = $infile.Replace("@AWTASSEMBLY@", "IKVM.Awt.WindowsForms")
     $replaced = $replaced.Replace("@VERSION@", $ikvm_version)
     $replaced = $replaced.Replace("@OPENJDK_VERSION@", "1.8.0_45-b14")
     [System.IO.File]::WriteAllText("$($ProjectDir)\ikvm\java\lang\PropertyConstants.java", $replaced)
