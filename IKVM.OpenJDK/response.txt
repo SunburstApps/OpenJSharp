@@ -705,7 +705,7 @@
     -recurse:BuildOutput/resources.zip/com/sun/swing/internal/plaf/*
     -recurse:BuildOutput/resources.zip/javax/swing/*
     -r:System.Drawing.dll
-    -r:IKVM.AWT.WinForms.dll
+    -r:BuildOutput/IKVM.Awt.WindowsForms.dll
     ikvm/ikvm/awt/*.class
     ikvm/java/awt/*.class
     ikvm/java/awt/color/*.class

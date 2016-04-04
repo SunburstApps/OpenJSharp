@@ -85,6 +85,8 @@ Task DownloadOpenJDK -RequiredVariables IntDir {
 
 Task CreateCoreDLLs -RequiredVariables IntDir, OutDir, ProjectDir, SolutionDir, Configuration -Depends CreateIkvmcResponseFile, CreateIkvmcManifestFile, CreateNashornVersionFile, CreateRmiStubs, Compile {
 	Copy-Item -Force "$($SolutionDir)\IKVM.Runtime.FirstPass\bin\$($Configuration)\IKVM.Runtime.dll" BuildOutput\IKVM.Runtime.dll
+	Copy-Item -Force "$($SolutionDir)\IKVM.Awt.WindowsForms.FirstPass\bin\$($Configuration)\IKVM.Awt.WindowsForms.dll" BuildOutput\IKVM.Awt.WindowsForms.dll
+
 	$ikvmc = "$($SolutionDir)\ikvmc\bin\$($Configuration)\ikvmc.exe"
 	& $ikvmc -version:1.8 -compressresources -opt:fields -strictfinalfieldsemantics -removeassertions -target:library -sharedclassloader `
 	  -r:mscorlib.dll -r:System.dll -r:System.Core.dll -r:System.Xml.dll -r:BuildOutput\IKVM.Runtime.dll -nowarn:110 -w4 -noparameterreflection `
