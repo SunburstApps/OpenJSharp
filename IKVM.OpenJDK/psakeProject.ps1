@@ -106,6 +106,26 @@ Task CreateRmiStubs -RequiredVariables IntDir, OutDir -Depends Compile {
     & rmic @args -iiop -standardPackage javax.management.remote.rmi.RMIServer
 }
 
+Task RunNASGen -RequiredVariables IntDir -Depends Compile {
+    $sources = (New-Object System.Collections.Generic.List[string])
+    dir "Downloaded\openjdk-8u45-b14\nashorn\src\jdk\nashorn\internal\objects\*.java" | % { $sources.Add($_.FullName) }
+	dir "Downloaded\openjdk-8u45-b14\nashorn\buildtools\nasgen\src\jdk\nashorn\internal\tools\*.java" | % { $sources.Add($_.FullName) }
+
+	$classpath = @(
+	    "$($IntDir)\mscorlib.jar",
+		"$($IntDir)\System.Xml.jar",
+		"Downloaded\openjdk-8u45-b14\jdk\src\share\classes",
+		"Downloaded\openjdk-8u45-b14\corba\src\share\classes",
+		"Downloaded\openjdk-8u45-b14\build\linux-x86_64-normal-server-release\jdk\gensrc",
+		"Downloaded\nashorn\src",
+		"$($IntDir)\IKVM.Runtime.jar"
+	)
+
+	& javac "-XDignore.symbol.file" -g -nowarn -implicit:none -bootclasspath ([string]::Join(';', $classpath)) @sources
+	& java "-Xbootclasspath/p:Downloaded\openjdk-8u45-b14\nashorn\buildtools\nasgen\src;Downloaded\openjdk-8u45-b14\nashorn\src" `
+	jdk.nashorn.internal.tools.nasgen.Main Downloaded\nashorn\src jdk.nashorn.internal.objects Downloaded\nashorn\src
+}
+
 Task GeneratePropertyConstants {
     $version_code = [System.IO.File]::ReadAllLines("$($SolutionDir)\IKVM.GlobalAssemblyInfo\GlobalAssemblyInfo.cs")
     $ikvm_version = [regex]::Match($version_code, "AssemblyVersion\(`"[0-9.]+`"\)")
