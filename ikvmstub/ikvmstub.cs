@@ -23,6 +23,7 @@
 */
 using System;
 using System.IO;
+using System.Linq;
 using System.Collections.Generic;
 using ICSharpCode.SharpZipLib.Zip;
 using IKVM.Attributes;
@@ -45,8 +46,11 @@ static class NetExp
 
     static int Main(string[] args)
     {
-        IKVM.Internal.Tracer.EnableTraceConsoleListener();
-        IKVM.Internal.Tracer.EnableTraceForDebug();
+        if (args.Contains("-Xtrace"))
+        {
+            IKVM.Internal.Tracer.EnableTraceConsoleListener();
+            IKVM.Internal.Tracer.EnableTraceForDebug();
+        }
         string assemblyNameOrPath = null;
         bool continueOnError = false;
         bool autoLoadSharedClassLoaderAssemblies = false;
@@ -111,7 +115,7 @@ static class NetExp
                 {
                     includeParameterNames = true;
                 }
-                else
+                else if (s != "-Xtrace")
                 {
                     // unrecognized option, or multiple assemblies, print usage message and exit
                     assemblyNameOrPath = null;

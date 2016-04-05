@@ -24,6 +24,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
 using ICSharpCode.SharpZipLib.Zip;
@@ -233,8 +234,11 @@ sealed class IkvmcCompiler
     {
         DateTime start = DateTime.Now;
         System.Threading.Thread.CurrentThread.Name = "compiler";
-        Tracer.EnableTraceConsoleListener();
-        Tracer.EnableTraceForDebug();
+        if (args.Contains("-Xtrace"))
+        {
+            Tracer.EnableTraceConsoleListener();
+            Tracer.EnableTraceForDebug();
+        }
         try
         {
             try
@@ -978,7 +982,7 @@ sealed class IkvmcCompiler
                     }
                     options.proxies.Add(proxy);
                 }
-                else if (s == "-nologo")
+                else if (s == "-nologo" || s == "-Xtrace")
                 {
                     // Ignore. This is handled earlier.
                 }

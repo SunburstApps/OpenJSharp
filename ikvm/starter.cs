@@ -24,6 +24,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using IKVM.Internal;
 using ikvm.runtime;
@@ -94,8 +95,11 @@ public static class Starter
     [IKVM.Attributes.HideFromJava]
     static int Main(string[] args)
     {
-        Tracer.EnableTraceConsoleListener();
-        Tracer.EnableTraceForDebug();
+        if (args.Contains("-Xtrace"))
+        {
+            Tracer.EnableTraceConsoleListener();
+            Tracer.EnableTraceForDebug();
+        }
         System.Collections.Hashtable props = new System.Collections.Hashtable();
         string classpath = Environment.GetEnvironmentVariable("CLASSPATH");
         if (classpath == null || classpath == "")
@@ -286,7 +290,7 @@ public static class Starter
                 {
                     Console.Error.WriteLine("Unsupported option ignored: {0}", arg);
                 }
-                else
+                else if (arg != "-Xtrace")
                 {
                     Console.Error.WriteLine("{0}: illegal argument", arg);
                     break;
@@ -431,6 +435,7 @@ public static class Starter
         Console.Error.WriteLine("    -Xnoclassgc       Disable class garbage collection");
         Console.Error.WriteLine("    -Xnoglobbing      Disable argument globbing");
         Console.Error.WriteLine("    -Xverify          Enable strict class file verification");
+        Console.Error.WriteLine("    -Xtrace           Print runtime tracing messages to console");
         Console.Error.WriteLine();
         Console.Error.WriteLine("The -X options are non-standard and subject to change without notice.");
         Console.Error.WriteLine();
