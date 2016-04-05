@@ -32,8 +32,8 @@
 @cli.System.Reflection.AssemblyInformationalVersionAttribute.Annotation("8.1")
 
 @cli.System.Runtime.CompilerServices.InternalsVisibleToAttribute.Annotation.__Multiple({
-    @cli.System.Runtime.CompilerServices.InternalsVisibleToAttribute.Annotation("IKVM.Runtime.dll"),
-//    @cli.System.Runtime.CompilerServices.InternalsVisibleToAttribute.Annotation("@AWTWINFORMS@")
+    @cli.System.Runtime.CompilerServices.InternalsVisibleToAttribute.Annotation("IKVM.Runtime"),
+    @cli.System.Runtime.CompilerServices.InternalsVisibleToAttribute.Annotation("IKVM.Awt.WindowsForms")
 })
 
 @cli.System.Security.AllowPartiallyTrustedCallersAttribute.Annotation
