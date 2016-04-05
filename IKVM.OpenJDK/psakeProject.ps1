@@ -39,30 +39,7 @@ Task MakeZipFiles -RequiredVariables IntDir, OutDir -Depends DownloadOpenJDK {
 	if ([System.IO.File]::Exists($vfs)) { Remove-Item $vfs -Force }
 	if ([System.IO.File]::Exists($res)) { Remove-Item $res -Force }
 
-    $files = @(
-	    "lib/calendars.properties",
-		"lib/logging.properties",
-		"lib/management/management.properties",
-		"lib/net.properties",
-		"lib/psfontj2d.properties",
-		"lib/sound.properties",
-		"lib/cmm/*",
-		"lib/tzdb.dat",
-		"lib/currency.data",
-		"lib/security/java.policy",
-		"lib/security/java.security",
-		"lib/security/US_export_policy.jar"
-	)
-
-    pushd "Downloaded\openjdk-8u45-b14\build\linux-x86_64-normal-server-release\jdk"
-	& "7z.exe" a $vfs @files | Out-Null
-	popd
-
-	pushd "Downloaded\openjdk-8u45-b14\jdk\src\windows"
-	& "7z.exe" a $vfs lib/flavormap.properties lib/content-types.properties | Out-Null
-	popd
-
-	& nant "-D:outfile=$($res)" "-D:OpenJDK.dir=$($ProjectDir)\Downloaded\openjdk-8u45-b14" "-buildfile:resources\BuildResources.xml"
+	& nant "-D:outfile=$($res)" "-D:outfile.vfs=$($vfs)" "-D:OpenJDK.dir=$($ProjectDir)\Downloaded\openjdk-8u45-b14" "-buildfile:resources\BuildResources.xml"
 }
 
 Task DownloadOpenJDK -RequiredVariables IntDir {

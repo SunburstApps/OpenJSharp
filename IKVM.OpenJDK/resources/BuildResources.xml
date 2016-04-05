@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project name="resources.zip" default="resources">
   <target name="resources">
+    <zip zipfile="${outfile.vfs}">
+      <fileset basedir="${OpenJDK.dir}/build/linux-x86_64-normal-server-release/jdk">
+        <include name="lib/calendars.properties"/>
+        <include name="lib/logging.properties"/>
+        <include name="lib/management/management.properties"/>
+        <include name="lib/net.properties"/>
+        <include name="lib/psfontj2d.properties"/>
+        <include name="lib/sound.properties"/>
+        <include name="lib/cmm/*"/>
+        <include name="lib/tzdb.dat"/>
+        <include name="lib/currency.data"/>
+        <include name="lib/security/java.policy"/>
+        <include name="lib/security/java.security"/>
+        <include name="lib/security/US_export_policy.jar"/>
+      </fileset>
+      <fileset basedir="${OpenJDK.dir}/jdk/src/windows">
+        <include name="lib/flavormap.properties"/>
+        <include name="lib/content-types.properties"/>
+      </fileset>
+    </zip>
+
     <zip zipfile="${outfile}">
       <fileset basedir="${OpenJDK.dir}/build/linux-x86_64-normal-server-release/jdk/classes">
         <include name="com/sun/corba/se/impl/orbutil/resources/*.properties" />
