@@ -55,6 +55,12 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IKVM.Runtime.JNI\IKVM.Runtime.JNI.csproj">
+      <Project>{0793a12c-e06f-481c-8bdb-a77df9bcb948}</Project>
+      <Name>IKVM.Runtime.JNI</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="..\IKVM.GlobalAssemblyInfo\IKVM.GlobalAssemblyInfo.projitems" Label="Shared" />
   <Import Project="..\IKVM.Runtime.Internal\IKVM.Runtime.Internal.projitems" Label="Shared" />
   <Import Project="..\IKVM.Runtime.Shared\IKVM.Runtime.Shared.projitems" Label="Shared" />
