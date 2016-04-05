@@ -22,6 +22,7 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "IKVM.Runtime.Internal", "IK
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKVM.Runtime.JNI", "IKVM.Runtime.JNI\IKVM.Runtime.JNI.csproj", "{0793A12C-E06F-481C-8BDB-A77DF9BCB948}"
 	ProjectSection(ProjectDependencies) = postProject
+		{EA77C80F-0D5D-4B8B-8CA9-18872662F76F} = {EA77C80F-0D5D-4B8B-8CA9-18872662F76F}
 		{175FA962-89C3-4746-833A-4D0A70D30B5B} = {175FA962-89C3-4746-833A-4D0A70D30B5B}
 		{987CEB98-4165-4472-809C-4511BBD3ABE3} = {987CEB98-4165-4472-809C-4511BBD3ABE3}
 	EndProjectSection
@@ -49,6 +50,9 @@ EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "IKVM.Awt.WindowsForms.Common", "IKVM.Awt.WindowsForms.Common\IKVM.Awt.WindowsForms.Common.shproj", "{904C3549-0312-469C-B3C3-5235B2107560}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKVM.Runtime", "IKVM.Runtime\IKVM.Runtime.csproj", "{39426A96-ACB7-4E7C-92C6-3A18EBA2605A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EA77C80F-0D5D-4B8B-8CA9-18872662F76F} = {EA77C80F-0D5D-4B8B-8CA9-18872662F76F}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
