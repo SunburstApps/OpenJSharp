@@ -273,8 +273,7 @@ Task clean -RequiredVariables IntDir, OutDir {
     # Don't delete openjdk-8u45.zip or its expanded contents, due to the size of the download and the time required to unpack it.
 	Remove-Item -Force "$($IntDir)\allsources.gen.lst"
 	Remove-Item -Force "$($IntDir)\*.jar"
-	Remove-Item -Force "$($OutDir)\vfs.zip"
 
-	Remove-Item -Recurse -Force "$($IntDir)\classfiles"
-	Remove-Item -Recurse -Force "$($IntDir)\rmistubs"
+	Remove-Item -Recurse -Force "rmistubs"
+	Remove-Item -Recurse -Force "BuildOutput"
 }
