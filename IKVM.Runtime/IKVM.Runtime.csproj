@@ -56,6 +56,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="$(SolutionDir)IKVM.OpenJDK\BuildOutput\vfs.zip">
+      <LogicalName>vfs.zip</LogicalName>
+      <Link>OpenJDK\vfs.zip</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\IKVM.Runtime.JNI\IKVM.Runtime.JNI.csproj">
       <Project>{0793a12c-e06f-481c-8bdb-a77df9bcb948}</Project>
       <Name>IKVM.Runtime.JNI</Name>
