@@ -95,11 +95,6 @@ public static class Starter
     [IKVM.Attributes.HideFromJava]
     static int Main(string[] args)
     {
-        if (args.Contains("-Xtrace"))
-        {
-            Tracer.EnableTraceConsoleListener();
-            Tracer.EnableTraceForDebug();
-        }
         System.Collections.Hashtable props = new System.Collections.Hashtable();
         string classpath = Environment.GetEnvironmentVariable("CLASSPATH");
         if (classpath == null || classpath == "")
@@ -131,6 +126,11 @@ public static class Starter
                 {
                     PrintXHelp();
                     return 1;
+                }
+                else if (arg == "-Xtrace")
+                {
+                    Tracer.EnableTraceConsoleListener();
+                    Tracer.EnableTraceForDebug();
                 }
                 else if (arg == "-Xsave")
                 {

@@ -46,11 +46,6 @@ static class NetExp
 
     static int Main(string[] args)
     {
-        if (args.Contains("-Xtrace"))
-        {
-            IKVM.Internal.Tracer.EnableTraceConsoleListener();
-            IKVM.Internal.Tracer.EnableTraceForDebug();
-        }
         string assemblyNameOrPath = null;
         bool continueOnError = false;
         bool autoLoadSharedClassLoaderAssemblies = false;
@@ -115,7 +110,12 @@ static class NetExp
                 {
                     includeParameterNames = true;
                 }
-                else if (s != "-Xtrace")
+                else if (s == "-Xtrace")
+                {
+                    Tracer.EnableTraceConsoleListener();
+                    Tracer.EnableTraceForDebug();
+                }
+                else
                 {
                     // unrecognized option, or multiple assemblies, print usage message and exit
                     assemblyNameOrPath = null;
