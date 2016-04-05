@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Security;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 [assembly: AssemblyTitle("IKVM.Runtime")]
@@ -11,3 +12,5 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("IKVM.OpenJDK.Misc")]
 [assembly: InternalsVisibleTo("IKVM.OpenJDK.Remoting")]
 [assembly: InternalsVisibleTo("IKVM.OpenJDK.SwingAWT")]
+
+[assembly: AllowPartiallyTrustedCallers]
