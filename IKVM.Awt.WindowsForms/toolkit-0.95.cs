@@ -50,6 +50,8 @@ jeroen@frijters.net
 
 */
 
+#pragma warning disable 0612, 0672
+
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
