@@ -30,6 +30,7 @@ using System.Runtime.CompilerServices;
 using IKVM.Internal;
 using java.lang.invoke;
 using jlClass = java.lang.Class;
+using CallSite = java.lang.invoke.CallSite;
 
 static class Java_java_lang_invoke_DirectMethodHandle
 {
