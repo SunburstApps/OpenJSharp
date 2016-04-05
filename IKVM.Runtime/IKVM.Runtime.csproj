@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0793A12C-E06F-481C-8BDB-A77DF9BCB948}</ProjectGuid>
+    <ProjectGuid>{39426A96-ACB7-4E7C-92C6-3A18EBA2605A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IKVM.Runtime.JNI</RootNamespace>
-    <AssemblyName>IKVM.Runtime.JNI</AssemblyName>
+    <RootNamespace>IKVM.Runtime</RootNamespace>
+    <AssemblyName>IKVM.Runtime</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -17,16 +17,15 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;NET_4_0;CLASSGC</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;NET_4_0;CLASSGC</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -34,7 +33,17 @@
     <Reference Include="IKVM.OpenJDK.Core">
       <HintPath>$(SolutionDir)IKVM.OpenJDK\BuildOutput\IKVM.OpenJDK.Core.dll</HintPath>
     </Reference>
+    <Reference Include="IKVM.OpenJDK.Util">
+      <HintPath>$(SolutionDir)IKVM.OpenJDK\BuildOutput\IKVM.OpenJDK.Util.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Management">
+      <HintPath>$(SolutionDir)IKVM.OpenJDK\BuildOutput\IKVM.OpenJDK.Management.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Misc">
+      <HintPath>$(SolutionDir)IKVM.OpenJDK\BuildOutput\IKVM.OpenJDK.Misc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,22 +53,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JniInterface.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\IKVM.Runtime.FirstPass\IKVM.Runtime.FirstPass.csproj">
-      <Project>{ad2d950e-b342-4f88-bf07-e608c5db6248}</Project>
-      <Name>IKVM.Runtime.FirstPass</Name>
-      <Private>False</Private>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="..\IKVM.GlobalAssemblyInfo\IKVM.GlobalAssemblyInfo.projitems" Label="Shared" />
+  <Import Project="..\IKVM.Runtime.Internal\IKVM.Runtime.Internal.projitems" Label="Shared" />
+  <Import Project="..\IKVM.Runtime.Shared\IKVM.Runtime.Shared.projitems" Label="Shared" />
+  <Import Project="..\IKVM.Runtime.Compiler\IKVM.Runtime.Compiler.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
