@@ -56,6 +56,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\IKVM.Awt.WindowsForms\IKVM.Awt.WindowsForms.csproj">
+      <Project>{b557118e-9d70-4b08-ace0-4d513ff7d28c}</Project>
+      <Name>IKVM.Awt.WindowsForms</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IKVM.Runtime\IKVM.Runtime.csproj">
       <Project>{39426a96-acb7-4e7c-92c6-3a18eba2605a}</Project>
       <Name>IKVM.Runtime</Name>
