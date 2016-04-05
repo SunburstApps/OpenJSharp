@@ -60,6 +60,7 @@ Global
 		IKVM.Awt.WindowsForms.Common\IKVM.Awt.WindowsForms.Common.projitems*{e31f4ace-ec01-4e0d-83c1-9741d9475a2f}*SharedItemsImports = 4
 		IKVM.GlobalAssemblyInfo\IKVM.GlobalAssemblyInfo.projitems*{e31f4ace-ec01-4e0d-83c1-9741d9475a2f}*SharedItemsImports = 4
 		IKVM.GlobalAssemblyInfo\IKVM.GlobalAssemblyInfo.projitems*{987ceb98-4165-4472-809c-4511bbd3abe3}*SharedItemsImports = 4
+		IKVM.Runtime.StubGenerator\IKVM.Runtime.StubGenerator.projitems*{39426a96-acb7-4e7c-92c6-3a18eba2605a}*SharedItemsImports = 4
 		IKVM.GlobalAssemblyInfo\IKVM.GlobalAssemblyInfo.projitems*{39426a96-acb7-4e7c-92c6-3a18eba2605a}*SharedItemsImports = 4
 		IKVM.Runtime.Shared\IKVM.Runtime.Shared.projitems*{39426a96-acb7-4e7c-92c6-3a18eba2605a}*SharedItemsImports = 4
 		IKVM.Runtime.Compiler\IKVM.Runtime.Compiler.projitems*{39426a96-acb7-4e7c-92c6-3a18eba2605a}*SharedItemsImports = 4

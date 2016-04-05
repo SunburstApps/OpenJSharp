@@ -65,6 +65,7 @@
   <Import Project="..\IKVM.Runtime.Internal\IKVM.Runtime.Internal.projitems" Label="Shared" />
   <Import Project="..\IKVM.Runtime.Shared\IKVM.Runtime.Shared.projitems" Label="Shared" />
   <Import Project="..\IKVM.Runtime.Compiler\IKVM.Runtime.Compiler.projitems" Label="Shared" />
+  <Import Project="..\IKVM.Runtime.StubGenerator\IKVM.Runtime.StubGenerator.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
