@@ -73,6 +73,6 @@
   </Target>
   -->
   <Target Name="AfterBuild">
-    <Copy SourceFiles="$(SolutionDir)IKVM.OpenJDK\BuildOutput\IKVM.Native.dll" DestinationFolder="$(OutDir)" />
+    <Copy SourceFiles="$(SolutionDir)IKVM.OpenJDK\BuildOutput\IKVM.Native.dll;$(SolutionDir)\IKVM.OpenJDK\BuildOutput\jvm.dll" DestinationFolder="$(OutDir)" />
   </Target>
 </Project>
