@@ -54,6 +54,9 @@
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="jvm.def" />
+  </ItemGroup>
   <Import Project="..\IKVM.GlobalAssemblyInfo\IKVM.GlobalAssemblyInfo.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
@@ -64,7 +67,10 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
   -->
+  <Target Name="AfterBuild" DependsOnTargets="CreateImpLib">
+  </Target>
+  <Target Name="CreateImpLib" Inputs="$(ProjectDir)jvm.def" Outputs="$(SolutionDir)IKVM.OpenJDK\BuildOutput\jvm.dll">
+    <Exec WorkingDirectory="$(SolutionDir)" Command="IKVM.ImportLibraryProcessor\bin\$(ConfigurationName)\IKVM.ImportLibraryProcessor.exe IKVM.Runtime.JNI\jvm.def -out:IKVM.OpenJDK\BuildOutput\jvm.dll -platform:x64 -r:IKVM.Runtime.JNI\bin\$(ConfigurationName)\IKVM.Runtime.JNI.dll -product:IKVM -company:&quot;William Kent&quot; -copyright:&quot;Copyright © 2016 William Kent. All rights reserved.&quot; -description:&quot;IKVM JVM Native Interface&quot; -version:1.0.0.0" />
+  </Target>
 </Project>
