@@ -34,22 +34,23 @@ Task build -Depends MakeZipFiles, CreateCoreDLLs
 Task MakeZipFiles -RequiredVariables IntDir, OutDir -Depends DownloadOpenJDK {
     New-Item -ItemType Directory "$($ProjectDir)\BuildOutput" -ErrorAction SilentlyContinue | Out-Null
 
+	$IntDirAbsolute = [System.IO.Path]::GetFullPath((Join-Path (pwd) $IntDir))
 	$vfs = "$($ProjectDir)\BuildOutput\vfs.zip"
 	$res = "$($ProjectDir)\BuildOutput\resources.zip"
 	if ([System.IO.File]::Exists($vfs)) { Remove-Item $vfs -Force }
 	if ([System.IO.File]::Exists($res)) { Remove-Item $res -Force }
 
-	& nant "-D:outfile=$($res)" "-D:outfile.vfs=$($vfs)" "-D:OpenJDK.dir=$($ProjectDir)\Downloaded\openjdk-8u45-b14" "-buildfile:resources\BuildResources.xml"
+	& nant "-D:outfile=$($res)" "-D:outfile.vfs=$($vfs)" "-D:OpenJDK.dir=$($IntDirAbsolute)\openjdk-8u45-b14" "-buildfile:resources\BuildResources.xml"
 }
 
 Task DownloadOpenJDK -RequiredVariables IntDir {
-    if (-not [System.IO.File]::Exists("Downloaded\openjdk-8u45.zip")) {
+    if (-not [System.IO.File]::Exists("$($IntDir)\openjdk-8u45.zip")) {
         Perform "Downloading OpenJDK-8u45-b14" {
             Get-WebFile -URI 'http://www.frijters.net/openjdk-8u45-b14-stripped.zip' -Path "$($IntDir)\openjdk-8u45.zip"
 	    }
 	}
 
-	if (-not [System.IO.Directory]::Exists("Downloaded\openjdk-8u45-b14")) {
+	if (-not [System.IO.Directory]::Exists("$($IntDir)\openjdk-8u45-b14")) {
         Perform "Unpacking download" {
             # This file contains a top-level directory inside it, don't create another one
             Unblock-File "$($IntDir)\openjdk-8u45.zip" -ErrorAction SilentlyContinue
@@ -116,7 +117,7 @@ Task CreateCoreDLLs -RequiredVariables IntDir, OutDir, ProjectDir, SolutionDir, 
 
 Task CreateIkvmcResponseFile -RequiredVariables IntDir {
     $rsp = [System.IO.File]::ReadAllText("response.txt")
-	$rsp = $rsp.Replace("@OPENJDK@", "Downloaded/openjdk-8u45-b14")
+	$rsp = $rsp.Replace("@OPENJDK@", "$($IntDir)/openjdk-8u45-b14")
 	[System.IO.File]::WriteAllText("$($IntDir)\response.gen.txt", $rsp)
 }
 
@@ -156,9 +157,9 @@ Task CreateRmiStubs -RequiredVariables IntDir, OutDir, ProjectDir -Depends Compi
 	$classpath = @(
 	    "$($IntDir)\mscorlib.jar",
 		"$($IntDir)\System.Xml.jar",
-		"Downloaded\openjdk-8u45-b14\jdk\src\share\classes",
-		"Downloaded\openjdk-8u45-b14\corba\src\share\classes",
-		"Downloaded\openjdk-8u45-b14\build\linux-x86_64-normal-server-release\jdk\gensrc"
+		"$($IntDir)\openjdk-8u45-b14\jdk\src\share\classes",
+		"$($IntDir)\openjdk-8u45-b14\corba\src\share\classes",
+		"$($IntDir)\openjdk-8u45-b14\build\linux-x86_64-normal-server-release\jdk\gensrc"
 	)
 
 	$args = @(
@@ -191,22 +192,22 @@ Task CreateRmiStubs -RequiredVariables IntDir, OutDir, ProjectDir -Depends Compi
 
 Task RunNASGen -RequiredVariables IntDir -Depends Compile {
     $sources = (New-Object System.Collections.Generic.List[string])
-    dir "Downloaded\openjdk-8u45-b14\nashorn\src\jdk\nashorn\internal\objects\*.java" | % { $sources.Add($_.FullName) }
-	dir "Downloaded\openjdk-8u45-b14\nashorn\buildtools\nasgen\src\jdk\nashorn\internal\tools\*.java" | % { $sources.Add($_.FullName) }
+    dir "$($IntDir)\openjdk-8u45-b14\nashorn\src\jdk\nashorn\internal\objects\*.java" | % { $sources.Add($_.FullName) }
+	dir "$($IntDir)\openjdk-8u45-b14\nashorn\buildtools\nasgen\src\jdk\nashorn\internal\tools\*.java" | % { $sources.Add($_.FullName) }
 
 	$classpath = @(
 	    "$($IntDir)\mscorlib.jar",
 		"$($IntDir)\System.Xml.jar",
-		"Downloaded\openjdk-8u45-b14\jdk\src\share\classes",
-		"Downloaded\openjdk-8u45-b14\corba\src\share\classes",
-		"Downloaded\openjdk-8u45-b14\build\linux-x86_64-normal-server-release\jdk\gensrc",
-		"Downloaded\nashorn\src",
+		"$($IntDir)\openjdk-8u45-b14\jdk\src\share\classes",
+		"$($IntDir)\openjdk-8u45-b14\corba\src\share\classes",
+		"$($IntDir)\openjdk-8u45-b14\build\linux-x86_64-normal-server-release\jdk\gensrc",
+		"$($IntDir)\nashorn\src",
 		"$($IntDir)\IKVM.Runtime.jar"
 	)
 
 	& javac "-XDignore.symbol.file" -g -nowarn -implicit:none -bootclasspath ([string]::Join(';', $classpath)) @sources
-	& java "-Xbootclasspath/p:Downloaded\openjdk-8u45-b14\nashorn\buildtools\nasgen\src;Downloaded\openjdk-8u45-b14\nashorn\src" `
-	jdk.nashorn.internal.tools.nasgen.Main Downloaded\nashorn\src jdk.nashorn.internal.objects Downloaded\nashorn\src
+	& java "-Xbootclasspath/p:$($IntDir)\openjdk-8u45-b14\nashorn\buildtools\nasgen\src;$($IntDir)\openjdk-8u45-b14\nashorn\src" `
+	jdk.nashorn.internal.tools.nasgen.Main $IntDir\nashorn\src jdk.nashorn.internal.objects $IntDir\nashorn\src
 }
 
 Task GeneratePropertyConstants {
@@ -242,7 +243,7 @@ Task VerifyLicenses -RequiredVariables IntDir, ProjectDir, SolutionDir, Configur
 
 Task GenerateSourceList -RequiredVariables IntDir, ProjectDir {
     $list_file = [System.IO.File]::ReadAllText("$($ProjectDir)\allsources.lst")
-	$replaced = $list_file.Replace("@OPENJDK@", "Downloaded\openjdk-8u45-b14")
+	$replaced = $list_file.Replace("@OPENJDK@", "$($IntDir)\openjdk-8u45-b14")
 	[System.IO.File]::WriteAllText("$($IntDir)\allsources.gen.lst", $replaced)
 }
 
