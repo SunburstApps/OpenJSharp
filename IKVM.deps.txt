@@ -1,5 +1,3 @@
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "IKVM.Runtime.StubGenerator", "IKVM.Runtime.StubGenerator\IKVM.Runtime.StubGenerator.shproj", "{7C8279EE-BBA6-4C95-83CA-AC081C11C090}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ikvmstub", "ikvmstub\ikvmstub.csproj", "{175FA962-89C3-4746-833A-4D0A70D30B5B}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "IKVM.AssemblyResolver", "IKVM.AssemblyResolver\IKVM.AssemblyResolver.shproj", "{7B527E9B-FDB2-4C9E-9A53-EF134FDFEBCA}"
