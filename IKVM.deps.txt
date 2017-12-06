@@ -16,10 +16,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IKVM.OpenJDK", "IKVM.OpenJD
 		{E31F4ACE-EC01-4E0D-83C1-9741D9475A2F} = {E31F4ACE-EC01-4E0D-83C1-9741D9475A2F} # IKVM.Awt.WindowsForms.FirstPass
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKVM.SourceLicenseAnalyzer", "IKVM.SourceLicenseAnalyzer\IKVM.SourceLicenseAnalyzer.csproj", "{A737A85C-05F3-46D5-97BE-A74A428EA0F2}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "IKVM.Runtime.Compiler", "IKVM.Runtime.Compiler\IKVM.Runtime.Compiler.shproj", "{592EDFE5-1466-4270-9FC8-B72F46DF30C3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKVM.Awt.WindowsForms.FirstPass", "IKVM.Awt.WindowsForms.FirstPass\IKVM.Awt.WindowsForms.FirstPass.csproj", "{E31F4ACE-EC01-4E0D-83C1-9741D9475A2F}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "IKVM.Awt.WindowsForms.Common", "IKVM.Awt.WindowsForms.Common\IKVM.Awt.WindowsForms.Common.shproj", "{904C3549-0312-469C-B3C3-5235B2107560}"

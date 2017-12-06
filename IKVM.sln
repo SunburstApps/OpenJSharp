@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IKVM.Runtime.FirstPass", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ikvmc", "src\ikvmc\ikvmc.csproj", "{CB08A88A-55F1-495B-871C-778ACC0F97A2}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IKVM.BuildTasks.Private", "tools\IKVM.BuildTasks.Private\IKVM.BuildTasks.Private.csproj", "{1C5F2FDD-3BD8-479D-A160-DDDE245C3412}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		src\IKVM.Runtime.Compiler\IKVM.Runtime.Compiler.projitems*{592edfe5-1466-4270-9fc8-b72f46df30c3}*SharedItemsImports = 13
@@ -106,6 +108,18 @@ Global
 		{CB08A88A-55F1-495B-871C-778ACC0F97A2}.Release|x64.Build.0 = Release|Any CPU
 		{CB08A88A-55F1-495B-871C-778ACC0F97A2}.Release|x86.ActiveCfg = Release|Any CPU
 		{CB08A88A-55F1-495B-871C-778ACC0F97A2}.Release|x86.Build.0 = Release|Any CPU
+		{1C5F2FDD-3BD8-479D-A160-DDDE245C3412}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C5F2FDD-3BD8-479D-A160-DDDE245C3412}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C5F2FDD-3BD8-479D-A160-DDDE245C3412}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1C5F2FDD-3BD8-479D-A160-DDDE245C3412}.Debug|x64.Build.0 = Debug|Any CPU
+		{1C5F2FDD-3BD8-479D-A160-DDDE245C3412}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1C5F2FDD-3BD8-479D-A160-DDDE245C3412}.Debug|x86.Build.0 = Debug|Any CPU
+		{1C5F2FDD-3BD8-479D-A160-DDDE245C3412}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C5F2FDD-3BD8-479D-A160-DDDE245C3412}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C5F2FDD-3BD8-479D-A160-DDDE245C3412}.Release|x64.ActiveCfg = Release|Any CPU
+		{1C5F2FDD-3BD8-479D-A160-DDDE245C3412}.Release|x64.Build.0 = Release|Any CPU
+		{1C5F2FDD-3BD8-479D-A160-DDDE245C3412}.Release|x86.ActiveCfg = Release|Any CPU
+		{1C5F2FDD-3BD8-479D-A160-DDDE245C3412}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -121,6 +135,7 @@ Global
 		{592EDFE5-1466-4270-9FC8-B72F46DF30C3} = {082F52A1-977B-464E-9BFE-EBD79FF5C0DD}
 		{A6218472-48C4-4757-B817-B077280DAAFE} = {082F52A1-977B-464E-9BFE-EBD79FF5C0DD}
 		{CB08A88A-55F1-495B-871C-778ACC0F97A2} = {082F52A1-977B-464E-9BFE-EBD79FF5C0DD}
+		{1C5F2FDD-3BD8-479D-A160-DDDE245C3412} = {2250FD13-6CFD-4CC5-A6DE-6EC01B398ABF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5F4AEA1C-57E2-4D34-AEFD-DC2C0A6D3E6F}
