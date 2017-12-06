@@ -11,7 +11,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{2250FD13
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IKVM.Reflection", "src\IKVM.Reflection\IKVM.Reflection.csproj", "{BC6AF197-2F0B-4EE7-81E0-1F4D61F336DF}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "IKVM.Runtime.Shared", "src\IKVM.Runtime.Shared\IKVM.Runtime.Shared.shproj", "{FE6D55FE-FC5A-4FDC-B5EF-8413DA2A1AC9}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		src\IKVM.Runtime.Shared\IKVM.Runtime.Shared.projitems*{fe6d55fe-fc5a-4fdc-b5ef-8413da2a1ac9}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
@@ -39,6 +44,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BC6AF197-2F0B-4EE7-81E0-1F4D61F336DF} = {082F52A1-977B-464E-9BFE-EBD79FF5C0DD}
+		{FE6D55FE-FC5A-4FDC-B5EF-8413DA2A1AC9} = {082F52A1-977B-464E-9BFE-EBD79FF5C0DD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5F4AEA1C-57E2-4D34-AEFD-DC2C0A6D3E6F}
