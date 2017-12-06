@@ -19,6 +19,8 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "IKVM.Runtime.StubGenerator"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "IKVM.AssemblyResolver", "src\IKVM.AssemblyResolver\IKVM.AssemblyResolver.shproj", "{7B527E9B-FDB2-4C9E-9A53-EF134FDFEBCA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ikvmstub", "src\ikvmstub\ikvmstub.csproj", "{146A182D-3B7E-44D6-9DB9-E27A0CD3ACE6}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		src\IKVM.AssemblyResolver\IKVM.AssemblyResolver.projitems*{7b527e9b-fdb2-4c9e-9a53-ef134fdfebca}*SharedItemsImports = 13
@@ -58,6 +60,18 @@ Global
 		{F85AAA6A-23EC-429D-B940-F23489F1065F}.Release|x64.Build.0 = Release|Any CPU
 		{F85AAA6A-23EC-429D-B940-F23489F1065F}.Release|x86.ActiveCfg = Release|Any CPU
 		{F85AAA6A-23EC-429D-B940-F23489F1065F}.Release|x86.Build.0 = Release|Any CPU
+		{146A182D-3B7E-44D6-9DB9-E27A0CD3ACE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{146A182D-3B7E-44D6-9DB9-E27A0CD3ACE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{146A182D-3B7E-44D6-9DB9-E27A0CD3ACE6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{146A182D-3B7E-44D6-9DB9-E27A0CD3ACE6}.Debug|x64.Build.0 = Debug|Any CPU
+		{146A182D-3B7E-44D6-9DB9-E27A0CD3ACE6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{146A182D-3B7E-44D6-9DB9-E27A0CD3ACE6}.Debug|x86.Build.0 = Debug|Any CPU
+		{146A182D-3B7E-44D6-9DB9-E27A0CD3ACE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{146A182D-3B7E-44D6-9DB9-E27A0CD3ACE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{146A182D-3B7E-44D6-9DB9-E27A0CD3ACE6}.Release|x64.ActiveCfg = Release|Any CPU
+		{146A182D-3B7E-44D6-9DB9-E27A0CD3ACE6}.Release|x64.Build.0 = Release|Any CPU
+		{146A182D-3B7E-44D6-9DB9-E27A0CD3ACE6}.Release|x86.ActiveCfg = Release|Any CPU
+		{146A182D-3B7E-44D6-9DB9-E27A0CD3ACE6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +82,7 @@ Global
 		{F85AAA6A-23EC-429D-B940-F23489F1065F} = {082F52A1-977B-464E-9BFE-EBD79FF5C0DD}
 		{7C8279EE-BBA6-4C95-83CA-AC081C11C090} = {082F52A1-977B-464E-9BFE-EBD79FF5C0DD}
 		{7B527E9B-FDB2-4C9E-9A53-EF134FDFEBCA} = {082F52A1-977B-464E-9BFE-EBD79FF5C0DD}
+		{146A182D-3B7E-44D6-9DB9-E27A0CD3ACE6} = {082F52A1-977B-464E-9BFE-EBD79FF5C0DD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5F4AEA1C-57E2-4D34-AEFD-DC2C0A6D3E6F}

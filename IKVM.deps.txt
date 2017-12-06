@@ -1,5 +1,3 @@
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ikvmstub", "ikvmstub\ikvmstub.csproj", "{175FA962-89C3-4746-833A-4D0A70D30B5B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKVM.Runtime.FirstPass", "IKVM.Runtime.FirstPass\IKVM.Runtime.FirstPass.csproj", "{AD2D950E-B342-4F88-BF07-E608C5DB6248}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "IKVM.Runtime.Internal", "IKVM.Runtime.Internal\IKVM.Runtime.Internal.shproj", "{BDB9A8BD-A04E-4159-9F09-4461E4C13385}"
