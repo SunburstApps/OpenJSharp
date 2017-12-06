@@ -21,10 +21,18 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "IKVM.AssemblyResolver", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ikvmstub", "src\ikvmstub\ikvmstub.csproj", "{146A182D-3B7E-44D6-9DB9-E27A0CD3ACE6}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "IKVM.Runtime.Internal", "src\IKVM.Runtime.Internal\IKVM.Runtime.Internal.shproj", "{BDB9A8BD-A04E-4159-9F09-4461E4C13385}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "IKVM.Runtime.Compiler", "src\IKVM.Runtime.Compiler\IKVM.Runtime.Compiler.shproj", "{592EDFE5-1466-4270-9FC8-B72F46DF30C3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IKVM.Runtime.FirstPass", "src\IKVM.Runtime.FirstPass\IKVM.Runtime.FirstPass.csproj", "{A6218472-48C4-4757-B817-B077280DAAFE}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		src\IKVM.Runtime.Compiler\IKVM.Runtime.Compiler.projitems*{592edfe5-1466-4270-9fc8-b72f46df30c3}*SharedItemsImports = 13
 		src\IKVM.AssemblyResolver\IKVM.AssemblyResolver.projitems*{7b527e9b-fdb2-4c9e-9a53-ef134fdfebca}*SharedItemsImports = 13
 		src\IKVM.Runtime.StubGenerator\IKVM.Runtime.StubGenerator.projitems*{7c8279ee-bba6-4c95-83ca-ac081c11c090}*SharedItemsImports = 13
+		src\IKVM.Runtime.Internal\IKVM.Runtime.Internal.projitems*{bdb9a8bd-a04e-4159-9f09-4461e4c13385}*SharedItemsImports = 13
 		src\IKVM.Runtime.Shared\IKVM.Runtime.Shared.projitems*{fe6d55fe-fc5a-4fdc-b5ef-8413da2a1ac9}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,6 +80,18 @@ Global
 		{146A182D-3B7E-44D6-9DB9-E27A0CD3ACE6}.Release|x64.Build.0 = Release|Any CPU
 		{146A182D-3B7E-44D6-9DB9-E27A0CD3ACE6}.Release|x86.ActiveCfg = Release|Any CPU
 		{146A182D-3B7E-44D6-9DB9-E27A0CD3ACE6}.Release|x86.Build.0 = Release|Any CPU
+		{A6218472-48C4-4757-B817-B077280DAAFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6218472-48C4-4757-B817-B077280DAAFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6218472-48C4-4757-B817-B077280DAAFE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A6218472-48C4-4757-B817-B077280DAAFE}.Debug|x64.Build.0 = Debug|Any CPU
+		{A6218472-48C4-4757-B817-B077280DAAFE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A6218472-48C4-4757-B817-B077280DAAFE}.Debug|x86.Build.0 = Debug|Any CPU
+		{A6218472-48C4-4757-B817-B077280DAAFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6218472-48C4-4757-B817-B077280DAAFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6218472-48C4-4757-B817-B077280DAAFE}.Release|x64.ActiveCfg = Release|Any CPU
+		{A6218472-48C4-4757-B817-B077280DAAFE}.Release|x64.Build.0 = Release|Any CPU
+		{A6218472-48C4-4757-B817-B077280DAAFE}.Release|x86.ActiveCfg = Release|Any CPU
+		{A6218472-48C4-4757-B817-B077280DAAFE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,6 +103,9 @@ Global
 		{7C8279EE-BBA6-4C95-83CA-AC081C11C090} = {082F52A1-977B-464E-9BFE-EBD79FF5C0DD}
 		{7B527E9B-FDB2-4C9E-9A53-EF134FDFEBCA} = {082F52A1-977B-464E-9BFE-EBD79FF5C0DD}
 		{146A182D-3B7E-44D6-9DB9-E27A0CD3ACE6} = {082F52A1-977B-464E-9BFE-EBD79FF5C0DD}
+		{BDB9A8BD-A04E-4159-9F09-4461E4C13385} = {082F52A1-977B-464E-9BFE-EBD79FF5C0DD}
+		{592EDFE5-1466-4270-9FC8-B72F46DF30C3} = {082F52A1-977B-464E-9BFE-EBD79FF5C0DD}
+		{A6218472-48C4-4757-B817-B077280DAAFE} = {082F52A1-977B-464E-9BFE-EBD79FF5C0DD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5F4AEA1C-57E2-4D34-AEFD-DC2C0A6D3E6F}
