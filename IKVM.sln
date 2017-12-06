@@ -8,6 +8,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{082F52A1-977
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{2250FD13-6CFD-4CC5-A6DE-6EC01B398ABF}"
+	ProjectSection(SolutionItems) = preProject
+		tools\Directory.Build.props = tools\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IKVM.Reflection", "src\IKVM.Reflection\IKVM.Reflection.csproj", "{BC6AF197-2F0B-4EE7-81E0-1F4D61F336DF}"
 EndProject
