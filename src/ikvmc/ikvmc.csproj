@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net46</TargetFramework>
+    <DefineConstants>STATIC_COMPILER;EMITTERS</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MSBuild.Sdk.Extras" Version="1.1.0" PrivateAssets="all" />
+    <PackageReference Include="SharpZipLib" Version="0.86.0" />
+
+    <ProjectReference Include="../IKVM.Reflection/IKVM.Reflection.csproj" />
+    <ProjectReference Include="../IKVM.Runtime.FirstPass/IKVM.Runtime.FirstPass.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+
+    <Reference Include="System.Configuration.dll" />
+  </ItemGroup>
+
+  <Import Project="..\IKVM.AssemblyResolver\IKVM.AssemblyResolver.projitems" Label="Shared" />
+  <Import Project="..\IKVM.Runtime.Shared\IKVM.Runtime.Shared.projitems" Label="Shared" />
+  <Import Project="..\IKVM.Runtime.Compiler\IKVM.Runtime.Compiler.projitems" Label="Shared" />
+
+  <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
+</Project>
