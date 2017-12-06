@@ -1,5 +1,3 @@
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKVM.Reflection", "IKVM.Reflection\IKVM.Reflection.csproj", "{92544727-CAF7-48C6-A9E8-63A9AC3B2400}"
-EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "IKVM.Runtime.Shared", "IKVM.Runtime.Shared\IKVM.Runtime.Shared.shproj", "{FE6D55FE-FC5A-4FDC-B5EF-8413DA2A1AC9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKVM.Runtime.Core.Dummy", "IKVM.Runtime.Core.Dummy\IKVM.Runtime.Core.Dummy.csproj", "{987CEB98-4165-4472-809C-4511BBD3ABE3}"

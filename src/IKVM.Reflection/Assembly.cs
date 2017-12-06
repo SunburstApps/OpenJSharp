@@ -25,8 +25,6 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-[assembly: AssemblyTitle("IKVM.Reflection")]
-
 namespace IKVM.Reflection
 {
 	public delegate Module ModuleResolveEventHandler(object sender, ResolveEventArgs e);

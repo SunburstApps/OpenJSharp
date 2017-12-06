@@ -3,8 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{082F52A1-977B-464E-9BFE-EBD79FF5C0DD}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{2250FD13-6CFD-4CC5-A6DE-6EC01B398ABF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IKVM.Reflection", "src\IKVM.Reflection\IKVM.Reflection.csproj", "{BC6AF197-2F0B-4EE7-81E0-1F4D61F336DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +20,25 @@ Global
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BC6AF197-2F0B-4EE7-81E0-1F4D61F336DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC6AF197-2F0B-4EE7-81E0-1F4D61F336DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC6AF197-2F0B-4EE7-81E0-1F4D61F336DF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BC6AF197-2F0B-4EE7-81E0-1F4D61F336DF}.Debug|x64.Build.0 = Debug|Any CPU
+		{BC6AF197-2F0B-4EE7-81E0-1F4D61F336DF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BC6AF197-2F0B-4EE7-81E0-1F4D61F336DF}.Debug|x86.Build.0 = Debug|Any CPU
+		{BC6AF197-2F0B-4EE7-81E0-1F4D61F336DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC6AF197-2F0B-4EE7-81E0-1F4D61F336DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC6AF197-2F0B-4EE7-81E0-1F4D61F336DF}.Release|x64.ActiveCfg = Release|Any CPU
+		{BC6AF197-2F0B-4EE7-81E0-1F4D61F336DF}.Release|x64.Build.0 = Release|Any CPU
+		{BC6AF197-2F0B-4EE7-81E0-1F4D61F336DF}.Release|x86.ActiveCfg = Release|Any CPU
+		{BC6AF197-2F0B-4EE7-81E0-1F4D61F336DF}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BC6AF197-2F0B-4EE7-81E0-1F4D61F336DF} = {082F52A1-977B-464E-9BFE-EBD79FF5C0DD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5F4AEA1C-57E2-4D34-AEFD-DC2C0A6D3E6F}
