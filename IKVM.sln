@@ -17,8 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IKVM.Runtime.Core.Dummy", "
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "IKVM.Runtime.StubGenerator", "src\IKVM.Runtime.StubGenerator\IKVM.Runtime.StubGenerator.shproj", "{7C8279EE-BBA6-4C95-83CA-AC081C11C090}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "IKVM.AssemblyResolver", "src\IKVM.AssemblyResolver\IKVM.AssemblyResolver.shproj", "{7B527E9B-FDB2-4C9E-9A53-EF134FDFEBCA}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		src\IKVM.AssemblyResolver\IKVM.AssemblyResolver.projitems*{7b527e9b-fdb2-4c9e-9a53-ef134fdfebca}*SharedItemsImports = 13
 		src\IKVM.Runtime.StubGenerator\IKVM.Runtime.StubGenerator.projitems*{7c8279ee-bba6-4c95-83ca-ac081c11c090}*SharedItemsImports = 13
 		src\IKVM.Runtime.Shared\IKVM.Runtime.Shared.projitems*{fe6d55fe-fc5a-4fdc-b5ef-8413da2a1ac9}*SharedItemsImports = 13
 	EndGlobalSection
@@ -64,6 +67,7 @@ Global
 		{FE6D55FE-FC5A-4FDC-B5EF-8413DA2A1AC9} = {082F52A1-977B-464E-9BFE-EBD79FF5C0DD}
 		{F85AAA6A-23EC-429D-B940-F23489F1065F} = {082F52A1-977B-464E-9BFE-EBD79FF5C0DD}
 		{7C8279EE-BBA6-4C95-83CA-AC081C11C090} = {082F52A1-977B-464E-9BFE-EBD79FF5C0DD}
+		{7B527E9B-FDB2-4C9E-9A53-EF134FDFEBCA} = {082F52A1-977B-464E-9BFE-EBD79FF5C0DD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5F4AEA1C-57E2-4D34-AEFD-DC2C0A6D3E6F}
