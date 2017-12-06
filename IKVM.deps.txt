@@ -32,8 +32,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKVM.Awt.WindowsForms", "IK
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IKVM.Native", "IKVM.Native\IKVM.Native.vcxproj", "{837A6190-E3AB-405D-B163-560D2001CE89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKVM.ImportLibraryProcessor", "IKVM.ImportLibraryProcessor\IKVM.ImportLibraryProcessor.csproj", "{9443E04F-854E-44F1-9A82-0B0D8651888B}"
-EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		IKVM.GlobalAssemblyInfo\IKVM.GlobalAssemblyInfo.projitems*{0793a12c-e06f-481c-8bdb-a77df9bcb948}*SharedItemsImports = 4
