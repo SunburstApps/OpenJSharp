@@ -1,4 +1,6 @@
-﻿using System.IO.Compression;
+﻿using System;
+using System.IO;
+using System.IO.Compression;
 using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
 
@@ -14,16 +16,25 @@ namespace JSharp.BuildTasks.Private
 
         public override bool Execute()
         {
-            string outputPath = ZipFile.GetMetadata("FullPath");
-            using (ZipArchive archive = System.IO.Compression.ZipFile.Open(outputPath, ZipArchiveMode.Create))
+            try
             {
-                foreach (ITaskItem item in Entries)
-                {
-                    string logicalName = item.GetMetadata("EntryName");
-                    if (string.IsNullOrEmpty(logicalName)) logicalName = item.ItemSpec;
+                string outputPath = ZipFile.GetMetadata("FullPath");
+                if (File.Exists(outputPath)) File.Delete(outputPath);
 
-                    archive.CreateEntryFromFile(item.GetMetadata("FullPath"), logicalName);
+                using (ZipArchive archive = System.IO.Compression.ZipFile.Open(outputPath, ZipArchiveMode.Create))
+                {
+                    foreach (ITaskItem item in Entries)
+                    {
+                        string logicalName = item.GetMetadata("EntryName");
+                        if (string.IsNullOrEmpty(logicalName)) logicalName = item.ItemSpec;
+
+                        archive.CreateEntryFromFile(item.GetMetadata("FullPath"), logicalName);
+                    }
                 }
+            }
+            catch (FileNotFoundException ex)
+            {
+                Log.LogError("Could not find input file {0}", ex.FileName);
             }
 
             return !Log.HasLoggedErrors;
