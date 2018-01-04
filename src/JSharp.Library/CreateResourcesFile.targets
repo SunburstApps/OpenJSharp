@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Project>
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+  </PropertyGroup>
+
   <UsingTask TaskName="CreateZipFile" AssemblyFile="$(PrivateBuildTasksAssembly)" />
   
   <ItemGroup>

@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <Project>
   <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <PrivateBuildTasksDir>$(MSBuildThisFileDirectory)/../../tools/JSharp.BuildTasks.Private</PrivateBuildTasksDir>
     <PrivateBuildTasksAssembly>$(PrivateBuildTasksDir)/bin/$(Configuration)/net46/JSharp.BuildTasks.Private.dll</PrivateBuildTasksAssembly>
   </PropertyGroup>
