@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net46</TargetFramework>
+    <AssemblyName>JSharp.Runtime</AssemblyName>
     <DefineConstants>FIRST_PASS;NET_4_0;CLASSGC;EMITTERS</DefineConstants>
     <NoWarn>0169;0649</NoWarn>
   </PropertyGroup>
