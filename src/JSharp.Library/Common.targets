@@ -14,8 +14,8 @@
     <OpenJDKGeneratedSourceDir>$(OpenJDKSourceDir)/Generated</OpenJDKGeneratedSourceDir>
   </PropertyGroup>
 
-  <Target Name="CompilePrivateBuildTasksAssembly" Condition="!Exists('$(PrivateBuildTasksAssembly)')">
-    <MSBuild Projects="$(PrivateBuildTasksDir)/JSharp.BuildTasks.Private" Targets="Restore;Build"
+  <Target Name="CompilePrivateBuildTasksAssembly">
+    <MSBuild Projects="$(PrivateBuildTasksDir)/JSharp.BuildTasks.Private.csproj" Targets="Restore;Build"
       Properties="Configuration=$(Configuration)" />
   </Target>
 </Project>
