@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+   NOTE: This file isn't really a csproj, but giving it the extension
+   of one was the only way I could convince VSMac to accept it. (VSMac
+   apparently does not support *.msbuildproj like VS for Windows does.)
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>net46</TargetFramework>
+  </PropertyGroup>
+
+  <Import Project="Common.targets" />
+  <Import Project="CreateResourcesFile.targets" />
+</Project>

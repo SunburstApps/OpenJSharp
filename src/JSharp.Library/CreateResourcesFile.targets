@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Project>
+  <UsingTask TaskName="CreateZipFile" AssemblyFile="$(PrivateBuildTasksAssembly)" />
+  
+  <ItemGroup>
+    <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/calendars.properties">
+      <NameInZip>lib/calendars.properties</NameInZip>
+    </VfsZipEntry>
+    <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/logging.properties">
+      <NameInZip>lib/logging.properties</NameInZip>
+    </VfsZipEntry>
+    <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/management/management.properties">
+      <NameInZip>lib/management/management.properties</NameInZip>
+    </VfsZipEntry>
+    <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/net.properties">
+      <NameInZip>lib/net.properties</NameInZip>
+    </VfsZipEntry>
+    <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/psfont2j.properties">
+      <NameInZip>lib/psfont2j.properties</NameInZip>
+    </VfsZipEntry>
+    <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/sound.properties">
+      <NameInZip>lib/sound.properties</NameInZip>
+    </VfsZipEntry>
+    <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/cmm/*">
+      <NameInZip>lib/cmm/%(FileName)%(Extension)</NameInZip>
+    </VfsZipEntry>
+    <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/tzdb.dat">
+      <NameInZip>lib/tzdb.dat</NameInZip>
+    </VfsZipEntry>
+    <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/currency.data">
+      <NameInZip>lib/currency.data</NameInZip>
+    </VfsZipEntry>
+    <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/security/java.policy">
+      <NameInZip>lib/security/java.policy</NameInZip>
+    </VfsZipEntry>
+    <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/security/java.security">
+      <NameInZip>lib/security/java.security</NameInZip>
+    </VfsZipEntry>
+    <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/security/US_export_policy.jar">
+      <NameInZip>lib/security/US_export_policy.jar</NameInZip>
+    </VfsZipEntry>
+
+    <VfsZipEntry Include="$(OpenJDKSourceDir)/jdk/src/windows/lib/flavormap.properties">
+      <NameInZip>lib/flavormap.properties</NameInZip>
+    </VfsZipEntry>
+    <VfsZipEntry Include="$(OpenJDKSourceDir)/jdk/src/windows/lib/content-types.properties">
+      <NameInZip>lib/content-types.properties</NameInZip>
+    </VfsZipEntry>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <VfsZipFile>$(IntermediateOutputPath)/vfs.zip</VfsZipFile>
+  </PropertyGroup>
+
+  <Target Name="CreateVfsZipfile" Inputs="@(VfsZipEntry)" Outputs="$(VfsZipFile)"
+    DependsOnTargets="PrepareForBuild;CompilePrivateBuildTasksAssembly">
+    <CreateZipFile OutputZipFile="$(VfsZipFile)" Contents="@(VfsZipEntry)" />
+  </Target>
+</Project>
