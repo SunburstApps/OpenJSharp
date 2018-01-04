@@ -9,9 +9,9 @@
 
     <Authors>William Kent</Authors>
     <Copyright>Copyright © 2017 William Kent. All rights reserved.</Copyright>
-    <Product>IKVM .NET Build Tools</Product>
+    <Product>OpenJSharp Build Tools</Product>
 
-    <Version Condition="'$(Version)' == ''">8.1.5717</Version>
+    <Version Condition="'$(Version)' == ''">1.0.0</Version>
     <FileVersion Condition="'$(FileVersion)' == '' and '$(Version)' != ''">$(Version)</FileVersion>
   </PropertyGroup>
 </Project>
