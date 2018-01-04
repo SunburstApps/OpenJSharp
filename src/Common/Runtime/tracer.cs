@@ -90,7 +90,7 @@ namespace IKVM.Internal
 				Trace.AutoFlush = true;
 #if !STUB_GENERATOR
 				/* If the app config file gives some method trace - add it */
-				string trace = ConfigurationManager.AppSettings["Traced Methods"];
+				string trace = Environment.GetEnvironmentVariable("JSHARP_COMPILER_TRACE");
 				if(trace != null)
 				{
 					methodtraces.Add(trace);

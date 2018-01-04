@@ -183,7 +183,7 @@ namespace IKVM.Internal
 				if (emitSymbols == 0)
 				{
 					int state;
-					string debug = System.Configuration.ConfigurationManager.AppSettings["ikvm-emit-symbols"];
+					string debug = Environment.GetEnvironmentVariable("JSHARP_COMPILER_EMIT_SYMBOLS");
 					if (debug == null)
 					{
 						state = Debugger.IsAttached ? 1 : 2;
