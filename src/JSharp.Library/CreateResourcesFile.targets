@@ -66,4 +66,90 @@
       <FileWrites Include="$(VfsZipFile)" />
     </ItemGroup>
   </Target>
+
+  <ItemGroup>
+    <ResourcesZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/classes/com/sun/corba/se/impl/orbutil/resources/*.properties">
+      <EntryName>com/sun/corba/se/impl/orbutil/resources/%(FileName)%(Extension)</EntryName>
+    </ResourcesZipEntry>
+    <ResourcesZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/classes/com/sun/rowset/*.properties">
+      <EntryName>com/sun/rowset/%(FileName)%(Extension)</EntryName>
+    </ResourcesZipEntry>
+    <ResourcesZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/classes/javax/swing/text/html/parser/html32.bdtd">
+      <EntryName>javax/swing/text/html/parser/html32.bdtd</EntryName>
+    </ResourcesZipEntry>
+    <ResourcesZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/classes/sun/rmi/registry/resources/*.properties">
+      <EntryName>sun/rmi/registry/resources/%(FileName)%(Extension)</EntryName>
+    </ResourcesZipEntry>
+    <ResourcesZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/classes/sun/rmi/server/resources/*.properties">
+      <EntryName>sun/rmi/server/resources/%(FileName)%(Extension)</EntryName>
+    </ResourcesZipEntry>
+    <ResourcesZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/classes/sun/text/resources/*IteratorData">
+      <EntryName>sun/text/resources/%(FileName)%(Extension)</EntryName>
+    </ResourcesZipEntry>
+    <ResourcesZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/classes/sun/text/resources/th/*IteratorData_th">
+      <EntryName>sun/text/resources/th/%(FileName)%(Extension)</EntryName>
+    </ResourcesZipEntry>
+    <ResourcesZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/classes/sun/text/resources/th/thai_dict">
+      <EntryName>sun/text/resources/th/thai_dict</EntryName>
+    </ResourcesZipEntry>
+
+    <ResourcesZipEntry Include="$(OpenJDKSourceDir)/corba/src/share/classes/**/*.properties">
+      <EntryName>%(RecursiveDir)/%(FileName)%(Extension)</EntryName>
+    </ResourcesZipEntry>
+    <ResourcesZipEntry Include="$(OpenJDKSourceDir)/jdk/src/share/classes/**/*.properties">
+      <EntryName>%(RecursiveDir)/%(FileName)%(Extension)</EntryName>
+    </ResourcesZipEntry>
+    <ResourcesZipEntry Include="$(OpenJDKSourceDir)/jdk/src/share/classes/**/*.gif">
+      <EntryName>%(RecursiveDir)/%(FileName)%(Extension)</EntryName>
+    </ResourcesZipEntry>
+    <ResourcesZipEntry Include="$(OpenJDKSourceDir)/jdk/src/share/classes/**/*.png">
+      <EntryName>%(RecursiveDir)/%(FileName)%(Extension)</EntryName>
+    </ResourcesZipEntry>
+    <ResourcesZipEntry Include="$(OpenJDKSourceDir)/jdk/src/share/classes/**/*.wav">
+      <EntryName>%(RecursiveDir)/%(FileName)%(Extension)</EntryName>
+    </ResourcesZipEntry>
+    <ResourcesZipEntry Include="$(OpenJDKSourceDir)/jdk/src/share/classes/com/sun/org/apache/xml/internal/security/resource/config.*">
+      <EntryName>com/sun/org/apache/xml/internal/security/resource/%(FileName)%(Extension)</EntryName>
+    </ResourcesZipEntry>
+    <ResourcesZipEntry Include="$(OpenJDKSourceDir)/jdk/src/share/classes/com/sun/swing/internal/plaf/**/*.*">
+      <EntryName>com/sun/swing/internal/plaf/%(RecursiveDir)/%(FileName)%(Extension)</EntryName>
+    </ResourcesZipEntry>
+    <ResourcesZipEntry Include="$(OpenJDKSourceDir)/jdk/src/share/classes/javax/swing/text/html/default.css">
+      <EntryName>javax/swing/text/html/default.css</EntryName>
+    </ResourcesZipEntry>
+    <ResourcesZipEntry Include="$(OpenJDKSourceDir)/jdk/src/share/classes/javax/swing/text/rtf/charsets/*.txt">
+      <EntryName>javax/swing/text/rtf/charsets/%(FileName)%(Extension)</EntryName>
+    </ResourcesZipEntry>
+    <ResourcesZipEntry Include="$(OpenJDKSourceDir)/jdk/src/share/classes/sun/text/resources/**/*.icu">
+      <EntryName>sun/text/resources/%(RecursiveDir)/%(FileName)%(Extension)</EntryName>
+    </ResourcesZipEntry>
+
+    <ResourcesZipEntry Include="$(OpenJDKSourceDir)/jaxp/src/**/*.properties">
+      <EntryName>%(RecursiveDir)/%(FileName)%(Extension)</EntryName>
+    </ResourcesZipEntry>
+    <ResourcesZipEntry Include="$(OpenJDKSourceDir)/jaxp/src/**/*.res">
+      <EntryName>%(RecursiveDir)/%(FileName)%(Extension)</EntryName>
+    </ResourcesZipEntry>
+    <ResourcesZipEntry Include="$(OpenJDKSourceDir)/jaxws/src/shae/jaf_classes/**/*.properties">
+      <EntryName>%(RecursiveDir)/%(FileName)%(Extension)</EntryName>
+    </ResourcesZipEntry>
+    <ResourcesZipEntry Include="$(OpenJDKSourceDir)/jaxws/src/share/jaxws_classes/**/*.xml">
+      <EntryName>%(RecursiveDir)/%(FileName)%(Extension)</EntryName>
+    </ResourcesZipEntry>
+  </ItemGroup>
+
+  <Target Name="_PrepareResourcesZipfile" DependsOnTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ResourcesZipFile>$(IntermediateOutputPath)/resources.zip</ResourcesZipFile>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="CreateResourcesZipfile" Inputs="@(ResourcesZipEntry)" Outputs="$(ResourcesZipFile)"
+    DependsOnTargets="_PrepareResourcesZipfile;CompilePrivateBuildTasksAssembly">
+    <CreateZipFile ZipFile="$(ResourcesZipFile)" Entries="@(ResourcesZipEntry)" />
+
+    <ItemGroup>
+      <FileWrites Include="$(ResourcesZipFile)" />
+    </ItemGroup>
+  </Target>
 </Project>
