@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Project>
+  <Target Name="GeneratePropertyConstants"
+    Inputs="ikvm/java/lang/PropertyConstants.java.in"
+    Outputs="ikvm/java/lang/PropertyConstants.java"
+    DependsOnTargets="CompilePrivateBuildTasksAssembly">
+    <ReplaceToken InputFile="ikvm/java/lang/PropertyConstants.java.in"
+      OutputFile="ikvm/java/lang/PropertyConstants.java"
+      Replacements="@AWTASSEMBLY@=IKVM.Awt.WindowsForms;@VERSION@=$(AssemblyVersion);@OPENJDK_VERSION@=1.8.0_45-b14" />
+
+    <ItemGroup>
+      <FileWrites Include="ikvm/java/lang/PropertyConstants.java" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="CreateMigratorResponseFile"
+    Inputs="jsharpmigrate.rsp.in"
+    Outputs="$(IntermediateOutputPath)/jsharpmigrate.rsp"
+    DependsOnTargets="CompilePrivateBuildTasksAssembly;PrepareForBuild">
+    <ReplaceToken InputFile="jsharpmigrate.rsp.in"
+      OutputFile="$(IntermediateOutputPath)/jsharpmigrate.rsp"
+      Replacements="@OPENJDK@=$(OpenJDKSourceDir)" />
+
+    <ItemGroup>
+      <FileWrites Include="$(IntermediateOutputPath)/jsharpmigrate.rsp" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="CreateMigratorManifestFile"
+    Inputs="resources/MANIFEST.MF.in"
+    Outputs="resources/MANIFEST.MF"
+    DependsOnTargets="CompilePrivateBuildTasksAssembly">
+    <ReplaceToken InputFile="resources/MANIFEST.MF.in" OutputFile="resources/MANIFEST.MF"
+      Replacements="@IMPLEMENTATION_VERSION@=1.8.0;@SPECIFICATION_VERSION@=1.8" />
+
+    <ItemGroup>
+      <FileWrites Include="resources/MANIFEST.MF" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="CreateNashornVersionFile"
+    Inputs="resources/nashorn/version.properties.in"
+    Outputs="resources/nashorn/version.properties"
+    DependsOnTargets="CompilePrivateBuildTasksAssembly">
+    <ReplaceToken InputFile="resources/nashorn/version.properties.in"
+      OutputFile="resources/nashorn/version.properties"
+      Replacements="@FULL_VERSION@=1.8.0_45-b14;@SPECIFICATION_VERSION@=1.8" />
+
+    <ItemGroup>
+      <FileWrites Include="resources/nashorn/version.properties" />
+    </ItemGroup>
+  </Target>
+</Project>
