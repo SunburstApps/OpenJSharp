@@ -16,21 +16,29 @@ namespace JSharp.BuildTasks.Private
 
         public override bool Execute()
         {
-            string text = File.ReadAllText(InputFile.GetMetadata("FullPath"));
-
-            foreach (string replacement in Replacements)
+            try
             {
-                string[] parts = replacement.Split('=');
-                if (parts.Length != 2)
+                string text = File.ReadAllText(InputFile.GetMetadata("FullPath"));
+
+                foreach (string replacement in Replacements)
                 {
-                    Log.LogError("Malformed replacement '{0}': Expected exactly one equals sign", replacement);
-                    continue;
+                    string[] parts = replacement.Split('=');
+                    if (parts.Length != 2)
+                    {
+                        Log.LogError("Malformed replacement '{0}': Expected exactly one equals sign", replacement);
+                        continue;
+                    }
+
+                    text = text.Replace(parts[0], parts[1]);
                 }
 
-                text = text.Replace(parts[0], parts[1]);
+                if (!Log.HasLoggedErrors) File.WriteAllText(OutputFile.GetMetadata("FullPath"), text);
+            }
+            catch (FileNotFoundException ex)
+            {
+                Log.LogError("File not found: {0}", ex.FileName);
             }
 
-            if (!Log.HasLoggedErrors) File.WriteAllText(OutputFile.GetMetadata("FullPath"), text);
             return !Log.HasLoggedErrors;
         }
     }
