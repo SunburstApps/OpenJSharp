@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net46</TargetFramework>
+    <DefineConstants>STATIC_COMPILER;EMITTERS</DefineConstants>
+    <AssemblyTitle>OpenJSharp Java-to-CIL Migrator</AssemblyTitle>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SharpZipLib" Version="0.86.0" />
+    <ProjectReference Include="../JSharp.Reflection/JSharp.Reflection.csproj" />
+    <ProjectReference Include="../JSharp.Runtime.FirstPass/JSharp.Runtime.FirstPass.csproj" />
+
+    <Compile Include="$(CommonSourcesPath)/AssemblyResolver.cs">
+      <Link>AssemblyResolver.cs</Link>
+    </Compile>
+  </ItemGroup>
+
+  <Import Project="$(CommonSourcesPath)/Runtime/RuntimeSources.targets" />
+  <Import Project="$(CommonSourcesPath)/Runtime/CompilerSources.targets" />
+</Project>
