@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net46</TargetFramework>
+    <DefineConstants>FIRST_PASS;NET_4_0;CLASSGC;EMITTERS</DefineConstants>
+    <NoWarn>0169;0649</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="$(CommonSourcesPath)/OpenJDK.Core.Dummy.cs">
+      <Link>OpenJDK.Core.Dummy.cs</Link>
+    </Compile>
+
+    <ProjectReference Include="../JSharp.Reflection/JSharp.Reflection.csproj" />
+  </ItemGroup>
+
+  <Import Project="$(CommonSourcesPath)/Runtime/CompilerSources.targets" />
+  <Import Project="$(CommonSourcesPath)/Runtime/PrivateSources.targets" />
+  <Import Project="$(CommonSourcesPath)/Runtime/RuntimeSources.targets" />
+</Project>

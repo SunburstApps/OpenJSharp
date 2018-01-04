@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSharp.Reflection", "src\JSharp.Reflection\JSharp.Reflection.csproj", "{CE4EE760-C972-4A97-A686-60EDE60B3FD8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSharp.Runtime.FirstPass", "src\JSharp.Runtime.FirstPass\JSharp.Runtime.FirstPass.csproj", "{132E8CB2-F820-435E-BB09-CEF5A726E428}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,17 @@ Global
 		{CE4EE760-C972-4A97-A686-60EDE60B3FD8}.Release|x64.Build.0 = Release|Any CPU
 		{CE4EE760-C972-4A97-A686-60EDE60B3FD8}.Release|x86.ActiveCfg = Release|Any CPU
 		{CE4EE760-C972-4A97-A686-60EDE60B3FD8}.Release|x86.Build.0 = Release|Any CPU
+		{132E8CB2-F820-435E-BB09-CEF5A726E428}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{132E8CB2-F820-435E-BB09-CEF5A726E428}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{132E8CB2-F820-435E-BB09-CEF5A726E428}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{132E8CB2-F820-435E-BB09-CEF5A726E428}.Debug|x64.Build.0 = Debug|Any CPU
+		{132E8CB2-F820-435E-BB09-CEF5A726E428}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{132E8CB2-F820-435E-BB09-CEF5A726E428}.Debug|x86.Build.0 = Debug|Any CPU
+		{132E8CB2-F820-435E-BB09-CEF5A726E428}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{132E8CB2-F820-435E-BB09-CEF5A726E428}.Release|Any CPU.Build.0 = Release|Any CPU
+		{132E8CB2-F820-435E-BB09-CEF5A726E428}.Release|x64.ActiveCfg = Release|Any CPU
+		{132E8CB2-F820-435E-BB09-CEF5A726E428}.Release|x64.Build.0 = Release|Any CPU
+		{132E8CB2-F820-435E-BB09-CEF5A726E428}.Release|x86.ActiveCfg = Release|Any CPU
+		{132E8CB2-F820-435E-BB09-CEF5A726E428}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
