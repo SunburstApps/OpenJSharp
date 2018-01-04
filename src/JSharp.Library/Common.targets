@@ -20,4 +20,5 @@
   </Target>
 
   <UsingTask TaskName="BootstrapStubGenerator" AssemblyFile="$(PrivateBuildTasksAssembly)" />
+  <UsingTask TaskName="CreateZipFile" AssemblyFile="$(PrivateBuildTasksAssembly)" />
 </Project>

@@ -4,8 +4,6 @@
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
 
-  <UsingTask TaskName="CreateZipFile" AssemblyFile="$(PrivateBuildTasksAssembly)" />
-  
   <ItemGroup>
     <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/calendars.properties">
       <EntryName>lib/calendars.properties</EntryName>
