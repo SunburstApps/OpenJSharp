@@ -6,6 +6,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Build.Framework" Version="15.3.*" />
     <PackageReference Include="Microsoft.Build.Utilities.Core" Version="15.3.*" />
+    <PackageReference Include="System.IO.Compression" Version="4.3.0" />
+    <PackageReference Include="System.IO.Compression.ZipFile" Version="4.3.0" />
 
     <ProjectReference Include="../../src/JSharp.Reflection/JSharp.Reflection.csproj" />
   </ItemGroup>
