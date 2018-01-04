@@ -7,6 +7,8 @@
   <PropertyGroup>
     <PrivateBuildTasksDir>$(MSBuildThisFileDirectory)/../../tools/JSharp.BuildTasks.Private</PrivateBuildTasksDir>
     <PrivateBuildTasksAssembly>$(PrivateBuildTasksDir)/bin/$(Configuration)/net46/JSharp.BuildTasks.Private.dll</PrivateBuildTasksAssembly>
+    <BuildTasksDir>$(MSBuildThisFileDirectory)/../../tools/JSharp.BuildTasks</BuildTasksDir>
+    <BuildTasksAssembly>$(BuildTasksDir)/bin/$(Configuration)/net46/JSharp.BuildTasks.dll</BuildTasksAssembly>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -18,6 +20,13 @@
     <MSBuild Projects="$(PrivateBuildTasksDir)/JSharp.BuildTasks.Private.csproj" Targets="Restore"
       Properties="Configuration=$(Configuration)" />
     <MSBuild Projects="$(PrivateBuildTasksDir)/JSharp.BuildTasks.Private.csproj" Targets="Build"
+      Properties="Configuration=$(Configuration)" />
+  </Target>
+
+  <Target Name="CompileBuildTasksAssembly">
+    <MSBuild Projects="$(BuildTasksDir)/JSharp.BuildTasks.csproj" Targets="Restore"
+      Properties="Configuration=$(Configuration)" />
+    <MSBuild Projects="$(BuildTasksDir)/JSharp.BuildTasks.csproj" Targets="Build"
       Properties="Configuration=$(Configuration)" />
   </Target>
 
