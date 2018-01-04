@@ -109,18 +109,18 @@ namespace JSharp.BuildTasks
 
             m_responseFile = Path.GetTempFileName();
             List<string> argv = new List<string>();
-            argv.AddRange(ExtraArguments);
-            if (BootClassPath.Length > 0)
+            argv.AddRange(ExtraArguments ?? Enumerable.Empty<string>());
+            if (BootClassPath != null && BootClassPath.Length > 0)
             {
                 argv.Add("-bootclasspath");
                 argv.Add(string.Join(";", BootClassPath.Select(x => x.GetMetadata("FullPath"))));
             }
-            if (ClassPath.Length > 0)
+            if (ClassPath != null && ClassPath.Length > 0)
             {
                 argv.Add("-cp");
                 argv.Add(string.Join(";", ClassPath.Select(x => x.GetMetadata("FullPath"))));
             }
-            argv.AddRange(SourceFiles.Select(x => x.GetMetadata("FullPath")));
+            argv.AddRange(SourceFiles?.Select(x => x.GetMetadata("FullPath")) ?? Enumerable.Empty<string>());
             File.WriteAllLines(m_responseFile, argv);
 
             bool taskSuccess = base.Execute();
