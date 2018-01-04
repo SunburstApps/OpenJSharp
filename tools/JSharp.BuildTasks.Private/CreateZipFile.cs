@@ -15,7 +15,7 @@ namespace JSharp.BuildTasks.Private
         public override bool Execute()
         {
             string outputPath = ZipFile.GetMetadata("FullPath");
-            using (ZipArchive archive = ZipFile.Open(outputPath, ZipArchiveMode.Create))
+            using (ZipArchive archive = System.IO.Compression.ZipFile.Open(outputPath, ZipArchiveMode.Create))
             {
                 foreach (ITaskItem item in Entries)
                 {
