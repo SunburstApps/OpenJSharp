@@ -59,5 +59,9 @@
   <Target Name="CreateVfsZipfile" Inputs="@(VfsZipEntry)" Outputs="$(VfsZipFile)"
     DependsOnTargets="PrepareForBuild;CompilePrivateBuildTasksAssembly" BeforeTargets="BeforeBuild">
     <CreateZipFile ZipFile="$(VfsZipFile)" Entries="@(VfsZipEntry)" />
+
+    <ItemGroup>
+      <FileWrites Include="$(VfsZipFile)" />
+    </ItemGroup>
   </Target>
 </Project>
