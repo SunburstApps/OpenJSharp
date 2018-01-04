@@ -8,47 +8,47 @@
   
   <ItemGroup>
     <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/calendars.properties">
-      <NameInZip>lib/calendars.properties</NameInZip>
+      <EntryName>lib/calendars.properties</EntryName>
     </VfsZipEntry>
     <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/logging.properties">
-      <NameInZip>lib/logging.properties</NameInZip>
+      <EntryName>lib/logging.properties</EntryName>
     </VfsZipEntry>
     <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/management/management.properties">
-      <NameInZip>lib/management/management.properties</NameInZip>
+      <EntryName>lib/management/management.properties</EntryName>
     </VfsZipEntry>
     <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/net.properties">
-      <NameInZip>lib/net.properties</NameInZip>
+      <EntryName>lib/net.properties</EntryName>
     </VfsZipEntry>
     <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/psfont2j.properties">
-      <NameInZip>lib/psfont2j.properties</NameInZip>
+      <EntryName>lib/psfont2j.properties</EntryName>
     </VfsZipEntry>
     <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/sound.properties">
-      <NameInZip>lib/sound.properties</NameInZip>
+      <EntryName>lib/sound.properties</EntryName>
     </VfsZipEntry>
     <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/cmm/*">
-      <NameInZip>lib/cmm/%(FileName)%(Extension)</NameInZip>
+      <EntryName>lib/cmm/%(FileName)%(Extension)</EntryName>
     </VfsZipEntry>
     <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/tzdb.dat">
-      <NameInZip>lib/tzdb.dat</NameInZip>
+      <EntryName>lib/tzdb.dat</EntryName>
     </VfsZipEntry>
     <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/currency.data">
-      <NameInZip>lib/currency.data</NameInZip>
+      <EntryName>lib/currency.data</EntryName>
     </VfsZipEntry>
     <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/security/java.policy">
-      <NameInZip>lib/security/java.policy</NameInZip>
+      <EntryName>lib/security/java.policy</EntryName>
     </VfsZipEntry>
     <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/security/java.security">
-      <NameInZip>lib/security/java.security</NameInZip>
+      <EntryName>lib/security/java.security</EntryName>
     </VfsZipEntry>
     <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/security/US_export_policy.jar">
-      <NameInZip>lib/security/US_export_policy.jar</NameInZip>
+      <EntryName>lib/security/US_export_policy.jar</EntryName>
     </VfsZipEntry>
 
     <VfsZipEntry Include="$(OpenJDKSourceDir)/jdk/src/windows/lib/flavormap.properties">
-      <NameInZip>lib/flavormap.properties</NameInZip>
+      <EntryName>lib/flavormap.properties</EntryName>
     </VfsZipEntry>
     <VfsZipEntry Include="$(OpenJDKSourceDir)/jdk/src/windows/lib/content-types.properties">
-      <NameInZip>lib/content-types.properties</NameInZip>
+      <EntryName>lib/content-types.properties</EntryName>
     </VfsZipEntry>
   </ItemGroup>
 
@@ -58,6 +58,6 @@
 
   <Target Name="CreateVfsZipfile" Inputs="@(VfsZipEntry)" Outputs="$(VfsZipFile)"
     DependsOnTargets="PrepareForBuild;CompilePrivateBuildTasksAssembly">
-    <CreateZipFile OutputZipFile="$(VfsZipFile)" Contents="@(VfsZipEntry)" />
+    <CreateZipFile ZipFile="$(VfsZipFile)" Entries="@(VfsZipEntry)" />
   </Target>
 </Project>
