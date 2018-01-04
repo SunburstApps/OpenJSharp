@@ -7,8 +7,5 @@ insert_final_newline = true
 indent_style = space
 indent_size = 4
 
-[*.*proj]
-indent_size = 2
-
-[*.{xml,stylecop,resx,ruleset,props,targets,config,nuspec}]
+[*.{csproj,msbuildproj,xml,stylecop,resx,ruleset,props,targets,config,nuspec}]
 indent_size = 2
