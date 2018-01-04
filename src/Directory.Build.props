@@ -4,6 +4,10 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <CommonSourcesPath>$(MSBuildThisFileDirectory)/Common</CommonSourcesPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <AssemblyTitle Condition="'$(AssemblyTitle)' == '' and '$(TargetName)' != ''">$(TargetName)</AssemblyTitle>
     <Description Condition="'$(Description)' == '' and '$(AssemblyTitle)' != ''">$(AssemblyTitle)</Description>
 
