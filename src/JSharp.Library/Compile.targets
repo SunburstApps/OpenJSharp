@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Project>
+  <Target Name="_PrepareJavac" DependsOnTargets="CreateJavacSourceListFile">
+    <ReadLinesFromFile File="$(IntermediateOutputPath)/javac.rsp">
+      <Output TaskParameter="Lines" ItemName="JavaSource" />
+    </ReadLinesFromFile>
+
+    <ItemGroup>
+      <JavaClassFile Include="@(JavaSource -> '%(Directory)%(FileName).class')" />
+    </ItemGroup>
+  </Target>
+  
+  <Target Name="Javac" DependsOnTargets="CompileBuildTasksAssembly;_PrepareJavac;GeneratePropertyConstants;CreateJavacSourceListFile;GenerateStubJars"
+    Inputs="@(JavaSource)" Outputs="@(JavaClassFile)">
+    <Javac ExtraArguments="-g;-nowarn;-implicit:none;-parameters" ToolMode="System"
+      BootClassPath="@(StubJar)" ClassPath="dummy" SourceFiles="@(JavaSource)" WorkingDirectory="$(MSBuildProjectDirectory)" />
+
+    <ItemGroup>
+      <FileWrites Include="@(JavaClassFile)" />
+    </ItemGroup>
+  </Target>
+</Project>

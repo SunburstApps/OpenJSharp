@@ -13,4 +13,5 @@
   <Import Project="CreateResourcesFile.targets" />
   <Import Project="StubGenerator.targets" />
   <Import Project="GenerateSourceFiles.targets" />
+  <Import Project="Compile.targets" />
 </Project>

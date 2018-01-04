@@ -30,6 +30,7 @@
       Properties="Configuration=$(Configuration)" />
   </Target>
 
+  <UsingTask TaskName="Javac" AssemblyFile="$(BuildTasksAssembly)" />
   <UsingTask TaskName="BootstrapStubGenerator" AssemblyFile="$(PrivateBuildTasksAssembly)" />
   <UsingTask TaskName="CreateZipFile" AssemblyFile="$(PrivateBuildTasksAssembly)" />
   <UsingTask TaskName="ReplaceToken" AssemblyFile="$(PrivateBuildTasksAssembly)" />
