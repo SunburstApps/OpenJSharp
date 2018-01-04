@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net46</TargetFramework>
+    <DefineConstants>STUB_GENERATOR</DefineConstants>
+    <AssemblyTitle>OpenJSharp Stub Generator</AssemblyTitle>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SharpZipLib" Version="0.86.0" />
+    <ProjectReference Include="../JSharp.Reflection/JSharp.Reflection.csproj" />
+
+    <Compile Include="$(CommonSourcesPath)/AssemblyResolver.cs">
+      <Link>AssemblyResolver.cs</Link>
+    </Compile>
+  </ItemGroup>
+
+  <Import Project="$(CommonSourcesPath)/Runtime/RuntimeSources.targets" />
+  <Import Project="$(CommonSourcesPath)/StubGenerator/StubGenerator.targets" />
+</Project>
