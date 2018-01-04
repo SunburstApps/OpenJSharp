@@ -52,12 +52,14 @@
     </VfsZipEntry>
   </ItemGroup>
 
-  <PropertyGroup>
-    <VfsZipFile>$(IntermediateOutputPath)/vfs.zip</VfsZipFile>
-  </PropertyGroup>
+  <Target Name="_PrepareVfsZipfile" DependsOnTargets="PrepareForBuild">
+    <PropertyGroup>
+      <VfsZipFile>$(IntermediateOutputPath)/vfs.zip</VfsZipFile>
+    </PropertyGroup>
+  </Target>
 
   <Target Name="CreateVfsZipfile" Inputs="@(VfsZipEntry)" Outputs="$(VfsZipFile)"
-    DependsOnTargets="PrepareForBuild;CompilePrivateBuildTasksAssembly" BeforeTargets="BeforeBuild">
+    DependsOnTargets="_PrepareVfsZipfile;CompilePrivateBuildTasksAssembly" BeforeTargets="BeforeBuild">
     <CreateZipFile ZipFile="$(VfsZipFile)" Entries="@(VfsZipEntry)" />
 
     <ItemGroup>
