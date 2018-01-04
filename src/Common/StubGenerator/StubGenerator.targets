@@ -1,13 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project>
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
-    <HasSharedItems>true</HasSharedItems>
-    <SharedGUID>7c8279ee-bba6-4c95-83ca-ac081c11c090</SharedGUID>
   </PropertyGroup>
-  <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>IKVM.Runtime.StubGenerator</Import_RootNamespace>
-  </PropertyGroup>
+
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)ClassFileWriter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SerialVersionUID.cs" />
