@@ -8,10 +8,10 @@
     <Description Condition="'$(Description)' == '' and '$(AssemblyTitle)' != ''">$(AssemblyTitle)</Description>
 
     <Authors>William Kent</Authors>
-    <Copyright>Copyright © 2017 William Kent. All rights reserved.</Copyright>
-    <Product>IKVM .NET Java Runtime</Product>
+    <Copyright>Copyright © 2017-2018 William Kent. All rights reserved.</Copyright>
+    <Product>OpenJSharp Java Runtime</Product>
 
-    <Version Condition="'$(Version)' == ''">8.1.5717</Version>
+    <Version Condition="'$(Version)' == ''">1.0.0</Version>
     <FileVersion Condition="'$(FileVersion)' == '' and '$(Version)' != ''">$(Version)</FileVersion>
   </PropertyGroup>
 </Project>
