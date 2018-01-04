@@ -4,12 +4,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MSBuild.Sdk.Extras" Version="1.1.0" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Build.Framework" Version="15.3.*" />
     <PackageReference Include="Microsoft.Build.Utilities.Core" Version="15.3.*" />
 
-    <ProjectReference Include="../../src/IKVM.Reflection/IKVM.Reflection.csproj" />
+    <ProjectReference Include="../../src/JSharp.Reflection/JSharp.Reflection.csproj" />
   </ItemGroup>
-
-  <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
 </Project>
