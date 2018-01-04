@@ -50,4 +50,16 @@
       <FileWrites Include="resources/nashorn/version.properties" />
     </ItemGroup>
   </Target>
+
+  <Target Name="CreateJavacSourceListFile"
+    Inputs="javac.rsp.in"
+    Outputs="$(IntermediateOutputPath)/javac.rsp"
+    DependsOnTargets="CompilePrivateBuildTasksAssembly;PrepareForBuild">
+    <ReplaceToken InputFile="javac.rsp.in" OutputFile="$(IntermediateOutputPath)/javac.rsp"
+      Replacements="@OPENJDK@=$(OpenJDKSourceDir)" />
+
+    <ItemGroup>
+      <FileWrites Include="$(IntermediateOutputPath)/javac.rsp" />
+    </ItemGroup>
+  </Target>
 </Project>
