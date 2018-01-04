@@ -27,7 +27,9 @@
     </ItemGroup>
 
     <MSBuild Projects="$(MSBuildProjectDirectory)/../JSharp.Runtime.FirstPass/JSharp.Runtime.FirstPass.csproj"
-         Properties="Configuration=$(Configuration)" Targets="Restore;Build">
+      Properties="Configuration=$(Configuration)" Targets="Restore" />
+    <MSBuild Projects="$(MSBuildProjectDirectory)/../JSharp.Runtime.FirstPass/JSharp.Runtime.FirstPass.csproj"
+         Properties="Configuration=$(Configuration)" Targets="Build">
       <Output TaskParameter="TargetOutputs" PropertyName="_JSharpRuntimeFirstPassPath" />
     </MSBuild>
 
@@ -42,7 +44,9 @@
   <Target Name="GenerateStubJars" DependsOnTargets="_PrepareGenerateStubJars;CompilePrivateBuildTasksAssembly"
           Inputs="@(StubJar -> '%(DependencyPath)')" Outputs="@(StubJar)">
     <MSBuild Projects="$(MSBuildProjectDirectory)/../jsharpstubgen/jsharpstubgen.csproj"
-      Targets="Restore;Build" Properties="Configuration=$(Configuration)">
+      Targets="Restore" Properties="Configuration=$(Configuration)" />
+    <MSBuild Projects="$(MSBuildProjectDirectory)/../jsharpstubgen/jsharpstubgen.csproj"
+      Targets="Build" Properties="Configuration=$(Configuration)">
       <Output TaskParameter="TargetOutputs" PropertyName="_JSharpStubGenExe" />
     </MSBuild>
 

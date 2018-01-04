@@ -15,7 +15,9 @@
   </PropertyGroup>
 
   <Target Name="CompilePrivateBuildTasksAssembly">
-    <MSBuild Projects="$(PrivateBuildTasksDir)/JSharp.BuildTasks.Private.csproj" Targets="Restore;Build"
+    <MSBuild Projects="$(PrivateBuildTasksDir)/JSharp.BuildTasks.Private.csproj" Targets="Restore"
+      Properties="Configuration=$(Configuration)" />
+    <MSBuild Projects="$(PrivateBuildTasksDir)/JSharp.BuildTasks.Private.csproj" Targets="Build"
       Properties="Configuration=$(Configuration)" />
   </Target>
 
