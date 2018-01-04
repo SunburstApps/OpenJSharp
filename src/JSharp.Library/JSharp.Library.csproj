@@ -11,4 +11,5 @@
 
   <Import Project="Common.targets" />
   <Import Project="CreateResourcesFile.targets" />
+  <Import Project="StubGenerator.targets" />
 </Project>

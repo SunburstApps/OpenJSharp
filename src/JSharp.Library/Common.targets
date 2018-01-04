@@ -18,4 +18,6 @@
     <MSBuild Projects="$(PrivateBuildTasksDir)/JSharp.BuildTasks.Private.csproj" Targets="Restore;Build"
       Properties="Configuration=$(Configuration)" />
   </Target>
+
+  <UsingTask TaskName="BootstrapStubGenerator" AssemblyFile="$(PrivateBuildTasksAssembly)" />
 </Project>

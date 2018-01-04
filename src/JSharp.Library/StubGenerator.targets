@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Project>
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+  </PropertyGroup>
+
+  <Target Name="GenerateStubJars" DependsOnTargets="PrepareForBuild">
+    <MSBuild Projects="$(MSBuildProjectDirectory)/../jsharpstubgen/jsharpstubgen.csproj"
+      Targets="Restore;Build" Properties="Configuration=$(Configuration)">
+      <Output TaskParameter="TargetOutputs" PropertyName="_JSharpStubGenExe" />
+    </MSBuild>
+
+    <BootstrapStubGenerator InputAssemblyName="mscorlib" OutputDirectory="$(IntermediateOutputPath)"
+      ToolLocation="$(_JSharpStubGenExe)" />
+  </Target>
+</Project>
