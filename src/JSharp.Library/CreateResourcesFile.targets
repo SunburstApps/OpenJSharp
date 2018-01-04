@@ -19,8 +19,8 @@
     <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/net.properties">
       <EntryName>lib/net.properties</EntryName>
     </VfsZipEntry>
-    <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/psfont2j.properties">
-      <EntryName>lib/psfont2j.properties</EntryName>
+    <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/psfontj2d.properties">
+      <EntryName>lib/psfontj2d.properties</EntryName>
     </VfsZipEntry>
     <VfsZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/lib/sound.properties">
       <EntryName>lib/sound.properties</EntryName>
