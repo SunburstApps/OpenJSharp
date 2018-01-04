@@ -4,13 +4,52 @@
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
 
-  <Target Name="GenerateStubJars" DependsOnTargets="PrepareForBuild">
+  <Target Name="_PrepareGenerateStubJars" DependsOnTargets="PrepareForBuild">
+    <ItemGroup>
+      <StubJar Include="$(IntermediateOutputPath)/mscorlib.jar">
+        <AssemblyName>mscorlib</AssemblyName>
+      </StubJar>
+      <StubJar Include="$(IntermediateOutputPath)/System.jar">
+        <AssemblyName>System</AssemblyName>
+      </StubJar>
+      <StubJar Include="$(IntermediateOutputPath)/System.Core.jar">
+        <AssemblyName>System.Core</AssemblyName>
+      </StubJar>
+      <StubJar Include="$(IntermediateOutputPath)/System.Data.jar">
+        <AssemblyName>System.Data</AssemblyName>
+      </StubJar>
+      <StubJar Include="$(IntermediateOutputPath)/System.Drawing.jar">
+        <AssemblyName>System.Drawing</AssemblyName>
+      </StubJar>
+      <StubJar Include="$(IntermediateOutputPath)/System.Xml.jar">
+        <AssemblyName>System.Xml</AssemblyName>
+      </StubJar>
+    </ItemGroup>
+
+    <MSBuild Projects="$(MSBuildProjectDirectory)/../JSharp.Runtime.FirstPass/JSharp.Runtime.FirstPass.csproj"
+         Properties="Configuration=$(Configuration)" Targets="Restore;Build">
+      <Output TaskParameter="TargetOutputs" PropertyName="_JSharpRuntimeFirstPassPath" />
+    </MSBuild>
+
+    <ItemGroup>
+      <StubJar Include="$(IntermediateOutputPath)/JSharp.Runtime.jar">
+        <AssemblyName>$(_JSharpRuntimeFirstPassPath)</AssemblyName>
+        <DependencyPath>$(_JSharpRuntimeFirstPassPath)</DependencyPath>
+      </StubJar>
+    </ItemGroup>
+  </Target>
+
+  <Target Name="GenerateStubJars" DependsOnTargets="_PrepareGenerateStubJars;CompilePrivateBuildTasksAssembly"
+          Inputs="@(StubJar -> '%(DependencyPath)')" Outputs="@(StubJar)">
     <MSBuild Projects="$(MSBuildProjectDirectory)/../jsharpstubgen/jsharpstubgen.csproj"
       Targets="Restore;Build" Properties="Configuration=$(Configuration)">
       <Output TaskParameter="TargetOutputs" PropertyName="_JSharpStubGenExe" />
     </MSBuild>
 
-    <BootstrapStubGenerator InputAssemblyName="mscorlib" OutputDirectory="$(IntermediateOutputPath)"
-      ToolLocation="$(_JSharpStubGenExe)" />
+    <BootstrapStubGenerator OutputFile="@(StubJar)" InputAssemblyName="%(AssemblyName)" ToolLocation="$(_JSharpStubGenExe)" />
+
+    <ItemGroup>
+      <FileWrites Include="@(StubJar)" />
+    </ItemGroup>
   </Target>
 </Project>
