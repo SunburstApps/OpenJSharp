@@ -11,7 +11,7 @@ namespace JSharp.BuildTasks.Private
         public string InputAssemblyName { get; set; }
 
         [Required]
-        public ITaskItem OutputDirectory { get; set; }
+        public ITaskItem OutputFile { get; set; }
 
         [Required]
         public string ToolLocation { get; set; }
@@ -23,13 +23,9 @@ namespace JSharp.BuildTasks.Private
         {
             List<string> argv = new List<string>();
             argv.Add("-bootstrap");
+            argv.Add("-out:" + OutputFile.GetMetadata("FullPath"));
             argv.Add(InputAssemblyName);
             return string.Join(" ", argv.Select(x => $"\"{x}\""));
-        }
-
-        protected override string GetWorkingDirectory()
-        {
-            return OutputDirectory.GetMetadata("FullPath");
         }
     }
 }
