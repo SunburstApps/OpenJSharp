@@ -113,12 +113,12 @@ namespace JSharp.BuildTasks
             if (BootClassPath != null && BootClassPath.Length > 0)
             {
                 argv.Add("-bootclasspath");
-                argv.Add(string.Join(";", BootClassPath.Select(x => x.GetMetadata("FullPath"))));
+                argv.Add(string.Join(Path.PathSeparator.ToString(), BootClassPath.Select(x => x.GetMetadata("FullPath"))));
             }
             if (ClassPath != null && ClassPath.Length > 0)
             {
                 argv.Add("-cp");
-                argv.Add(string.Join(";", ClassPath.Select(x => x.GetMetadata("FullPath"))));
+                argv.Add(string.Join(Path.PathSeparator.ToString(), ClassPath.Select(x => x.GetMetadata("FullPath"))));
             }
             argv.AddRange(SourceFiles?.Select(x => x.GetMetadata("FullPath")) ?? Enumerable.Empty<string>());
             File.WriteAllLines(m_responseFile, argv);
