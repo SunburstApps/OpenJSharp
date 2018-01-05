@@ -44,7 +44,6 @@
       <RmiBootClassPath Include="$(OpenJDKGeneratedSourceDir)/jdk/gensrc" />
     </ItemGroup>
 
-    <MakeDir Directories="$(IntermediateOutputPath)/rmistubs" />
     <Rmic BootClassPath="@(RmicBootClassPath)" ClassPath="ikvm;classpath"
       OutputDirectory="$(OpenJDKSourceDir)" ToolMode="System"
       ExtraArguments="-nowarn;%(ExtraArguments)" ClassNames="@(RmicClass)" />
@@ -67,7 +66,7 @@
 
     <MSBuild Projects="$(MSBuildProjectDirectory)/../JSharp.Runtime.FirstPass/JSharp.WindowsFormsAwt.FirstPass.csproj"
              Properties="Configuration=$(Configuration)" Targets="Build" />
-    <MSBuild Projects="$(MSBuildProjectDirectory)/../JSharp.Runtime.FirstPass/JSharp.WindowsFormsAwt.FirstPass.csproj"
+    <MSBuild Projects="$(MSBuildProjectDirectory)/../JSharp.WindowsFormsAwt.FirstPass/JSharp.WindowsFormsAwt.FirstPass.csproj"
              Properties="Configuration=$(Configuration)" Targets="Build">
       <Output TaskParameter="TargetOutputs" PropertyName="_JSharpWindowsFormsAwtFirstPassPath" />
     </MSBuild>
