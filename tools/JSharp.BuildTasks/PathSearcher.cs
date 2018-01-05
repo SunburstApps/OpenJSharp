@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.InteropServices;
+using Microsoft.Win32;
 
 namespace JSharp.BuildTasks
 {
@@ -17,5 +19,42 @@ namespace JSharp.BuildTasks
 
             return null;
         }
+
+        internal static string ReadJavaRootPathFromRegistry()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                throw new PlatformNotSupportedException();
+            }
+
+            string javaRootPath = null;
+            using (RegistryKey hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
+            {
+                using (RegistryKey key = hklm.OpenSubKey(@"SOFTWARE\JavaSoft\Java Runtime Environment\1.8"))
+                {
+                    javaRootPath = (string)key.GetValue("JavaHome", null);
+                }
+            }
+
+            if (javaRootPath == null)
+            {
+
+                using (RegistryKey hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32))
+                {
+                    using (RegistryKey key = hklm.OpenSubKey(@"SOFTWARE\JavaSoft\Java Runtime Environment\1.8"))
+                    {
+                        javaRootPath = (string)key.GetValue("JavaHome", null);
+                    }
+                }
+            }
+
+            return javaRootPath;
+        }
+    }
+
+    internal enum ToolLocationStrategy
+    {
+        System,
+        Bundled
     }
 }

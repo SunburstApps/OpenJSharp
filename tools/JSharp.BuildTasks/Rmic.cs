@@ -8,23 +8,23 @@ using Microsoft.Build.Utilities;
 
 namespace JSharp.BuildTasks
 {
-    public sealed class Javac : ToolTask
+    public sealed class Rmic : ToolTask
     {
         [Required]
         public string ToolMode { get; set; }
-
-        public string[] ExtraArguments { get; set; }
+        [Required]
         public ITaskItem[] BootClassPath { get; set; }
+        [Required]
         public ITaskItem[] ClassPath { get; set; }
         [Required]
-        public ITaskItem[] SourceFiles { get; set; }
+        public ITaskItem OutputDirectory { get; set; }
         [Required]
-        public ITaskItem WorkingDirectory { get; set; }
+        public string[] ClassNames { get; set; }
+        public string[] ExtraArguments { get; set; }
 
-        private ToolLocationStrategy m_LocationStrategy = ToolLocationStrategy.Bundled;
+        protected override string ToolName => "rmic";
+        private ToolLocationStrategy m_LocationStrategy;
         private string m_responseFile;
-
-        protected override string ToolName => "javac";
 
         protected override string GenerateFullPathToTool()
         {
@@ -32,7 +32,7 @@ namespace JSharp.BuildTasks
             {
                 string myPath = typeof(Javac).Assembly.Location;
                 string directory = Path.GetDirectoryName(myPath);
-                return Path.Combine(directory, "jsharp_javac");
+                return Path.Combine(directory, "jsharp_rmic");
             }
             else if (m_LocationStrategy == ToolLocationStrategy.System)
             {
@@ -41,7 +41,7 @@ namespace JSharp.BuildTasks
                     string javaRootPath = PathSearcher.ReadJavaRootPathFromRegistry();
                     if (javaRootPath != null)
                     {
-                        return Path.Combine(javaRootPath, "bin", "javac.exe");
+                        return Path.Combine(javaRootPath, "bin", "rmic.exe");
                     }
                     else
                     {
@@ -51,7 +51,7 @@ namespace JSharp.BuildTasks
                 }
                 else
                 {
-                    return PathSearcher.GetFullPathForExecutable("javac");
+                    return PathSearcher.GetFullPathForExecutable("rmic");
                 }
             }
             else
@@ -60,21 +60,9 @@ namespace JSharp.BuildTasks
             }
         }
 
-        protected override string GenerateCommandLineCommands()
-        {
-            // All arguments are in the response file.
-            return "@" + m_responseFile;
-        }
-
-        protected override string GetWorkingDirectory()
-        {
-            return WorkingDirectory.GetMetadata("FullPath");
-        }
-
         public override bool Execute()
         {
-            bool parseOK = Enum.TryParse(ToolMode, true, out m_LocationStrategy);
-            if (!parseOK)
+            if (!Enum.TryParse(ToolMode, true, out m_LocationStrategy))
             {
                 Log.LogError("Invalid ToolMode {0}", ToolMode);
                 return false;
@@ -82,20 +70,29 @@ namespace JSharp.BuildTasks
 
             m_responseFile = Path.GetTempFileName();
             List<string> argv = new List<string>();
-            argv.AddRange(ExtraArguments ?? Enumerable.Empty<string>());
+
             if (BootClassPath != null && BootClassPath.Length > 0)
             {
                 argv.Add("-bootclasspath");
                 argv.Add(string.Join(Path.PathSeparator.ToString(), BootClassPath.Select(x => x.GetMetadata("FullPath"))));
             }
+
             if (ClassPath != null && ClassPath.Length > 0)
             {
-                argv.Add("-cp");
+                argv.Add("-classpath");
                 argv.Add(string.Join(Path.PathSeparator.ToString(), ClassPath.Select(x => x.GetMetadata("FullPath"))));
             }
-            argv.AddRange(SourceFiles?.Select(x => x.GetMetadata("FullPath")) ?? Enumerable.Empty<string>());
-            File.WriteAllLines(m_responseFile, argv);
 
+            if (OutputDirectory != null)
+            {
+                argv.Add("-d");
+                argv.Add(OutputDirectory.GetMetadata("FullPath"));
+            }
+
+            argv.AddRange(ExtraArguments);
+            argv.AddRange(ClassNames);
+
+            File.WriteAllLines(m_responseFile, argv);
             bool taskSuccess = base.Execute();
 
             if (taskSuccess)
@@ -104,7 +101,7 @@ namespace JSharp.BuildTasks
             }
             else
             {
-                Log.LogMessage(MessageImportance.High, "Javac arguments can be found here: {0}", m_responseFile);
+                Log.LogMessage(MessageImportance.High, "Rmic arguments can be found here: {0}", m_responseFile);
             }
 
             return taskSuccess;
