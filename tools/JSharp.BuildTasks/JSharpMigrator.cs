@@ -125,11 +125,10 @@ namespace JSharp.BuildTasks
             if (SharedClassLoader) argv.Add("-sharedclassloader");
             if (SuppressParameterReflection) argv.Add("-noparameterreflection");
             argv.AddRange(ExtraArguments ?? Enumerable.Empty<string>());
-            argv.AddRange(ExtraArguments ?? Enumerable.Empty<string>());
             argv.Add("-highentropyva"); // for security
 
             argv.Add("-out:" + OutputPath.GetMetadata("FullPath"));
-            argv.AddRange(ClassFiles.Select(x => x.GetMetadata("FullPath")));
+            argv.AddRange(ClassFiles?.Select(x => x.GetMetadata("FullPath")) ?? Enumerable.Empty<string>());
 
             File.WriteAllLines(m_responseFile, argv);
             bool taskSuccess = base.Execute();
