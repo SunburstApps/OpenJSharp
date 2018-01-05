@@ -62,11 +62,8 @@ namespace IKVM.Internal
 		internal void Init(Universe universe, bool nostdlib, IList<string> references, IList<string> userLibPaths)
 		{
 			this.universe = universe;
-#if STATIC_COMPILER
-			universe.AssemblyResolve += AssemblyResolve;
-#else
 			universe.AssemblyResolve += LegacyAssemblyResolve;
-#endif
+
 			// like the C# compiler, the references are loaded from:
 			// current directory, CLR directory, -lib: option, %LIB% environment
 			// (note that, unlike the C# compiler, we don't add the CLR directory if -nostdlib has been specified)
