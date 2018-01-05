@@ -91,6 +91,16 @@
       <EntryName>sun/text/resources/th/thai_dict</EntryName>
     </ResourcesZipEntry>
 
+    <ResourcesZipEntry Include="$(OpenJDKGeneratedSourceDir)/corba/classes/**/*.properties">
+      <EntryName>%(RecursiveDir)/%(FileName)%(Extension)</EntryName>
+    </ResourcesZipEntry>
+    <ResourcesZipEntry Include="$(OpenJDKGeneratedSourceDir)/jdk/classes/**/*.properties">
+      <EntryName>%(RecursiveDir)/%(FileName)%(Extension)</EntryName>
+    </ResourcesZipEntry>
+    <ResourcesZipEntry Include="$(OpenJDKGeneratedSourceDir)/langtools/gensrc/**/*.properties">
+      <EntryName>%(RecursiveDir)/%(FileName)%(Extension)</EntryName>
+    </ResourcesZipEntry>
+
     <ResourcesZipEntry Include="$(OpenJDKSourceDir)/corba/src/share/classes/**/*.properties">
       <EntryName>%(RecursiveDir)/%(FileName)%(Extension)</EntryName>
     </ResourcesZipEntry>
@@ -144,7 +154,11 @@
 
   <Target Name="CreateResourcesZipfile" Inputs="@(ResourcesZipEntry)" Outputs="$(ResourcesZipFile)"
     DependsOnTargets="_PrepareResourcesZipfile;CompilePrivateBuildTasksAssembly">
-    <CreateZipFile ZipFile="$(ResourcesZipFile)" Entries="@(ResourcesZipEntry)" />
+    <RemoveDuplicates Inputs="@(ResourcesZipEntry)">
+      <Output TaskParameter="Filtered" ItemName="_FilteredResourcesZipEntry" />
+    </RemoveDuplicates>
+
+    <CreateZipFile ZipFile="$(ResourcesZipFile)" Entries="@(_FilteredResourcesZipEntry)" />
 
     <ItemGroup>
       <FileWrites Include="$(ResourcesZipFile)" />
