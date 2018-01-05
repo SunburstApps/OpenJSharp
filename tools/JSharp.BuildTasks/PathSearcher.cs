@@ -30,7 +30,7 @@ namespace JSharp.BuildTasks
             string javaRootPath = null;
             using (RegistryKey hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
             {
-                using (RegistryKey key = hklm.OpenSubKey(@"SOFTWARE\JavaSoft\Java Runtime Environment\1.8"))
+                using (RegistryKey key = hklm.OpenSubKey(@"SOFTWARE\JavaSoft\Java Development Kit\1.8"))
                 {
                     javaRootPath = (string)key.GetValue("JavaHome", null);
                 }
@@ -41,7 +41,7 @@ namespace JSharp.BuildTasks
 
                 using (RegistryKey hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32))
                 {
-                    using (RegistryKey key = hklm.OpenSubKey(@"SOFTWARE\JavaSoft\Java Runtime Environment\1.8"))
+                    using (RegistryKey key = hklm.OpenSubKey(@"SOFTWARE\JavaSoft\Java Development Kit\1.8"))
                     {
                         javaRootPath = (string)key.GetValue("JavaHome", null);
                     }
