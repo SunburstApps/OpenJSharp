@@ -58,14 +58,14 @@
           DependsOnTargets="CreateMigratorResponseFile;CreateMigratorManifestFile;CreateNashornVersionFile;Rmic;Javac;CompileBuildTasksAssembly"
           Inputs="$(IntermediateOutputPath)/jsharpmigrate.rsp;@(JavaSource)" Outputs="$(TargetPath)">
     <MSBuild Projects="$(MSBuildProjectDirectory)/../JSharp.Runtime.FirstPass/JSharp.Runtime.FirstPass.csproj"
-             Properties="Configuration=$(Configuration)" Targets="Build" />
+             Properties="Configuration=$(Configuration)" Targets="Restore" />
     <MSBuild Projects="$(MSBuildProjectDirectory)/../JSharp.Runtime.FirstPass/JSharp.Runtime.FirstPass.csproj"
              Properties="Configuration=$(Configuration)" Targets="Build">
       <Output TaskParameter="TargetOutputs" PropertyName="_JSharpRuntimeFirstPassPath" />
     </MSBuild>
 
-    <MSBuild Projects="$(MSBuildProjectDirectory)/../JSharp.Runtime.FirstPass/JSharp.WindowsFormsAwt.FirstPass.csproj"
-             Properties="Configuration=$(Configuration)" Targets="Build" />
+    <MSBuild Projects="$(MSBuildProjectDirectory)/../JSharp.WindowsFormsAwt.FirstPass/JSharp.WindowsFormsAwt.FirstPass.csproj"
+             Properties="Configuration=$(Configuration)" Targets="Restore" />
     <MSBuild Projects="$(MSBuildProjectDirectory)/../JSharp.WindowsFormsAwt.FirstPass/JSharp.WindowsFormsAwt.FirstPass.csproj"
              Properties="Configuration=$(Configuration)" Targets="Build">
       <Output TaskParameter="TargetOutputs" PropertyName="_JSharpWindowsFormsAwtFirstPassPath" />
