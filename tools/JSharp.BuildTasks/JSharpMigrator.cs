@@ -45,7 +45,7 @@ namespace JSharp.BuildTasks
         public ITaskItem[] References { get; set; }
         [Required]
         public ITaskItem OutputPath { get; set; }
-        public ITaskItem[] SourceFiles { get; set; }
+        public ITaskItem[] ClassFiles { get; set; }
 
         protected override string ToolName => "jsharpmigrate";
         protected override string GenerateFullPathToTool() => ToolLocation.GetMetadata("FullPath");
@@ -129,7 +129,7 @@ namespace JSharp.BuildTasks
             argv.Add("-highentropyva"); // for security
 
             argv.Add("-out:" + OutputPath.GetMetadata("FullPath"));
-            argv.AddRange(SourceFiles.Select(x => x.GetMetadata("FullPath")));
+            argv.AddRange(ClassFiles.Select(x => x.GetMetadata("FullPath")));
 
             File.WriteAllLines(m_responseFile, argv);
             bool taskSuccess = base.Execute();
