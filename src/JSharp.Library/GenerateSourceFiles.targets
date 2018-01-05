@@ -19,7 +19,7 @@
     DependsOnTargets="CompilePrivateBuildTasksAssembly;PrepareForBuild">
     <ReplaceToken InputFile="jsharpmigrate.rsp.in"
       OutputFile="$(IntermediateOutputPath)/jsharpmigrate.rsp"
-      Replacements="@OPENJDK@=$(OpenJDKSourceDir)" />
+      Replacements="@OPENJDK@=$(OpenJDKSourceDir);@INTDIR@=$(IntermediateOutputPath)" />
 
     <ItemGroup>
       <FileWrites Include="$(IntermediateOutputPath)/jsharpmigrate.rsp" />

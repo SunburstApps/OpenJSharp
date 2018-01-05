@@ -22,9 +22,6 @@
 #  
 
 -assemblyattributes:ikvm/commonAttributes.class
-{
-    -out:IKVM.OpenJDK.Core.dll
-    -baseaddress:0x56000000
     -remap:resources/map.xml
     -assemblyattributes:ikvm/coreAttributes.class
     -exclude:exclude.lst
@@ -33,7 +30,7 @@
     -resource:sun/net/idn/uidna.spp=@OPENJDK@/Generated/jdk/classes/sun/net/idn/uidna.spp
     -resource:sun/reflect/misc/Trampoline.class=@OPENJDK@/jdk/src/share/classes/sun/reflect/misc/Trampoline.class
     -resource:java/lang/invoke/MethodHandleImpl$BindCaller$T.class=@OPENJDK@/jdk/src/share/classes/java/lang/invoke/MethodHandleImpl$BindCaller$T.class
-    -recurse:BuildOutput/resources.zip/sun/util/resources/*
+    -recurse:@INTDIR@/resources.zip/sun/util/resources/*
     ikvm/ikvm/internal/*.class
     ikvm/java/io/*.class
     ikvm/java/lang/*.class
@@ -194,8 +191,8 @@
 {
     -out:IKVM.OpenJDK.Corba.dll
     -baseaddress:0x57320000
-    -recurse:BuildOutput/resources.zip/com/sun/corba/*
-    -recurse:BuildOutput/resources.zip/com/sun/jndi/cosnaming/jndiprovider.properties
+    -recurse:@INTDIR@/resources.zip/com/sun/corba/*
+    -recurse:@INTDIR@/resources.zip/com/sun/jndi/cosnaming/jndiprovider.properties
     -resource:com/sun/corba/se/impl/logging/LogStrings.properties=@OPENJDK@/Generated/jdk/classes/com/sun/corba/se/impl/logging/LogStrings.properties
     @OPENJDK@/Generated/corba/gensrc/com/sun/corba/se/spi/activation/*.class
     @OPENJDK@/Generated/corba/gensrc/com/sun/corba/se/spi/activation/InitialNameServicePackage/*.class
@@ -311,10 +308,6 @@
     @OPENJDK@/jdk/src/share/classes/com/sun/jndi/url/corbaname/*.class
     @OPENJDK@/jdk/src/share/classes/com/sun/jndi/url/iiop/*.class
     @OPENJDK@/jdk/src/share/classes/com/sun/jndi/url/iiopname/*.class
-}
-{
-    -out:IKVM.OpenJDK.XML.API.dll
-    -baseaddress:0x57950000
     -resource:META-INF/services/sun.util.spi.XmlPropertiesProvider=@OPENJDK@/jdk/src/share/classes/sun/util/xml/META-INF/services/sun.util.spi.XmlPropertiesProvider
     @OPENJDK@/jaxp/src/javax/xml/*.class
     @OPENJDK@/jaxp/src/javax/xml/datatype/*.class
@@ -346,11 +339,7 @@
     @OPENJDK@/jaxp/src/org/xml/sax/helpers/*.class
     @OPENJDK@/jdk/src/share/classes/com/sun/java/browser/dom/*.class
     @OPENJDK@/jdk/src/share/classes/sun/util/xml/*.class
-}
-{
-    -out:IKVM.OpenJDK.XML.XPath.dll
-    -baseaddress:0x57A10000
-    -recurse:BuildOutput/resources.zip/com/sun/org/apache/xalan/internal/res/*
+    -recurse:@INTDIR@/resources.zip/com/sun/org/apache/xalan/internal/res/*
     @OPENJDK@/jaxp/src/com/sun/org/apache/xalan/internal/extensions/*.class
     @OPENJDK@/jaxp/src/com/sun/org/apache/xalan/internal/res/*.class
     @OPENJDK@/jaxp/src/com/sun/org/apache/xml/internal/dtm/*.class
@@ -371,13 +360,9 @@
     @OPENJDK@/jaxp/src/com/sun/org/apache/xpath/internal/operations/*.class
     @OPENJDK@/jaxp/src/com/sun/org/apache/xpath/internal/patterns/*.class
     @OPENJDK@/jaxp/src/com/sun/org/apache/xpath/internal/res/*.class
-}
-{
-    -out:IKVM.OpenJDK.XML.Parse.dll
-    -baseaddress:0x57D70000
-    -recurse:BuildOutput/resources.zip/com/sun/org/apache/xerces/*
-    -recurse:BuildOutput/resources.zip/com/sun/org/apache/xml/internal/*
-    -recurse:BuildOutput/resources.zip/com/sun/xml/internal/stream/*
+    -recurse:@INTDIR@/resources.zip/com/sun/org/apache/xerces/*
+    -recurse:@INTDIR@/resources.zip/com/sun/org/apache/xml/internal/*
+    -recurse:@INTDIR@/resources.zip/com/sun/xml/internal/stream/*
     @OPENJDK@/jaxp/src/com/sun/org/apache/bcel/internal/util/SecuritySupport.class
     @OPENJDK@/jaxp/src/com/sun/org/apache/bcel/internal/util/SecuritySupport$*.class
     @OPENJDK@/jaxp/src/com/sun/org/apache/xalan/internal/utils/*.class
@@ -434,10 +419,6 @@
     @OPENJDK@/jaxp/src/com/sun/xml/internal/stream/events/*.class
     @OPENJDK@/jaxp/src/com/sun/xml/internal/stream/util/*.class
     @OPENJDK@/jaxp/src/com/sun/xml/internal/stream/writers/*.class
-}
-{
-    -out:IKVM.OpenJDK.XML.Transform.dll
-    -baseaddress:0x58550000
     @OPENJDK@/jaxp/src/com/sun/java_cup/internal/runtime/*.class
     @OPENJDK@/jaxp/src/com/sun/org/apache/bcel/internal/*.class
     @OPENJDK@/jaxp/src/com/sun/org/apache/bcel/internal/classfile/*.class
@@ -458,13 +439,9 @@
     @OPENJDK@/jaxp/src/com/sun/org/apache/xalan/internal/xsltc/runtime/output/*.class
     @OPENJDK@/jaxp/src/com/sun/org/apache/xalan/internal/xsltc/trax/*.class
     @OPENJDK@/jaxp/src/com/sun/org/apache/xalan/internal/xsltc/util/*.class
-}
-{
-    -out:IKVM.OpenJDK.XML.Bind.dll
-    -baseaddress:0x589A0000
-    -recurse:BuildOutput/resources.zip/javax/xml/bind/*
-    -recurse:BuildOutput/resources.zip/com/sun/xml/internal/bind/*
-    -recurse:BuildOutput/resources.zip/com/sun/xml/internal/fastinfoset/*
+    -recurse:@INTDIR@/resources.zip/javax/xml/bind/*
+    -recurse:@INTDIR@/resources.zip/com/sun/xml/internal/bind/*
+    -recurse:@INTDIR@/resources.zip/com/sun/xml/internal/fastinfoset/*
     @OPENJDK@/jaxws/src/share/jaxws_classes/com/sun/istack/internal/*.class
     @OPENJDK@/jaxws/src/share/jaxws_classes/com/sun/xml/internal/bind/*.class
     @OPENJDK@/jaxws/src/share/jaxws_classes/com/sun/xml/internal/bind/annotation/*.class
@@ -517,12 +494,8 @@
     @OPENJDK@/jaxws/src/share/jaxws_classes/javax/xml/bind/attachment/*.class
     @OPENJDK@/jaxws/src/share/jaxws_classes/javax/xml/bind/helpers/*.class
     @OPENJDK@/jaxws/src/share/jaxws_classes/javax/xml/bind/util/*.class
-}
-{
-    -out:IKVM.OpenJDK.XML.WebServices.dll
-    -baseaddress:0x58DC0000
-    -recurse:BuildOutput/resources.zip/com/sun/xml/internal/messaging/*
-    -recurse:BuildOutput/resources.zip/com/sun/xml/internal/ws/*
+    -recurse:@INTDIR@/resources.zip/com/sun/xml/internal/messaging/*
+    -recurse:@INTDIR@/resources.zip/com/sun/xml/internal/ws/*
     @OPENJDK@/jaxws/src/share/jaxws_classes/com/oracle/webservices/internal/api/*.class
     @OPENJDK@/jaxws/src/share/jaxws_classes/com/oracle/webservices/internal/api/databinding/*.class
     @OPENJDK@/jaxws/src/share/jaxws_classes/com/oracle/webservices/internal/api/message/*.class
@@ -658,10 +631,6 @@
     @OPENJDK@/jaxws/src/share/jaxws_classes/javax/xml/ws/spi/*.class
     @OPENJDK@/jaxws/src/share/jaxws_classes/javax/xml/ws/spi/http/*.class
     @OPENJDK@/jaxws/src/share/jaxws_classes/javax/xml/ws/wsaddressing/*.class
-}
-{
-    -out:IKVM.OpenJDK.XML.Crypto.dll
-    -baseaddress:0x595D0000
     @OPENJDK@/jdk/src/share/classes/com/sun/org/apache/xml/internal/security/*.class
     @OPENJDK@/jdk/src/share/classes/com/sun/org/apache/xml/internal/security/algorithms/*.class
     @OPENJDK@/jdk/src/share/classes/com/sun/org/apache/xml/internal/security/algorithms/implementations/*.class
@@ -694,18 +663,14 @@
     @OPENJDK@/jdk/src/share/classes/javax/xml/crypto/dsig/spec/*.class
     @OPENJDK@/jdk/src/share/classes/org/jcp/xml/dsig/internal/*.class
     @OPENJDK@/jdk/src/share/classes/org/jcp/xml/dsig/internal/dom/*.class
-}
-{
-    -out:IKVM.OpenJDK.SwingAWT.dll
-    -baseaddress:0x59750000
     -remap:resources/swingawt.xml
     -resource:META-INF/services/sun.java2d.pipe.RenderingEngine=resources/META-INF/services/sun.java2d.pipe.RenderingEngine
     -resource:META-INF/services/sun.java2d.cmm.CMMServiceProvider=@OPENJDK@/jdk/src/share/classes/sun/java2d/cmm/lcms/META-INF/services/sun.java2d.cmm.CMMServiceProvider
-    -recurse:BuildOutput/resources.zip/com/sun/java/swing/*
-    -recurse:BuildOutput/resources.zip/com/sun/swing/internal/plaf/*
-    -recurse:BuildOutput/resources.zip/javax/swing/*
+    -recurse:@INTDIR@/resources.zip/com/sun/java/swing/*
+    -recurse:@INTDIR@/resources.zip/com/sun/swing/internal/plaf/*
+    -recurse:@INTDIR@/resources.zip/javax/swing/*
     -r:System.Drawing.dll
-    -r:BuildOutput/IKVM.Awt.WindowsForms.dll
+    -r:@INTDIR@/IKVM.Awt.WindowsForms.dll
     ikvm/ikvm/awt/*.class
     ikvm/java/awt/*.class
     ikvm/java/awt/color/*.class
@@ -794,19 +759,11 @@
     @OPENJDK@/jdk/src/share/classes/sun/swing/text/html/*.class
     @OPENJDK@/jdk/src/solaris/classes/sun/awt/windows/*.class
     @OPENJDK@/jdk/src/windows/classes/sun/awt/*.class
-}
-{
-    -out:IKVM.OpenJDK.Charsets.dll
-    -baseaddress:0x5A980000
     -resource:sun/nio/cs/ext/sjis0213.dat=@OPENJDK@/Generated/jdk/gensrc/sun/nio/cs/ext/sjis0213.dat
     @OPENJDK@/Generated/jdk/gensrc/sun/nio/cs/ext/*.class
     @OPENJDK@/jdk/src/share/classes/sun/nio/cs/ext/*.class
-}
-{
-    -out:IKVM.OpenJDK.Util.dll
-    -baseaddress:0x5AE90000
-    -recurse:BuildOutput/resources.zip/com/sun/java/util/jar/pack/intrinsic.properties
-    -recurse:BuildOutput/resources.zip/sun/launcher/resources/*
+    -recurse:@INTDIR@/resources.zip/com/sun/java/util/jar/pack/intrinsic.properties
+    -recurse:@INTDIR@/resources.zip/sun/launcher/resources/*
     -resource:META-INF/services/java.nio.file.spi.FileSystemProvider=@OPENJDK@/jdk/src/share/demo/nio/zipfs/src/META-INF/services/java.nio.file.spi.FileSystemProvider
     ikvm/com/sun/java/util/jar/pack/*.class
     ikvm/java/util/zip/*.class
@@ -827,11 +784,7 @@
     @OPENJDK@/jdk/src/share/demo/nio/zipfs/src/com/sun/nio/zipfs/*.class
     @OPENJDK@/jdk/src/solaris/classes/java/util/prefs/*.class
     @OPENJDK@/jdk/src/windows/classes/java/util/prefs/*.class
-}
-{
-    -out:IKVM.OpenJDK.Text.dll
-    -baseaddress:0x5B160000
-    -recurse:BuildOutput/resources.zip/sun/text/resources/*
+    -recurse:@INTDIR@/resources.zip/sun/text/resources/*
     @OPENJDK@/jdk/src/share/classes/java/text/*.class
     @OPENJDK@/jdk/src/share/classes/java/text/spi/*.class
     @OPENJDK@/jdk/src/share/classes/sun/text/*.class
@@ -839,10 +792,6 @@
     @OPENJDK@/jdk/src/share/classes/sun/text/normalizer/*.class
     @OPENJDK@/jdk/src/share/classes/sun/text/resources/*.class
     @OPENJDK@/jdk/src/share/classes/sun/text/resources/en/*.class
-}
-{
-    -out:IKVM.OpenJDK.Security.dll
-    -baseaddress:0x5B310000
     -remap:resources/security.xml
     ikvm/sun/security/jgss/wrapper/*.class
     @OPENJDK@/Generated/jdk/gensrc/sun/security/util/*.class
@@ -913,10 +862,6 @@
     @OPENJDK@/jdk/src/share/classes/sun/security/x509/*.class
     @OPENJDK@/jdk/src/windows/classes/sun/security/krb5/internal/tools/*.class
     @OPENJDK@/jdk/src/windows/classes/sun/security/provider/*.class
-}
-{
-    -out:IKVM.OpenJDK.Management.dll
-    -baseaddress:0x5BB50000
     ikvm/java/lang/management/*.class
     ikvm/sun/management/*.class
     rmistubs/org/omg/stub/javax/management/remote/rmi/*.class
@@ -947,10 +892,6 @@
     @OPENJDK@/jdk/src/share/classes/sun/management/jdp/*.class
     @OPENJDK@/jdk/src/share/classes/sun/management/jmxremote/*.class
     @OPENJDK@/jdk/src/windows/classes/sun/management/*.class
-}
-{
-    -out:IKVM.OpenJDK.Misc.dll
-    -baseaddress:0x5BEE0000
     @OPENJDK@/Generated/jdk/gensrc/sun/misc/resources/*.class
     @OPENJDK@/corba/src/share/classes/javax/activity/*.class
     @OPENJDK@/jaxws/src/share/jaxws_classes/javax/annotation/*.class
@@ -978,11 +919,7 @@
     @OPENJDK@/langtools/src/share/classes/javax/lang/model/type/*.class
     @OPENJDK@/langtools/src/share/classes/javax/lang/model/util/*.class
     @OPENJDK@/langtools/src/share/classes/javax/tools/*.class
-}
-{
-    -out:IKVM.OpenJDK.Naming.dll
-    -baseaddress:0x5BFA0000
-    -recurse:BuildOutput/resources.zip/com/sun/jndi/ldap/jndiprovider.properties
+    -recurse:@INTDIR@/resources.zip/com/sun/jndi/ldap/jndiprovider.properties
     -resource:META-INF/services/sun.net.spi.nameservice.NameServiceDescriptor=@OPENJDK@/jdk/src/share/classes/sun/net/spi/nameservice/dns/META-INF/services/sun.net.spi.nameservice.NameServiceDescriptor
     ikvm/sun/net/dns/*.class
     @OPENJDK@/jdk/src/share/classes/com/sun/jndi/dns/*.class
@@ -1004,13 +941,9 @@
     @OPENJDK@/jdk/src/share/classes/javax/naming/spi/*.class
     @OPENJDK@/jdk/src/share/classes/sun/net/dns/*.class
     @OPENJDK@/jdk/src/share/classes/sun/net/spi/nameservice/dns/*.class
-}
-{
-    -out:IKVM.OpenJDK.Jdbc.dll
-    -baseaddress:0x5C120000
     -resource:META-INF/services/java.sql.Driver=resources/META-INF/services/java.sql.Driver
-    -recurse:BuildOutput/resources.zip/com/sun/rowset/*
-    -recurse:BuildOutput/resources.zip/javax/sql/*
+    -recurse:@INTDIR@/resources.zip/com/sun/rowset/*
+    -recurse:@INTDIR@/resources.zip/javax/sql/*
     -r:System.Data.dll
     ikvm/sun/jdbc/odbc/*.class
     @OPENJDK@/jdk/src/share/classes/com/sun/rowset/*.class
@@ -1021,11 +954,7 @@
     @OPENJDK@/jdk/src/share/classes/javax/sql/rowset/*.class
     @OPENJDK@/jdk/src/share/classes/javax/sql/rowset/serial/*.class
     @OPENJDK@/jdk/src/share/classes/javax/sql/rowset/spi/*.class
-}
-{
-    -out:IKVM.OpenJDK.Remoting.dll
-    -baseaddress:0x5C2A0000
-    -recurse:BuildOutput/resources.zip/sun/rmi/*
+    -recurse:@INTDIR@/resources.zip/sun/rmi/*
     rmistubs/com/sun/jndi/rmi/registry/*.class
     rmistubs/java/rmi/activation/*.class
     rmistubs/sun/rmi/registry/*.class
@@ -1047,10 +976,6 @@
     @OPENJDK@/jdk/src/share/classes/sun/rmi/transport/*.class
     @OPENJDK@/jdk/src/share/classes/sun/rmi/transport/proxy/*.class
     @OPENJDK@/jdk/src/share/classes/sun/rmi/transport/tcp/*.class
-}
-{
-    -out:IKVM.OpenJDK.Beans.dll
-    -baseaddress:0x5C3F0000
     -resource:META-INF/mailcap.default=@OPENJDK@/jaxws/src/share/jaf_classes/META-INF/mailcap.default
     -resource:META-INF/mimetypes.default=@OPENJDK@/jaxws/src/share/jaf_classes/META-INF/mimetypes.default
     @OPENJDK@/jaxws/src/share/jaf_classes/com/sun/activation/registries/*.class
@@ -1063,10 +988,6 @@
     @OPENJDK@/jdk/src/share/classes/com/sun/beans/util/*.class
     @OPENJDK@/jdk/src/share/classes/java/beans/*.class
     @OPENJDK@/jdk/src/share/classes/java/beans/beancontext/*.class
-}
-{
-    -out:IKVM.OpenJDK.Media.dll
-    -baseaddress:0x5C4E0000
     -resource:META-INF/services/javax.print.PrintServiceLookup=@OPENJDK@/jdk/src/windows/classes/sun/print/services/javax.print.PrintServiceLookup
     -resource:META-INF/services/javax.print.StreamPrintServiceFactory=@OPENJDK@/jdk/src/windows/classes/sun/print/services/javax.print.StreamPrintServiceFactory
     -resource:META-INF/services/javax.sound.midi.spi.MidiDeviceProvider=@OPENJDK@/jdk/src/share/classes/com/sun/media/sound/services/javax.sound.midi.spi.MidiDeviceProvider
@@ -1077,7 +998,7 @@
     -resource:META-INF/services/javax.sound.sampled.spi.AudioFileWriter=@OPENJDK@/jdk/src/share/classes/com/sun/media/sound/services/javax.sound.sampled.spi.AudioFileWriter
     -resource:META-INF/services/javax.sound.sampled.spi.FormatConversionProvider=@OPENJDK@/jdk/src/share/classes/com/sun/media/sound/services/javax.sound.sampled.spi.FormatConversionProvider
     -resource:META-INF/services/javax.sound.sampled.spi.MixerProvider=@OPENJDK@/jdk/src/share/classes/com/sun/media/sound/services/javax.sound.sampled.spi.MixerProvider
-    -recurse:BuildOutput/resources.zip/com/sun/imageio/plugins/common/iio-plugin.properties
+    -recurse:@INTDIR@/resources.zip/com/sun/imageio/plugins/common/iio-plugin.properties
     -r:System.Drawing.dll
     ikvm/com/sun/imageio/plugins/jpeg/*.class
     ikvm/icedtea/rt/com/sun/media/sound/*.class
@@ -1110,10 +1031,6 @@
     @OPENJDK@/jdk/src/share/classes/javax/sound/sampled/spi/*.class
     @OPENJDK@/jdk/src/share/classes/sun/print/*.class
     @OPENJDK@/jdk/src/windows/classes/sun/print/*.class
-}
-{
-    -out:IKVM.OpenJDK.Nashorn.dll
-    -baseaddress:0x5C750000
     -resource:META-INF/services/javax.script.ScriptEngineFactory=@OPENJDK@/nashorn/src/META-INF/services/javax.script.ScriptEngineFactory
     -resource:jdk/nashorn/internal/runtime/resources/version.properties=resources/nashorn/version.properties
     -recurse:@OPENJDK@/nashorn/src/*.js
@@ -1148,10 +1065,6 @@
     @OPENJDK@/nashorn/src/jdk/nashorn/internal/runtime/regexp/joni/exception/*.class
     @OPENJDK@/nashorn/src/jdk/nashorn/internal/scripts/*.class
     @OPENJDK@/nashorn/src/jdk/nashorn/tools/*.class
-}
-{
-    -out:IKVM.OpenJDK.Localedata.dll
-    -baseaddress:0x5CCC0000
     @OPENJDK@/Generated/jdk/gensrc/sun/util/resources/*.class
     @OPENJDK@/Generated/jdk/gensrc/sun/util/resources/ar/*.class
     @OPENJDK@/Generated/jdk/gensrc/sun/util/resources/be/*.class
@@ -1249,10 +1162,6 @@
     @OPENJDK@/jdk/src/share/classes/sun/util/resources/pt/*.class
     @OPENJDK@/jdk/src/share/classes/sun/util/resources/sv/*.class
     @OPENJDK@/jdk/src/share/classes/sun/util/resources/zh/*.class
-}
-{
-    -out:IKVM.OpenJDK.Cldrdata.dll
-    -baseaddress:0x5D1A0000
     @OPENJDK@/Generated/jdk/gensrc/sun/text/resources/cldr/*.class
     @OPENJDK@/Generated/jdk/gensrc/sun/text/resources/cldr/aa/*.class
     @OPENJDK@/Generated/jdk/gensrc/sun/text/resources/cldr/af/*.class
@@ -1619,4 +1528,3 @@
     @OPENJDK@/Generated/jdk/gensrc/sun/util/resources/cldr/yo/*.class
     @OPENJDK@/Generated/jdk/gensrc/sun/util/resources/cldr/zh/*.class
     @OPENJDK@/Generated/jdk/gensrc/sun/util/resources/cldr/zu/*.class
-}
