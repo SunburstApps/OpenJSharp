@@ -88,7 +88,7 @@
       <JSharpMigratorReference Include="$(_JSharpRuntimeFirstPassPath)" />
     </ItemGroup>
 
-    <JSharpMigrate ToolLocation="$(_JSharpMigrateToolPath)"
+    <JSharpMigrator ToolLocation="$(_JSharpMigrateToolPath)"
       OutputType="Library" Platform="AnyCpu" CompressResources="true"
       StrictFieldSemantics="true" RemoveAssertions="true" SharedClassLoader="true"
       SuppressParameterReflection="true" NoWarn="110" ExtraArguments="-opt:fields;-w4;@$(IntermediateOutputPath)/jsharpmigrate.rsp"
