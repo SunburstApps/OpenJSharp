@@ -56,7 +56,7 @@
     </MSBuild>
 
     <Copy SourceFiles="$(_JSharpRuntimeFirstPassPath);$(_JSharpWindowsFormsAwtFirstPassPath)"
-          DestinationFolder="$(IntermediateOutputPath)" />
+          DestinationFolder="$(IntermediateOutputPath)" SkipUnchangedFiles="true" />
 
     <MSBuild Projects="$(MSBuildProjectDirectory)/../jsharpmigrate/jsharpmigrate.csproj"
       Properties="Configuration=$(Configuration)" Targets="Restore" />
