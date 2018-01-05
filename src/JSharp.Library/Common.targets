@@ -30,6 +30,8 @@
       Properties="Configuration=$(Configuration)" />
   </Target>
 
+  <UsingTask TaskName="JSharpMigrator" AssemblyFile="$(BuildTasksAssembly)" />
+  <UsingTask TaskName="JSharpStubGenerator" AssemblyFile="$(BuildTasksAssembly)" />
   <UsingTask TaskName="Javac" AssemblyFile="$(BuildTasksAssembly)" />
   <UsingTask TaskName="Rmic" AssemblyFile="$(BuildTasksAssembly)" />
   <UsingTask TaskName="BootstrapStubGenerator" AssemblyFile="$(PrivateBuildTasksAssembly)" />
