@@ -17,26 +17,10 @@
     </ItemGroup>
   </Target>
 
-  <ItemGroup>
-    <RmicClass Include="sun.rmi.registry.RegistryImpl" ExtraArguments="-v1.1" />
-    <RmicClass Include="sun.rmi.transport.DGCImpl" ExtraArguments="-v1.1" />
-    <RmicClass Include="sun.rmi.server.Activation$ActivationSystemImpl" ExtraArguments="-v1.2" />
-    <RmicClass Include="java.rmi.activation.ActivationGroup" ExtraArguments="-v1.2" />
-    <RmicClass Include="com.sun.jndi.rmi.registry.ReferenceWrapper" ExtraArguments="-v1.2" />
-    <RmicClass Include="javax.management.remote.rmi.RMIConnectionImpl" ExtraArguments="-v1.2" />
-    <RmicClass Include="javax.management.remote.rmi.RMIConnectionImpl" ExtraArguments="-v1.2;-iiop" />
-    <RmicClass Include="javax.management.remote.rmi.RMIConnectionImpl" ExtraArguments="-v1.2;-iiop;-standardPackage" />
-    <RmicClass Include="javax.management.remote.rmi.RMIServerImpl" ExtraArguments="-v1.2" />
-    <RmicClass Include="javax.management.remote.rmi.RMIServerImpl" ExtraArguments="-v1.2;-iiop" />
-    <RmicClass Include="javax.management.remote.rmi.RMIServerImpl" ExtraArguments="-v1.2;-iiop;-standardPackage" />
-    <RmicClass Include="javax.management.remote.rmi.RMIConnection" ExtraArguments="-iiop" />
-    <RmicClass Include="javax.management.remote.rmi.RMIConnection" ExtraArguments="-iiop;-standardPackage" />
-    <RmicClass Include="javax.management.remote.rmi.RMIServer" ExtraArguments="-iiop" />
-    <RmicClass Include="javax.management.remote.rmi.RMIServer" ExtraArguments="-iiop;-standardPackage" />
-  </ItemGroup>
+  <Import Project="RmicSources.props" />
 
   <Target Name="Rmic" DependsOnTargets="CompileBuildTasksAssembly;Javac;GenerateStubJars"
-    Inputs="@(RmicClass)" Outputs="$(IntermediateOutputPath)/rmic.stamp">
+    Inputs="RmicSources.props" Outputs="$(IntermediateOutputPath)/rmic.stamp">
     <ItemGroup>
       <RmiBootClassPath Include="@(StubJar)" />
       <RmiBootClassPath Include="$(OpenJDKSourceDir)/jdk/src/share/classes" />
