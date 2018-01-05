@@ -22,7 +22,7 @@ namespace JSharp.BuildTasks
 
         internal static string ReadJavaRootPathFromRegistry()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 throw new PlatformNotSupportedException();
             }
