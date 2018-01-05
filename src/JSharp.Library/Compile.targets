@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <Project>
   <Target Name="_PrepareJavac" DependsOnTargets="CreateJavacSourceListFile">
     <ReadLinesFromFile File="$(IntermediateOutputPath)/javac.rsp">
@@ -88,11 +88,18 @@
       <JSharpMigratorReference Include="$(_JSharpRuntimeFirstPassPath)" />
     </ItemGroup>
 
+    <ReadLinesFromFile File="$(IntermediateOutputPath)/jsharpmigrator.args.rsp">
+      <Output TaskParameter="Lines" ItemName="_JSharpMigratorExtraArg" />
+    </ReadLinesFromFile>
+    <ReadLinesFromFile File="$(IntermediateOutputPath)/jsharpmigrator.files.rsp">
+      <Output TaskParameter="Lines" ItemName="_JSharpMigratorClassFile" />
+    </ReadLinesFromFile>
+
     <JSharpMigrator ToolLocation="$(_JSharpMigrateToolPath)"
       OutputType="Library" Platform="AnyCpu" CompressResources="true"
       StrictFieldSemantics="true" RemoveAssertions="true" SharedClassLoader="true"
-      SuppressParameterReflection="true" NoWarn="110" ExtraArguments="-opt:fields;-w4;@$(IntermediateOutputPath)/jsharpmigrate.rsp"
+      SuppressParameterReflection="true" NoWarn="110" ExtraArguments="-opt:fields;-w4;@(_JSharpMigratorExtraArg)"
       Version="$(Version)" FileVersion="$(FileVersion)" References="@(JSharpMigratorReference)"
-      OutputPath="$(OutputPath)" />
+      OutputPath="$(OutputPath)$(TargetName)$(TargetExt)" ClassFiles="@(_JSharpMigratorClassFile)" />
   </Target>
 </Project>

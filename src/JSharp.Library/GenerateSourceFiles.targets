@@ -14,15 +14,19 @@
   </Target>
 
   <Target Name="CreateMigratorResponseFile"
-    Inputs="jsharpmigrate.rsp.in"
-    Outputs="$(IntermediateOutputPath)/jsharpmigrate.rsp"
+    Inputs="jsharpmigrate.args.rsp.in;jsharpmigrate.files.rsp.in"
+    Outputs="$(IntermediateOutputPath)/jsharpmigrate.args.rsp;$(IntermediateOutputPath)/jsharpmigrate.files.rsp"
     DependsOnTargets="CompilePrivateBuildTasksAssembly;PrepareForBuild">
-    <ReplaceToken InputFile="jsharpmigrate.rsp.in"
-      OutputFile="$(IntermediateOutputPath)/jsharpmigrate.rsp"
+    <ReplaceToken InputFile="jsharpmigrate.files.rsp.in"
+      OutputFile="$(IntermediateOutputPath)/jsharpmigrate.files.rsp"
+      Replacements="@OPENJDK@=$(OpenJDKSourceDir);@INTDIR@=$(IntermediateOutputPath)" />
+    <ReplaceToken InputFile="jsharpmigrate.args.rsp.in"
+      OutputFile="$(IntermediateOutputPath)/jsharpmigrate.args.rsp"
       Replacements="@OPENJDK@=$(OpenJDKSourceDir);@INTDIR@=$(IntermediateOutputPath)" />
 
     <ItemGroup>
-      <FileWrites Include="$(IntermediateOutputPath)/jsharpmigrate.rsp" />
+      <FileWrites Include="$(IntermediateOutputPath)/jsharpmigrate.files.rsp" />
+      <FileWrites Include="$(IntermediateOutputPath)/jsharpmigrate.args.rsp" />
     </ItemGroup>
   </Target>
 
