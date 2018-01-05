@@ -4,6 +4,7 @@
     <TargetFramework>net46</TargetFramework>
     <DefineConstants>NET_4_0;STATIC_COMPILER;EMITTERS</DefineConstants>
     <AssemblyTitle>OpenJSharp Java-to-CIL Migrator</AssemblyTitle>
+    <NoWarn>0436</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
