@@ -79,6 +79,9 @@
       <Output TaskParameter="Lines" ItemName="_JSharpMigratorClassFile" />
     </ReadLinesFromFile>
 
+    <Error Text="Could not read any jsharpmigrator arguments" Condition="'@(_JSharpMigratorExtraArg)' == ''" />
+    <Error Text="Could not read any jsharpmigrator input files" Condition="'@(_JSharpMigratorClassFile)' == ''" />
+
     <JSharpMigrator ToolLocation="$(_JSharpMigrateToolPath)"
       OutputType="Library" Platform="AnyCpu" CompressResources="true"
       StrictFieldSemantics="true" RemoveAssertions="true" SharedClassLoader="true"
