@@ -45,6 +45,7 @@ namespace JSharp.BuildTasks
         public ITaskItem[] References { get; set; }
         [Required]
         public ITaskItem OutputPath { get; set; }
+        [Required]
         public ITaskItem[] ClassFiles { get; set; }
 
         protected override string ToolName => "jsharpmigrate";
