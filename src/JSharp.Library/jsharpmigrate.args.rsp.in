@@ -30,7 +30,7 @@
 -recurse:@INTDIR@/resources.zip/com/sun/swing/internal/plaf/*
 -recurse:@INTDIR@/resources.zip/javax/swing/*
 -r:System.Drawing.dll
--r:@INTDIR@/IKVM.Awt.WindowsForms.dll
+-r:@INTDIR@/JSharp.WindowsFormsAwt.dll
 -resource:sun/nio/cs/ext/sjis0213.dat=@OPENJDK@/Generated/jdk/gensrc/sun/nio/cs/ext/sjis0213.dat
 -recurse:@INTDIR@/resources.zip/com/sun/java/util/jar/pack/intrinsic.properties
 -recurse:@INTDIR@/resources.zip/sun/launcher/resources/*

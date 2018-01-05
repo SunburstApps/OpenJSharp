@@ -2541,10 +2541,10 @@ namespace IKVM.Internal
 				if(runtimeAssembly == null)
 				{
 					// we assume that the runtime is in the same directory as the compiler
-					runtimeAssembly = Path.Combine(typeof(CompilerClassLoader).Assembly.Location, ".." + Path.DirectorySeparatorChar + "IKVM.Runtime.dll");
+					runtimeAssembly = Path.Combine(typeof(CompilerClassLoader).Assembly.Location, ".." + Path.DirectorySeparatorChar + "JSharp.Runtime.dll");
 				}
 				StaticCompiler.runtimeAssembly = StaticCompiler.LoadFile(runtimeAssembly);
-				StaticCompiler.runtimeJniAssembly = StaticCompiler.LoadFile(Path.Combine(StaticCompiler.runtimeAssembly.Location, ".." + Path.DirectorySeparatorChar + "IKVM.Runtime.JNI.dll"));
+				StaticCompiler.runtimeJniAssembly = StaticCompiler.LoadFile(Path.Combine(StaticCompiler.runtimeAssembly.Location, ".." + Path.DirectorySeparatorChar + "JSharp.Runtime.JNI.dll"));
 			}
 			catch(FileNotFoundException)
 			{

@@ -149,7 +149,7 @@ namespace IKVM.Internal
 				if(coreAssembly == null)
 				{
 #if FIRST_PASS
-					throw new InvalidOperationException("This version of IKVM.Runtime.dll was compiled with FIRST_PASS defined.");
+					throw new InvalidOperationException("This version of JSharp.Runtime.dll was compiled with FIRST_PASS defined.");
 #else
 					coreAssembly = typeof(java.lang.Object).Assembly;
 #endif
@@ -324,8 +324,8 @@ namespace IKVM.Internal
 		}
 #endif
 
-		// this method resolves types in IKVM.Runtime.dll
-		// (the version of IKVM.Runtime.dll that we're running
+		// this method resolves types in JSharp.Runtime.dll
+		// (the version of JSharp.Runtime.dll that we're running
 		// with can be different from the one we're compiling against.)
 		internal static Type LoadType(Type type)
 		{
