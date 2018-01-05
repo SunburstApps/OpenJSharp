@@ -72,10 +72,10 @@
       <JSharpMigratorReference Include="$(_JSharpRuntimeFirstPassPath)" />
     </ItemGroup>
 
-    <ReadLinesFromFile File="$(IntermediateOutputPath)/jsharpmigrator.args.rsp">
+    <ReadLinesFromFile File="$(IntermediateOutputPath)/jsharpmigrate.args.rsp">
       <Output TaskParameter="Lines" ItemName="_JSharpMigratorExtraArg" />
     </ReadLinesFromFile>
-    <ReadLinesFromFile File="$(IntermediateOutputPath)/jsharpmigrator.files.rsp">
+    <ReadLinesFromFile File="$(IntermediateOutputPath)/jsharpmigrate.files.rsp">
       <Output TaskParameter="Lines" ItemName="_JSharpMigratorClassFile" />
     </ReadLinesFromFile>
 
