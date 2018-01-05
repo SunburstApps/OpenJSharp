@@ -800,8 +800,8 @@ ikvm/sun/security/jgss/wrapper/*.class
 @OPENJDK@/jdk/src/windows/classes/sun/security/provider/*.class
 ikvm/java/lang/management/*.class
 ikvm/sun/management/*.class
-rmistubs/org/omg/stub/javax/management/remote/rmi/*.class
-rmistubs/javax/management/remote/rmi/*.class
+@INTDIR@/rmistubs/org/omg/stub/javax/management/remote/rmi/*.class
+@INTDIR@/rmistubs/javax/management/remote/rmi/*.class
 @OPENJDK@/Generated/jdk/gensrc/sun/management/resources/*.class
 @OPENJDK@/jdk/src/share/classes/com/sun/jmx/defaults/*.class
 @OPENJDK@/jdk/src/share/classes/com/sun/jmx/interceptor/*.class
@@ -884,11 +884,11 @@ ikvm/sun/jdbc/odbc/*.class
 @OPENJDK@/jdk/src/share/classes/javax/sql/rowset/*.class
 @OPENJDK@/jdk/src/share/classes/javax/sql/rowset/serial/*.class
 @OPENJDK@/jdk/src/share/classes/javax/sql/rowset/spi/*.class
-rmistubs/com/sun/jndi/rmi/registry/*.class
-rmistubs/java/rmi/activation/*.class
-rmistubs/sun/rmi/registry/*.class
-rmistubs/sun/rmi/server/*.class
-rmistubs/sun/rmi/transport/*.class
+@INTDIR@/rmistubs/com/sun/jndi/rmi/registry/*.class
+@INTDIR@/rmistubs/java/rmi/activation/*.class
+@INTDIR@/rmistubs/sun/rmi/registry/*.class
+@INTDIR@/rmistubs/sun/rmi/server/*.class
+@INTDIR@/rmistubs/sun/rmi/transport/*.class
 @OPENJDK@/jdk/src/share/classes/java/rmi/*.class
 @OPENJDK@/jdk/src/share/classes/java/rmi/activation/*.class
 @OPENJDK@/jdk/src/share/classes/java/rmi/dgc/*.class
