@@ -96,6 +96,4 @@
       Version="$(Version)" FileVersion="$(FileVersion)" References="@(JSharpMigratorReference)"
       OutputPath="$(OutputPath)" />
   </Target>
-
-  <Target Name="CoreCompile" DependsOnTargets="JSharpMigrator" />
 </Project>
