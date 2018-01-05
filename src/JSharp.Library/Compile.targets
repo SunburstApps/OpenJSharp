@@ -74,5 +74,28 @@
 
     <Copy SourceFiles="$(_JSharpRuntimeFirstPassPath);$(_JSharpWindowsFormsAwtFirstPassPath)"
           DestinationFolder="$(IntermediateOutputPath)" />
+
+    <MSBuild Projects="$(MSBuildProjectDirectory)/../jsharpmigrate/jsharpmigrate.csproj"
+      Properties="Configuration=$(Configuration)" Targets="Restore" />
+    <MSBuild Projects="$(MSBuildProjectDirectory)/../jsharpmigrate/jsharpmigrate.csproj"
+      Properties="Configuration=$(Configuration)" Targets="Build">
+      <Output TaskParameter="TargetOutputs" PropertyName="_JSharpMigrateToolPath" />
+    </MSBuild>
+
+    <ItemGroup>
+      <JSharpMigratorReference Include="System.dll" />
+      <JSharpMigratorReference Include="System.Core.dll" />
+      <JSharpMigratorReference Include="System.Xml.dll" />
+      <JSharpMigratorReference Include="$(_JSharpRuntimeFirstPassPath)" />
+    </ItemGroup>
+
+    <JSharpMigrate ToolLocation="$(_JSharpMigrateToolPath)"
+      OutputType="Library" Platform="AnyCpu" CompressResources="true"
+      StrictFieldSemantics="true" RemoveAssertions="true" SharedClassLoader="true"
+      SuppressParameterReflection="true" NoWarn="110" ExtraArguments="-opt:fields;-w4;@$(IntermediateOutputPath)/jsharpmigrate.rsp"
+      Version="$(Version)" FileVersion="$(FileVersion)" References="@(JSharpMigratorReference)"
+      OutputPath="$(OutputPath)" />
   </Target>
+
+  <Target Name="CoreCompile" DependsOnTargets="JSharpMigrator" />
 </Project>
