@@ -6,7 +6,7 @@
     DependsOnTargets="CompilePrivateBuildTasksAssembly">
     <ReplaceToken InputFile="ikvm/java/lang/PropertyConstants.java.in"
       OutputFile="ikvm/java/lang/PropertyConstants.java"
-      Replacements="@AWTASSEMBLY@=IKVM.Awt.WindowsForms;@VERSION@=$(AssemblyVersion);@OPENJDK_VERSION@=1.8.0_45-b14" />
+      Replacements="@AWTASSEMBLY@=JSharp.WindowsFormsAwt;@VERSION@=$(AssemblyVersion);@OPENJDK_VERSION@=1.8.0_45-b14" />
 
     <ItemGroup>
       <FileWrites Include="ikvm/java/lang/PropertyConstants.java" />
