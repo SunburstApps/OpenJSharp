@@ -29,7 +29,7 @@ namespace JSharp.BuildTasks.Private
                         if (string.IsNullOrEmpty(logicalName)) logicalName = item.ItemSpec;
 
                         logicalName = Path.Combine(logicalName.Split(
-                            new[] { Path.DirectorySeparatorChar }, StringSplitOptions.RemoveEmptyEntries));
+                            new[] { Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar }, StringSplitOptions.RemoveEmptyEntries));
                         archive.CreateEntryFromFile(item.GetMetadata("FullPath"), logicalName);
                     }
                 }
