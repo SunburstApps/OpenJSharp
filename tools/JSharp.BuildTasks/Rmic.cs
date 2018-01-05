@@ -60,6 +60,12 @@ namespace JSharp.BuildTasks
             }
         }
 
+        protected override string GenerateCommandLineCommands()
+        {
+            // All arguments are in the response file.
+            return "@" + m_responseFile;
+        }
+
         public override bool Execute()
         {
             if (!Enum.TryParse(ToolMode, true, out m_LocationStrategy))
