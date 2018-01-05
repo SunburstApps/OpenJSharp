@@ -19,7 +19,7 @@
 
   <Import Project="RmicSources.props" />
 
-  <Target Name="Rmic" DependsOnTargets="CompileBuildTasksAssembly;Javac;GenerateStubJars"
+  <Target Name="Rmic" DependsOnTargets="CompileBuildTasksAssembly;Javac;GenerateStubJars;PrepareForBuild"
     Inputs="RmicSources.props" Outputs="$(IntermediateOutputPath)/rmic.stamp">
     <ItemGroup>
       <RmiBootClassPath Include="@(StubJar)" />
@@ -28,8 +28,9 @@
       <RmiBootClassPath Include="$(OpenJDKGeneratedSourceDir)/jdk/gensrc" />
     </ItemGroup>
 
+    <MakeDir Directories="$(IntermediateOutputPath)/rmistubs" Condition="!Exists('$(IntermediateOutputPath)/rmistubs')" />
     <Rmic BootClassPath="@(RmicBootClassPath)" ClassPath="ikvm;classpath"
-      OutputDirectory="$(OpenJDKSourceDir)" ToolMode="System"
+      OutputDirectory="$(IntermediateOutputPath)/rmistubs" ToolMode="System"
       ExtraArguments="-nowarn;%(ExtraArguments)" ClassNames="@(RmicClass)" />
 
     <WriteLinesToFile Lines="Delete this file to force a rebuild of the Rmic task." File="$(IntermediateOutputPath)/rmic.stamp" />
