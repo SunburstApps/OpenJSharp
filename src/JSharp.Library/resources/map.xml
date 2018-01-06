@@ -20,7 +20,7 @@
 
   Jeroen Frijters
   jeroen@frijters.net
-  
+
 -->
 <root>
     <assembly>
@@ -3082,6 +3082,43 @@
                 </body>
             </method>
         </class>
+        <class name="sun.security.provider.SeedGenerator">
+            <method name="getSystemEntropy" sig="()[B">
+                <prologue>
+                    <exceptionBlock>
+                        <try>
+                            <ldc_i4 value="20" />
+                            <newarr sig="B" />
+                            <stloc name="buf" class="[B" />
+                            <newobj class="cli.System.Security.Cryptography.RNGCryptoServiceProvider" name="&lt;init&gt;" sig="()V" />
+                            <ldloc name="buf" />
+                            <callvirt type="System.Security.Cryptography.RandomNumberGenerator" name="GetBytes" sig="([B)V" />
+                            <leave name="return" />
+                        </try>
+                        <catch type="System.Security.Cryptography.CryptographicException">
+                            <leave name="continue" />
+                        </catch>
+                    </exceptionBlock>
+                    <label name="return" />
+                    <ldloc name="buf" />
+                    <ret />
+                    <label name="continue" />
+                </prologue>
+            </method>
+        </class>
+        <class name="javax.swing.SwingUtilities">
+            <method name="layoutCompoundLabelImpl" sig="(Ljavax.swing.JComponent;Ljava.awt.FontMetrics;Ljava.lang.String;Ljavax.swing.Icon;IIIILjava.awt.Rectangle;Ljava.awt.Rectangle;Ljava.awt.Rectangle;I)Ljava.lang.String;">
+                <!-- Only needed for OpenJDK 6, can removed in OpenJDK 7, prevent "..." on some buttons and labels -->
+                <replace-method-call class="sun.swing.SwingUtilities2" name="getRightSideBearing" sig="(Ljavax.swing.JComponent;Ljava.awt.FontMetrics;Ljava.lang.String;)I">
+                    <code>
+                        <pop />
+                        <pop />
+                        <pop />
+                        <ldc_i4_0 />
+                    </code>
+                </replace-method-call>
+            </method>
+        </class>
     </assembly>
     <exceptionMappings>
         <exception src="System.NullReferenceException" dst="java.lang.NullPointerException" />
@@ -3127,7 +3164,7 @@
                 <label name="end" />
                 <!-- NOTE we do this last because ResetAbort clears the ExceptionState of the ThreadAbortException (why?) -->
                 <!-- TODO we should put an exception handler around the ResetAbort call, because it will throw a ThreadStateException
-		     if no Abort is pending (someone could have thrown the exception manually, or we could have called on a 
+		     if no Abort is pending (someone could have thrown the exception manually, or we could have called on a
 		     previous handler that turned out not to be match for this exception type) -->
                 <stloc name="x" class="java.lang.ThreadDeath" />
                 <exceptionBlock>

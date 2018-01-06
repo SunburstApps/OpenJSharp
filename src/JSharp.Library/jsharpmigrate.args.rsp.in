@@ -23,7 +23,6 @@
 -recurse:@INTDIR@/resources.zip/com/sun/xml/internal/fastinfoset/*
 -recurse:@INTDIR@/resources.zip/com/sun/xml/internal/messaging/*
 -recurse:@INTDIR@/resources.zip/com/sun/xml/internal/ws/*
--remap:resources/swingawt.xml
 -resource:META-INF/services/sun.java2d.pipe.RenderingEngine=resources/META-INF/services/sun.java2d.pipe.RenderingEngine
 -resource:META-INF/services/sun.java2d.cmm.CMMServiceProvider=@OPENJDK@/jdk/src/share/classes/sun/java2d/cmm/lcms/META-INF/services/sun.java2d.cmm.CMMServiceProvider
 -recurse:@INTDIR@/resources.zip/com/sun/java/swing/*
@@ -36,7 +35,6 @@
 -recurse:@INTDIR@/resources.zip/sun/launcher/resources/*
 -resource:META-INF/services/java.nio.file.spi.FileSystemProvider=@OPENJDK@/jdk/src/share/demo/nio/zipfs/src/META-INF/services/java.nio.file.spi.FileSystemProvider
 -recurse:@INTDIR@/resources.zip/sun/text/resources/*
--remap:resources/security.xml
 -recurse:@INTDIR@/resources.zip/com/sun/jndi/ldap/jndiprovider.properties
 -resource:META-INF/services/sun.net.spi.nameservice.NameServiceDescriptor=@OPENJDK@/jdk/src/share/classes/sun/net/spi/nameservice/dns/META-INF/services/sun.net.spi.nameservice.NameServiceDescriptor
 -resource:META-INF/services/java.sql.Driver=resources/META-INF/services/java.sql.Driver
