@@ -57,7 +57,7 @@ namespace JSharp.BuildTasks
 
         protected override string GenerateCommandLineCommands()
         {
-            // All argumentsare in the response file.
+            // All arguments are in the response file.
             return "@" + m_responseFile;
         }
 
