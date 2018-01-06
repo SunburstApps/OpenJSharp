@@ -140,7 +140,7 @@ namespace JSharp.BuildTasks
             }
             else
             {
-                Log.LogMessage(MessageImportance.High, "Javac arguments can be found here: {0}", m_responseFile);
+                Log.LogMessage(MessageImportance.High, "Migrator arguments can be found here: {0}", m_responseFile);
             }
 
             return taskSuccess;
