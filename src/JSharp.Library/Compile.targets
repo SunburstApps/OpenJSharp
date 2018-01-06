@@ -67,6 +67,7 @@
     </MSBuild>
 
     <ItemGroup>
+      <JSharpMigratorReference Include="mscorlib.dll" />
       <JSharpMigratorReference Include="System.dll" />
       <JSharpMigratorReference Include="System.Core.dll" />
       <JSharpMigratorReference Include="System.Xml.dll" />
