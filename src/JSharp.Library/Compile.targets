@@ -88,6 +88,6 @@
       StrictFieldSemantics="true" RemoveAssertions="true" SharedClassLoader="true"
       SuppressParameterReflection="true" NoWarn="110" ExtraArguments="-opt:fields;-w4;@(_JSharpMigratorExtraArg)"
       Version="$(Version)" FileVersion="$(FileVersion)" References="@(JSharpMigratorReference)"
-      OutputPath="$(OutputPath)$(TargetName)$(TargetExt)" ClassFiles="@(_JSharpMigratorClassFile)" />
+      OutputPath="$(IntermediateOutputPath)$(TargetName)$(TargetExt)" ClassFiles="@(_JSharpMigratorClassFile)" />
   </Target>
 </Project>
