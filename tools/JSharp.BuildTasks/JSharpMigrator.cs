@@ -129,6 +129,8 @@ namespace JSharp.BuildTasks
             argv.Add("-highentropyva"); // for security
 
             argv.Add("-out:" + OutputPath.GetMetadata("FullPath"));
+            // Don't use FullPath here, as some of these might be bare filenames, and those must be preserved.
+            argv.AddRange(References?.Select(x => "-r:" + x.ItemSpec) ?? Enumerable.Empty<string>());
             argv.AddRange(ClassFiles?.Select(x => x.GetMetadata("FullPath")) ?? Enumerable.Empty<string>());
 
             File.WriteAllLines(m_responseFile, argv);
