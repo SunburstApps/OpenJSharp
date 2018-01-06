@@ -57,7 +57,6 @@
 -resource:META-INF/services/javax.sound.sampled.spi.FormatConversionProvider=@OPENJDK@/jdk/src/share/classes/com/sun/media/sound/services/javax.sound.sampled.spi.FormatConversionProvider
 -resource:META-INF/services/javax.sound.sampled.spi.MixerProvider=@OPENJDK@/jdk/src/share/classes/com/sun/media/sound/services/javax.sound.sampled.spi.MixerProvider
 -recurse:@INTDIR@/resources.zip/com/sun/imageio/plugins/common/iio-plugin.properties
--r:System.Drawing.dll
 -resource:META-INF/services/javax.script.ScriptEngineFactory=@OPENJDK@/nashorn/src/META-INF/services/javax.script.ScriptEngineFactory
 -resource:jdk/nashorn/internal/runtime/resources/version.properties=resources/nashorn/version.properties
 -recurse:@OPENJDK@/nashorn/src/*.js
