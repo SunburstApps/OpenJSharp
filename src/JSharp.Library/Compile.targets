@@ -41,7 +41,7 @@
 
   <Target Name="JSharpMigrator"
           DependsOnTargets="CreateMigratorResponseFile;CreateMigratorManifestFile;CreateNashornVersionFile;Rmic;Javac;CompileBuildTasksAssembly;CreateVfsZipfile;CreateResourcesZipfile"
-          Inputs="$(IntermediateOutputPath)/jsharpmigrate.rsp;@(JavaSource)" Outputs="$(TargetPath)">
+          Inputs="$(IntermediateOutputPath)/jsharpmigrate.rsp;@(JavaSource)" Outputs="$(IntermediateOutputPath)$(TargetName)$(TargetExt)">
     <MSBuild Projects="$(MSBuildProjectDirectory)/../JSharp.Runtime.FirstPass/JSharp.Runtime.FirstPass.csproj"
              Properties="Configuration=$(Configuration)" Targets="Restore" />
     <MSBuild Projects="$(MSBuildProjectDirectory)/../JSharp.Runtime.FirstPass/JSharp.Runtime.FirstPass.csproj"
