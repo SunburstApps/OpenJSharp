@@ -1,25 +1,24 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSharp.Reflection", "src\JSharp.Reflection\JSharp.Reflection.csproj", "{CE4EE760-C972-4A97-A686-60EDE60B3FD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JSharp.Reflection", "src\JSharp.Reflection\JSharp.Reflection.csproj", "{CE4EE760-C972-4A97-A686-60EDE60B3FD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSharp.Runtime.FirstPass", "src\JSharp.Runtime.FirstPass\JSharp.Runtime.FirstPass.csproj", "{132E8CB2-F820-435E-BB09-CEF5A726E428}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JSharp.Runtime.FirstPass", "src\JSharp.Runtime.FirstPass\JSharp.Runtime.FirstPass.csproj", "{132E8CB2-F820-435E-BB09-CEF5A726E428}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jsharpstubgen", "src\jsharpstubgen\jsharpstubgen.csproj", "{BD1082CB-DC1D-49E5-B9D0-7DA6D8CC03F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jsharpstubgen", "src\jsharpstubgen\jsharpstubgen.csproj", "{BD1082CB-DC1D-49E5-B9D0-7DA6D8CC03F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jsharpmigrate", "src\jsharpmigrate\jsharpmigrate.csproj", "{ECC220D9-AFFE-496C-82AB-307A8CA015B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jsharpmigrate", "src\jsharpmigrate\jsharpmigrate.csproj", "{ECC220D9-AFFE-496C-82AB-307A8CA015B9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build Tools", "Build Tools", "{ECCC5E83-73E1-45CC-B514-1A77D2967BA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSharp.BuildTasks.Private", "tools\JSharp.BuildTasks.Private\JSharp.BuildTasks.Private.csproj", "{DB31DB95-E8B1-4680-9E40-BF1C65483CE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JSharp.BuildTasks.Private", "tools\JSharp.BuildTasks.Private\JSharp.BuildTasks.Private.csproj", "{DB31DB95-E8B1-4680-9E40-BF1C65483CE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSharp.Library", "src\JSharp.Library\JSharp.Library.csproj", "{FCA9BB8F-892F-4364-BC2B-35EB7512FCB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JSharp.BuildTasks", "tools\JSharp.BuildTasks\JSharp.BuildTasks.csproj", "{ED9513A1-4C0B-48E1-A125-BF31B3C48FB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSharp.BuildTasks", "tools\JSharp.BuildTasks\JSharp.BuildTasks.csproj", "{ED9513A1-4C0B-48E1-A125-BF31B3C48FB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JSharp.WindowsFormsAwt.FirstPass", "src\JSharp.WindowsFormsAwt.FirstPass\JSharp.WindowsFormsAwt.FirstPass.csproj", "{1382FCBB-5F41-432E-BD1E-07A23D25333E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSharp.WindowsFormsAwt.FirstPass", "src\JSharp.WindowsFormsAwt.FirstPass\JSharp.WindowsFormsAwt.FirstPass.csproj", "{1382FCBB-5F41-432E-BD1E-07A23D25333E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JSharp.OpenJDK", "src\JSharp.OpenJDK\JSharp.OpenJDK.csproj", "{7DCCB344-6EB4-46C6-AC7E-049CF5D08E22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,9 +28,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{CE4EE760-C972-4A97-A686-60EDE60B3FD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -94,18 +90,6 @@ Global
 		{DB31DB95-E8B1-4680-9E40-BF1C65483CE6}.Release|x64.Build.0 = Release|Any CPU
 		{DB31DB95-E8B1-4680-9E40-BF1C65483CE6}.Release|x86.ActiveCfg = Release|Any CPU
 		{DB31DB95-E8B1-4680-9E40-BF1C65483CE6}.Release|x86.Build.0 = Release|Any CPU
-		{FCA9BB8F-892F-4364-BC2B-35EB7512FCB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FCA9BB8F-892F-4364-BC2B-35EB7512FCB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FCA9BB8F-892F-4364-BC2B-35EB7512FCB8}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{FCA9BB8F-892F-4364-BC2B-35EB7512FCB8}.Debug|x64.Build.0 = Debug|Any CPU
-		{FCA9BB8F-892F-4364-BC2B-35EB7512FCB8}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{FCA9BB8F-892F-4364-BC2B-35EB7512FCB8}.Debug|x86.Build.0 = Debug|Any CPU
-		{FCA9BB8F-892F-4364-BC2B-35EB7512FCB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FCA9BB8F-892F-4364-BC2B-35EB7512FCB8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FCA9BB8F-892F-4364-BC2B-35EB7512FCB8}.Release|x64.ActiveCfg = Release|Any CPU
-		{FCA9BB8F-892F-4364-BC2B-35EB7512FCB8}.Release|x64.Build.0 = Release|Any CPU
-		{FCA9BB8F-892F-4364-BC2B-35EB7512FCB8}.Release|x86.ActiveCfg = Release|Any CPU
-		{FCA9BB8F-892F-4364-BC2B-35EB7512FCB8}.Release|x86.Build.0 = Release|Any CPU
 		{ED9513A1-4C0B-48E1-A125-BF31B3C48FB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ED9513A1-4C0B-48E1-A125-BF31B3C48FB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED9513A1-4C0B-48E1-A125-BF31B3C48FB3}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -130,25 +114,41 @@ Global
 		{1382FCBB-5F41-432E-BD1E-07A23D25333E}.Release|x64.Build.0 = Release|Any CPU
 		{1382FCBB-5F41-432E-BD1E-07A23D25333E}.Release|x86.ActiveCfg = Release|Any CPU
 		{1382FCBB-5F41-432E-BD1E-07A23D25333E}.Release|x86.Build.0 = Release|Any CPU
+		{7DCCB344-6EB4-46C6-AC7E-049CF5D08E22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DCCB344-6EB4-46C6-AC7E-049CF5D08E22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DCCB344-6EB4-46C6-AC7E-049CF5D08E22}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7DCCB344-6EB4-46C6-AC7E-049CF5D08E22}.Debug|x64.Build.0 = Debug|Any CPU
+		{7DCCB344-6EB4-46C6-AC7E-049CF5D08E22}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7DCCB344-6EB4-46C6-AC7E-049CF5D08E22}.Debug|x86.Build.0 = Debug|Any CPU
+		{7DCCB344-6EB4-46C6-AC7E-049CF5D08E22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DCCB344-6EB4-46C6-AC7E-049CF5D08E22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DCCB344-6EB4-46C6-AC7E-049CF5D08E22}.Release|x64.ActiveCfg = Release|Any CPU
+		{7DCCB344-6EB4-46C6-AC7E-049CF5D08E22}.Release|x64.Build.0 = Release|Any CPU
+		{7DCCB344-6EB4-46C6-AC7E-049CF5D08E22}.Release|x86.ActiveCfg = Release|Any CPU
+		{7DCCB344-6EB4-46C6-AC7E-049CF5D08E22}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		Policies = $0
-		$0.TextStylePolicy = $1
-		$1.TabWidth = 2
-		$1.TabsToSpaces = True
-		$1.IndentWidth = 2
-		$1.scope = application/x-csproject
-		$0.TextStylePolicy = $2
-		$2.TabsToSpaces = True
-		$2.scope = text/x-csharp
-		$0.TextStylePolicy = $3
-		$3.TabWidth = 2
-		$3.TabsToSpaces = True
-		$3.IndentWidth = 2
-		$3.scope = application/x-msbuild
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DB31DB95-E8B1-4680-9E40-BF1C65483CE6} = {ECCC5E83-73E1-45CC-B514-1A77D2967BA7}
 		{ED9513A1-4C0B-48E1-A125-BF31B3C48FB3} = {ECCC5E83-73E1-45CC-B514-1A77D2967BA7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {11DD01C5-EB90-4C32-8C57-F1DD2A048657}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.TextStylePolicy = $3
+		$1.TabWidth = 2
+		$1.TabsToSpaces = True
+		$1.IndentWidth = 2
+		$1.scope = application/x-csproject
+		$2.TabsToSpaces = True
+		$2.scope = text/x-csharp
+		$3.TabWidth = 2
+		$3.TabsToSpaces = True
+		$3.IndentWidth = 2
+		$3.scope = application/x-msbuild
 	EndGlobalSection
 EndGlobal
